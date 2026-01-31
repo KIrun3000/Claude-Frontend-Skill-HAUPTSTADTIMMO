@@ -1,0 +1,3418 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ihr Immobiliencenter | Immobilien im Oderbruch & Brandenburg</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #2736ab;
+            --brand-blue-dark: #1a2570;
+            --brand-blue-light: #3d4cc4;
+            --cream: #faf8f5;
+            --cream-dark: #f0ebe3;
+            --wheat: #d4a84b;
+            --wheat-light: #e8c97d;
+            --sage: #8fa68a;
+            --sage-light: #c4d4c1;
+            --charcoal: #2a2a2a;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5a5a5a;
+            --text-muted: #8a8a8a;
+            --white: #ffffff;
+            --shadow-soft: 0 4px 20px rgba(39, 54, 171, 0.08);
+            --shadow-medium: 0 8px 40px rgba(39, 54, 171, 0.12);
+            --shadow-strong: 0 20px 60px rgba(39, 54, 171, 0.15);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            color: var(--text-primary);
+            background: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 5vw, 4rem);
+        }
+
+        /* Animated elements */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.25rem 0;
+            transition: all 0.4s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-soft);
+            padding: 0.75rem 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--brand-blue);
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .logo-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--white);
+        }
+
+        .logo-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text span {
+            color: var(--wheat);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--wheat);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--brand-blue);
+            color: var(--white) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-xl);
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--brand-blue-dark) !important;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 70% 20%, rgba(39, 54, 171, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 20% 80%, rgba(212, 168, 75, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 10%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0z' fill='none' stroke='%232736ab' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E") repeat;
+            opacity: 0.5;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, 20px) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-xl);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        @keyframes slideDown {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--sage);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 .highlight {
+            color: var(--brand-blue);
+            position: relative;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0.1em;
+            left: 0;
+            right: 0;
+            height: 0.15em;
+            background: var(--wheat-light);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: underline 0.6s ease 1s forwards;
+        }
+
+        @keyframes underline {
+            to { transform: scaleX(1); }
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        /* Search Box */
+        .search-box {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-strong);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .search-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .search-tab {
+            padding: 0.6rem 1.25rem;
+            border: none;
+            background: transparent;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+
+        .search-tab.active {
+            background: var(--brand-blue);
+            color: var(--white);
+        }
+
+        .search-tab:not(.active):hover {
+            background: var(--cream);
+            color: var(--text-primary);
+        }
+
+        .search-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .search-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .search-field select,
+        .search-field input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid var(--cream-dark);
+            border-radius: var(--radius-sm);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            background: var(--cream);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .search-field select:focus,
+        .search-field input:focus {
+            outline: none;
+            border-color: var(--brand-blue);
+            background: var(--white);
+        }
+
+        .search-btn {
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .search-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .hero-image-main {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            bottom: -30px;
+            left: -40px;
+            width: 200px;
+            background: var(--white);
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--wheat), var(--wheat-light));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-stat-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+        }
+
+        .hero-stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .hero-floating-badge {
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            background: var(--brand-blue);
+            color: var(--white);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-medium);
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-floating-badge strong {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .hero-floating-badge span {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        /* ===== USP BANNER ===== */
+        .usp-banner {
+            background: var(--brand-blue);
+            padding: 1.5rem 0;
+            margin-top: -1px;
+        }
+
+        .usp-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .usp-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--white);
+        }
+
+        .usp-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--wheat-light);
+        }
+
+        .usp-item span {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* ===== CATEGORIES SECTION ===== */
+        .categories {
+            padding: 8rem 0;
+            background: var(--white);
+            position: relative;
+        }
+
+        .categories::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--sage-light);
+            color: var(--sage);
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-xl);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .category-card {
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 2px solid transparent;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--brand-blue);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .category-card:hover {
+            background: var(--white);
+            border-color: var(--cream-dark);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .category-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: all 0.4s ease;
+        }
+
+        .category-card:hover .category-icon {
+            background: var(--brand-blue);
+        }
+
+        .category-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--brand-blue);
+            transition: fill 0.4s ease;
+        }
+
+        .category-card:hover .category-icon svg {
+            fill: var(--white);
+        }
+
+        .category-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .category-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .category-arrow {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 36px;
+            height: 36px;
+            background: var(--cream-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .category-card:hover .category-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .category-arrow svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--brand-blue);
+        }
+
+        /* Featured Category */
+        .category-card.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
+            padding: 3rem;
+        }
+
+        .category-card.featured::before {
+            display: none;
+        }
+
+        .category-card.featured .category-icon {
+            background: rgba(255, 255, 255, 0.15);
+            width: 80px;
+            height: 80px;
+        }
+
+        .category-card.featured .category-icon svg {
+            fill: var(--white);
+            width: 40px;
+            height: 40px;
+        }
+
+        .category-card.featured:hover .category-icon {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .category-card.featured h3 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-card.featured p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .category-card.featured:hover {
+            transform: translateY(-8px);
+            background: linear-gradient(135deg, var(--brand-blue-light), var(--brand-blue));
+        }
+
+        .category-card.featured .category-arrow {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .category-card.featured .category-arrow svg {
+            fill: var(--white);
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            padding: 8rem 0;
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(39, 54, 171, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .services-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .services-text h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .services-text h2 .highlight {
+            color: var(--brand-blue);
+        }
+
+        .services-text > p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .service-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .service-item-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--sage-light);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .service-item-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--sage);
+        }
+
+        .service-item h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .service-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .services-visual {
+            position: relative;
+        }
+
+        .services-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-strong);
+            position: relative;
+        }
+
+        .services-card::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: var(--wheat-light);
+            border-radius: var(--radius-md);
+            z-index: -1;
+        }
+
+        .services-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--cream);
+        }
+
+        .services-card-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--wheat), var(--wheat-light));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .services-card-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--white);
+        }
+
+        .services-card-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .services-card-header span {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .big-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 5rem;
+            color: var(--brand-blue);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .big-number-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .services-card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--brand-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .services-card-cta:hover {
+            gap: 1rem;
+        }
+
+        .services-card-cta svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* ===== REGION SECTION ===== */
+        .region {
+            padding: 8rem 0;
+            background: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .region::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L100 50L50 100L0 50L50 0z' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.03'/%3E%3C/svg%3E") repeat;
+        }
+
+        .region-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .region-text h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .region-text h2 .highlight {
+            color: var(--wheat);
+        }
+
+        .region-text > p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .region-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .region-stat {
+            text-align: center;
+        }
+
+        .region-stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--wheat);
+            margin-bottom: 0.25rem;
+        }
+
+        .region-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .region-map {
+            position: relative;
+        }
+
+        .region-map-placeholder {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .region-map-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(212, 168, 75, 0.3) 0%, transparent 30%),
+                radial-gradient(circle at 70% 60%, rgba(39, 54, 171, 0.3) 0%, transparent 40%);
+        }
+
+        .map-label {
+            position: absolute;
+            background: var(--white);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .map-label.label-1 { top: 20%; left: 15%; }
+        .map-label.label-2 { top: 40%; right: 20%; }
+        .map-label.label-3 { bottom: 25%; left: 30%; }
+
+        .map-label::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--wheat);
+            border-radius: 50%;
+            left: -4px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 8rem 0;
+            background: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info > p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--cream);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--brand-blue);
+        }
+
+        .contact-item-content h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-content p {
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .contact-item-content a {
+            color: var(--brand-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--brand-blue-dark);
+        }
+
+        .contact-form-wrapper {
+            background: var(--cream);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-form > p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid var(--cream-dark);
+            border-radius: var(--radius-sm);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--brand-blue);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--charcoal);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand .logo-text {
+            color: var(--white);
+        }
+
+        .footer-brand p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--brand-blue);
+        }
+
+        .footer-social svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--white);
+        }
+
+        .footer-column h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--wheat);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal a {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--white);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-image-overlay {
+                left: auto;
+                right: 20px;
+                bottom: -20px;
+            }
+
+            .hero-floating-badge {
+                right: auto;
+                left: 20px;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category-card.featured {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .services-content,
+            .region-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-mobile-toggle {
+                display: flex;
+            }
+
+            .search-fields {
+                grid-template-columns: 1fr;
+            }
+
+            .usp-inner {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-card.featured {
+                grid-column: span 1;
+            }
+
+            .region-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-image-overlay,
+            .hero-floating-badge {
+                display: none;
+            }
+
+            .region-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-wrapper {
+                padding: 1.5rem;
+            }
+        }
+
+        /* ===== STATS SECTION ===== */
+        .stats {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: var(--brand-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== PARTNERS SECTION ===== */
+        .partners {
+            padding: 5rem 0;
+            background: var(--cream);
+            border-top: 1px solid var(--cream-dark);
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .partners-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .partners-header h3 {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 2.5rem;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            min-width: 180px;
+            height: 80px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--cream-dark);
+        }
+
+        .partner-logo:hover {
+            box-shadow: var(--shadow-soft);
+            transform: translateY(-3px);
+        }
+
+        .partner-logo span {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 768px) {
+            .partners-grid {
+                gap: 1.5rem;
+            }
+
+            .partner-logo {
+                min-width: 150px;
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        /* ===== FEATURED PROPERTIES ===== */
+        .properties {
+            padding: 8rem 0;
+            background: var(--white);
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .property-card {
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .property-image {
+            position: relative;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .property-card:hover .property-image img {
+            transform: scale(1.05);
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.4rem 0.8rem;
+            background: var(--wheat);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+        }
+
+        .property-badge.sold {
+            background: var(--sage);
+        }
+
+        .property-badge.rented {
+            background: var(--brand-blue);
+        }
+
+        .property-content {
+            padding: 1.5rem;
+        }
+
+        .property-type {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-title {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .property-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .property-location svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--brand-blue);
+        }
+
+        .property-details {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .property-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .property-detail svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--text-muted);
+        }
+
+        .property-price {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--brand-blue);
+            margin-top: 1rem;
+        }
+
+        .property-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .properties-cta {
+            text-align: center;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: 2px solid var(--brand-blue);
+            color: var(--brand-blue);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: var(--radius-xl);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--brand-blue);
+            color: var(--white);
+        }
+
+        .btn-outline svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 1024px) {
+            .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== BLOG SECTION ===== */
+        .blog {
+            padding: 8rem 0;
+            background: var(--cream);
+        }
+
+        .blog-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .blog-featured {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .blog-featured:hover {
+            box-shadow: var(--shadow-strong);
+            transform: translateY(-5px);
+        }
+
+        .blog-featured-image {
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .blog-featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .blog-featured:hover .blog-featured-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-featured-content {
+            padding: 2rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-category {
+            background: var(--sage-light);
+            color: var(--sage);
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--radius-xl);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .blog-featured-title {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-featured-excerpt {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--brand-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .blog-link:hover {
+            gap: 1rem;
+        }
+
+        .blog-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .blog-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .blog-card {
+            display: flex;
+            gap: 1.5rem;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            box-shadow: var(--shadow-soft);
+            transform: translateX(5px);
+        }
+
+        .blog-card-image {
+            width: 140px;
+            height: 100px;
+            flex-shrink: 0;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .blog-card-title {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .blog-card-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 1024px) {
+            .blog-content {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-cards {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+            }
+
+            .blog-card {
+                flex-direction: column;
+                min-width: 280px;
+            }
+
+            .blog-card-image {
+                width: 100%;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-cards {
+                flex-direction: column;
+            }
+
+            .blog-card {
+                flex-direction: row;
+                min-width: auto;
+            }
+
+            .blog-card-image {
+                width: 120px;
+                height: 90px;
+            }
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team {
+            padding: 8rem 0;
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--cream);
+            border-radius: var(--radius-md);
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .team-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 4px solid var(--white);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-name {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            font-size: 0.9rem;
+            color: var(--brand-blue);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .team-contact {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .team-contact a {
+            width: 36px;
+            height: 36px;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-contact a:hover {
+            background: var(--brand-blue);
+        }
+
+        .team-contact svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--brand-blue);
+            transition: fill 0.3s ease;
+        }
+
+        .team-contact a:hover svg {
+            fill: var(--white);
+        }
+
+        @media (max-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            padding: 8rem 0;
+            background: var(--cream);
+        }
+
+        .testimonials-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .rating-widget {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .rating-score {
+            text-align: center;
+        }
+
+        .rating-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--brand-blue);
+            line-height: 1;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin: 0.5rem 0;
+        }
+
+        .rating-stars svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--wheat);
+        }
+
+        .rating-count {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .rating-source {
+            padding-left: 1.5rem;
+            border-left: 1px solid var(--cream-dark);
+        }
+
+        .rating-source-logo {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .rating-source-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--wheat);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--sage-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--sage);
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .testimonial-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rating-widget {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .rating-source {
+                padding-left: 0;
+                padding-top: 1rem;
+                border-left: none;
+                border-top: 1px solid var(--cream-dark);
+            }
+        }
+
+        /* ===== REFERENCES SECTION ===== */
+        .references {
+            padding: 8rem 0;
+            background: var(--white);
+        }
+
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .references-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .references-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== MOBILE NAVIGATION ===== */
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-medium);
+            z-index: 999;
+        }
+
+        .nav-mobile.active {
+            display: block;
+        }
+
+        .nav-mobile ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-mobile a {
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+
+        .nav-mobile a:hover {
+            background: var(--cream);
+            color: var(--brand-blue);
+        }
+
+        .nav-mobile .nav-cta {
+            background: var(--brand-blue);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .nav-mobile .nav-cta:hover {
+            background: var(--brand-blue-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3L4 9v12h16V9l-8-6zm0 2.5L18 10v9H6v-9l6-4.5z"/><path d="M10 14h4v7h-4z"/></svg>
+                </div>
+                <span class="logo-text">Ihr Immobilien<span>center</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#kategorien">Immobilien</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#aktuelles">Aktuelles</a></li>
+                <li><a href="#referenzen">Referenzen</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="#kontakt" class="nav-cta">Beratung anfragen</a></li>
+            </ul>
+            <nav class="nav-mobile" id="mobileNav">
+                <ul>
+                    <li><a href="#kategorien">Immobilien</a></li>
+                    <li><a href="#leistungen">Leistungen</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#aktuelles">Aktuelles</a></li>
+                    <li><a href="#referenzen">Referenzen</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                    <li><a href="#kontakt" class="nav-cta">Beratung anfragen</a></li>
+                </ul>
+            </nav>
+            <button class="nav-mobile-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Ihr Makler im Oderbruch seit Jahren
+                </div>
+                <h1>Finden Sie Ihr <span class="highlight">Traumzuhause</span> im Herzen Brandenburgs</h1>
+                <p class="hero-description">Von idyllischen Landhäusern bis zu ertragreichen Agrarflächen – wir begleiten Sie kundenorientiert und kompetent zum Ziel. Verkäufer zahlen bei uns keine Provision.</p>
+
+                <div class="search-box">
+                    <div class="search-tabs">
+                        <button class="search-tab active">Kaufen</button>
+                        <button class="search-tab">Mieten</button>
+                        <button class="search-tab">Pachten</button>
+                    </div>
+                    <div class="search-fields">
+                        <div class="search-field">
+                            <label>Immobilientyp</label>
+                            <select>
+                                <option>Alle Kategorien</option>
+                                <option>Ein-/Zweifamilienhaus</option>
+                                <option>Landhaus</option>
+                                <option>Mehrfamilienhaus</option>
+                                <option>Eigentumswohnung</option>
+                                <option>Grundstück</option>
+                                <option>Gewerbe</option>
+                                <option>Agrarfläche</option>
+                                <option>Forstfläche</option>
+                            </select>
+                        </div>
+                        <div class="search-field">
+                            <label>Region</label>
+                            <select>
+                                <option>Brandenburg</option>
+                                <option>Oderbruch</option>
+                                <option>Sachsen</option>
+                                <option>Sachsen-Anhalt</option>
+                                <option>Thüringen</option>
+                            </select>
+                        </div>
+                        <div class="search-field">
+                            <label>Preisrahmen</label>
+                            <select>
+                                <option>Alle Preise</option>
+                                <option>bis 50.000 €</option>
+                                <option>50.000 - 100.000 €</option>
+                                <option>100.000 - 200.000 €</option>
+                                <option>über 200.000 €</option>
+                            </select>
+                        </div>
+                        <button class="search-btn">
+                            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                            Suchen
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80" alt="Modernes Landhaus in Brandenburg" class="hero-image-main">
+                <div class="hero-image-overlay">
+                    <div class="hero-stat">
+                        <div class="hero-stat-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.58L18 11l-6 6z"/></svg>
+                        </div>
+                        <div>
+                            <div class="hero-stat-number">500+</div>
+                            <div class="hero-stat-label">Erfolgreiche Vermittlungen</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-floating-badge">
+                    <strong>0% Provision</strong>
+                    <span>für Verkäufer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP Banner -->
+    <section class="usp-banner">
+        <div class="container usp-inner">
+            <div class="usp-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Keine Maklerprovision für Verkäufer</span>
+            </div>
+            <div class="usp-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Kostenlose Wertermittlung</span>
+            </div>
+            <div class="usp-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Regionale Expertise seit Jahren</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="kategorien">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Immobilien</span>
+                <h2>Finden Sie die perfekte Immobilie</h2>
+                <p>Vom gemütlichen Einfamilienhaus bis zur ertragreichen Forstfläche – entdecken Sie unser vielfältiges Portfolio.</p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card featured reveal">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 3L4 9v12h16V9l-8-6zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 8.5 12 8.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-7c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5z"/></svg>
+                    </div>
+                    <h3>Landhäuser & Höfe</h3>
+                    <p>Verwirklichen Sie Ihren Traum vom Landleben. Historische Bauernhöfe, charmante Gutshäuser und idyllische Landsitze warten auf Sie im Oderbruch.</p>
+                    <div class="category-arrow">
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </div>
+                </div>
+
+                <div class="category-card reveal">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                    </div>
+                    <h3>Ein- & Zweifamilienhäuser</h3>
+                    <p>Die beliebteste Wohnform mit eigenem Garten und Privatsphäre.</p>
+                    <div class="category-arrow">
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </div>
+                </div>
+
+                <div class="category-card reveal">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 11V3H7v4H3v14h8v-4h2v4h8V11h-4zM7 19H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm4 4H9v-2h2v2zm0-4H9V9h2v2zm0-4H9V5h2v2zm4 8h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm4 12h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
+                    </div>
+                    <h3>Mehrfamilienhäuser</h3>
+                    <p>Sichere Kapitalanlage mit stabilen Mieteinnahmen.</p>
+                    <div class="category-arrow">
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </div>
+                </div>
+
+                <div class="category-card reveal">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-3-2.7zm-9 .7c0-1.1.9-2 2-2s2 .9 2 2h-4z"/></svg>
+                    </div>
+                    <h3>Eigentumswohnungen</h3>
+                    <p>Komfortables Wohnen ohne Bauaufwand.</p>
+                    <div class="category-arrow">
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </div>
+                </div>
+
+                <div class="category-card reveal">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <h3>Grundstücke</h3>
+                    <p>Der Grundstein für Ihr individuelles Bauprojekt.</p>
+                    <div class="category-arrow">
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </div>
+                </div>
+
+                <div class="category-card reveal">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+                    </div>
+                    <h3>Gewerbeimmobilien</h3>
+                    <p>Ideale Standorte für Ihr Unternehmen.</p>
+                    <div class="category-arrow">
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </div>
+                </div>
+
+                <div class="category-card reveal">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19.5 12c.93 0 1.78.28 2.5.76V8c0-1.1-.9-2-2-2h-6.29l-1.06-1.06 1.41-1.41-.71-.71-3.53 3.53.71.71 1.41-1.41L13 6.71V9c0 1.1-.9 2-2 2H8.96c.22.32.4.67.54 1.05L12 14.5l2.04 1.36c.31-.69.76-1.31 1.31-1.81L12 12l-1-1h3c1.66 0 3-1.34 3-3V6h3v6zM6 15c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h2v-4H6z"/></svg>
+                    </div>
+                    <h3>Agrarflächen</h3>
+                    <p>Die krisensicherste Sachwertanlage.</p>
+                    <div class="category-arrow">
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </div>
+                </div>
+
+                <div class="category-card reveal">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg>
+                    </div>
+                    <h3>Forstflächen</h3>
+                    <p>Wertbeständiger Sachwert in volatilen Märkten.</p>
+                    <div class="category-arrow">
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </div>
+                </div>
+
+                <div class="category-card reveal">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+                    </div>
+                    <h3>Miet- & Pachtobjekte</h3>
+                    <p>Flexible Lösungen für jeden Bedarf.</p>
+                    <div class="category-arrow">
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="kennzahlen">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Erfolgreiche Vermittlungen</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Jahre Erfahrung</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Kundenzufriedenheit</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Bundesländer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners" aria-label="Unsere Partner und Zertifizierungen">
+        <div class="container">
+            <div class="partners-header reveal">
+                <h3>Unsere Partner & Zertifizierungen</h3>
+            </div>
+            <div class="partners-grid reveal">
+                <div class="partner-logo" role="img" aria-label="IVD Mitglied">
+                    <span>IVD</span>
+                </div>
+                <div class="partner-logo" role="img" aria-label="ImmoScout24 Partner">
+                    <span>ImmoScout24</span>
+                </div>
+                <div class="partner-logo" role="img" aria-label="Immowelt Partner">
+                    <span>Immowelt</span>
+                </div>
+                <div class="partner-logo" role="img" aria-label="Sparkasse Partner">
+                    <span>Sparkasse</span>
+                </div>
+                <div class="partner-logo" role="img" aria-label="Volksbank Partner">
+                    <span>Volksbank</span>
+                </div>
+                <div class="partner-logo" role="img" aria-label="TÜV geprüft">
+                    <span>TÜV Rheinland</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section class="properties" id="objekte">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Ausgewählte Objekte</span>
+                <h2>Aktuelle Immobilienangebote</h2>
+                <p>Entdecken Sie unsere handverlesene Auswahl an Immobilien im Oderbruch und Brandenburg.</p>
+            </div>
+
+            <div class="properties-grid">
+                <article class="property-card reveal">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Charmantes Landhaus in Oderaue" loading="lazy">
+                        <span class="property-badge">Neu</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Landhaus</div>
+                        <h3 class="property-title">Charmantes Landhaus mit Scheune</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Oderaue, Brandenburg
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-3-2.7z"/></svg>
+                                180 m²
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                                2.500 m²
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M7 14c1.66 0 3-1.34 3-3S8.66 8 7 8s-3 1.34-3 3 1.34 3 3 3zm0-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/></svg>
+                                5 Zimmer
+                            </div>
+                        </div>
+                        <div class="property-price">189.000 €</div>
+                    </div>
+                </article>
+
+                <article class="property-card reveal">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Modernes Einfamilienhaus" loading="lazy">
+                        <span class="property-badge">Neu</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Einfamilienhaus</div>
+                        <h3 class="property-title">Modernes Einfamilienhaus</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Bad Freienwalde
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-3-2.7z"/></svg>
+                                145 m²
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                                850 m²
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M7 14c1.66 0 3-1.34 3-3S8.66 8 7 8s-3 1.34-3 3 1.34 3 3 3zm0-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/></svg>
+                                4 Zimmer
+                            </div>
+                        </div>
+                        <div class="property-price">245.000 €</div>
+                    </div>
+                </article>
+
+                <article class="property-card reveal">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Agrarfläche im Oderbruch" loading="lazy">
+                        <span class="property-badge">Neu</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Agrarfläche</div>
+                        <h3 class="property-title">Ertragreiche Agrarfläche</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Oderbruch
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                                25 ha
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M19.5 12c.93 0 1.78.28 2.5.76V8c0-1.1-.9-2-2-2h-6.29l-1.06-1.06 1.41-1.41-.71-.71-3.53 3.53.71.71 1.41-1.41L13 6.71V9c0 1.1-.9 2-2 2H8.96c.22.32.4.67.54 1.05L12 14.5l2.04 1.36c.31-.69.76-1.31 1.31-1.81L12 12l-1-1h3c1.66 0 3-1.34 3-3V6h3v6z"/></svg>
+                                Ackerland
+                            </div>
+                        </div>
+                        <div class="property-price">625.000 €</div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="properties-cta reveal">
+                <a href="#kategorien" class="btn-outline">
+                    Alle Objekte ansehen
+                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="aktuelles">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Aktuelles</span>
+                <h2>Neuigkeiten & Ratgeber</h2>
+                <p>Bleiben Sie informiert über den Immobilienmarkt und erhalten Sie wertvolle Tipps rund um Kauf und Verkauf.</p>
+            </div>
+
+            <div class="blog-content">
+                <article class="blog-featured reveal">
+                    <div class="blog-featured-image">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="Immobilienbewertung" loading="lazy">
+                    </div>
+                    <div class="blog-featured-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Ratgeber</span>
+                            <span class="blog-date">15. Januar 2025</span>
+                        </div>
+                        <h3 class="blog-featured-title">So ermitteln Sie den richtigen Verkaufspreis für Ihre Immobilie</h3>
+                        <p class="blog-featured-excerpt">Der Verkaufspreis ist einer der wichtigsten Faktoren beim Immobilienverkauf. Erfahren Sie, welche Methoden zur Wertermittlung es gibt und worauf Sie achten sollten, um den optimalen Preis zu erzielen.</p>
+                        <a href="#" class="blog-link">
+                            Weiterlesen
+                            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <div class="blog-cards">
+                    <article class="blog-card reveal">
+                        <div class="blog-card-image">
+                            <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=300&q=80" alt="Energieausweis" loading="lazy">
+                        </div>
+                        <div class="blog-card-content">
+                            <h4 class="blog-card-title">Energieausweis 2025: Was Eigentümer jetzt wissen müssen</h4>
+                            <span class="blog-card-date">8. Januar 2025</span>
+                        </div>
+                    </article>
+
+                    <article class="blog-card reveal">
+                        <div class="blog-card-image">
+                            <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=300&q=80" alt="Immobilienmarkt" loading="lazy">
+                        </div>
+                        <div class="blog-card-content">
+                            <h4 class="blog-card-title">Marktbericht: Immobilienpreise im Oderbruch stabil</h4>
+                            <span class="blog-card-date">3. Januar 2025</span>
+                        </div>
+                    </article>
+
+                    <article class="blog-card reveal">
+                        <div class="blog-card-image">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300&q=80" alt="Finanzierung" loading="lazy">
+                        </div>
+                        <div class="blog-card-content">
+                            <h4 class="blog-card-title">Tipps zur Immobilienfinanzierung in Zeiten steigender Zinsen</h4>
+                            <span class="blog-card-date">20. Dezember 2024</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="leistungen">
+        <div class="services-bg"></div>
+        <div class="container services-content">
+            <div class="services-text reveal">
+                <h2>Rundum-Service <span class="highlight">ohne Kosten</span> für Verkäufer</h2>
+                <p>Von der Exposéerstellung über den Besichtigungstermin bis hin zum Notartermin – wir nehmen Ihnen sämtliche Aufgaben ab. Professionell, persönlich und provisonsfrei.</p>
+
+                <div class="service-list">
+                    <div class="service-item">
+                        <div class="service-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Kostenlose Wertermittlung</h4>
+                            <p>Professionelle Bewertung Ihrer Immobilie</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Professionelle Exposés</h4>
+                            <p>Hochwertige Präsentation mit Fotos und Texten</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Besichtigungen & Verhandlung</h4>
+                            <p>Wir führen alle Termine und Gespräche</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Notartermin-Koordination</h4>
+                            <p>Begleitung bis zum erfolgreichen Abschluss</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-visual reveal">
+                <div class="services-card">
+                    <div class="services-card-header">
+                        <div class="services-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                        </div>
+                        <div>
+                            <h3>0% Provision</h3>
+                            <span>für Verkäufer</span>
+                        </div>
+                    </div>
+                    <div class="big-number">0€</div>
+                    <p class="big-number-label">Kosten für unseren kompletten Service</p>
+                    <a href="#kontakt" class="services-card-cta">
+                        Jetzt Beratung anfragen
+                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Unser Team</span>
+                <h2>Persönlich für Sie da</h2>
+                <p>Lernen Sie unser erfahrenes Team kennen – Ihre Ansprechpartner für alle Immobilienfragen.</p>
+            </div>
+
+            <div class="team-grid">
+                <article class="team-card reveal">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80" alt="Uwe Schulz - Geschäftsführer" loading="lazy">
+                    </div>
+                    <h3 class="team-name">Uwe Schulz</h3>
+                    <div class="team-role">Geschäftsführer</div>
+                    <div class="team-contact">
+                        <a href="tel:+493344301382" aria-label="Telefon">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </a>
+                        <a href="mailto:schulz@ihr-immobiliencenter.de" aria-label="E-Mail">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="team-card reveal">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80" alt="Sabine Müller - Immobilienberaterin" loading="lazy">
+                    </div>
+                    <h3 class="team-name">Sabine Müller</h3>
+                    <div class="team-role">Immobilienberaterin</div>
+                    <div class="team-contact">
+                        <a href="tel:+493344301382" aria-label="Telefon">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </a>
+                        <a href="mailto:mueller@ihr-immobiliencenter.de" aria-label="E-Mail">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="team-card reveal">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80" alt="Thomas Weber - Agrarimmobilien" loading="lazy">
+                    </div>
+                    <h3 class="team-name">Thomas Weber</h3>
+                    <div class="team-role">Agrarimmobilien</div>
+                    <div class="team-contact">
+                        <a href="tel:+493344301382" aria-label="Telefon">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </a>
+                        <a href="mailto:weber@ihr-immobiliencenter.de" aria-label="E-Mail">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="team-card reveal">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80" alt="Lisa Schmidt - Backoffice" loading="lazy">
+                    </div>
+                    <h3 class="team-name">Lisa Schmidt</h3>
+                    <div class="team-role">Backoffice & Verwaltung</div>
+                    <div class="team-contact">
+                        <a href="tel:+493344301382" aria-label="Telefon">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </a>
+                        <a href="mailto:schmidt@ihr-immobiliencenter.de" aria-label="E-Mail">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Region Section -->
+    <section class="region" id="region">
+        <div class="container region-content">
+            <div class="region-text reveal">
+                <h2>Verwurzelt im <span class="highlight">Oderbruch</span></h2>
+                <p>Wir kennen jede Ecke unserer Heimat. Von Bad Freienwalde bis ins kleinste Dorf – unsere regionale Expertise macht den Unterschied bei Ihrer Immobiliensuche.</p>
+
+                <div class="region-stats">
+                    <div class="region-stat">
+                        <div class="region-stat-number">50+</div>
+                        <div class="region-stat-label">Ortschaften</div>
+                    </div>
+                    <div class="region-stat">
+                        <div class="region-stat-number">4</div>
+                        <div class="region-stat-label">Bundesländer</div>
+                    </div>
+                    <div class="region-stat">
+                        <div class="region-stat-number">100%</div>
+                        <div class="region-stat-label">Regional</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="region-map reveal">
+                <div class="region-map-placeholder">
+                    <div class="map-label label-1">Bad Freienwalde</div>
+                    <div class="map-label label-2">Oderbruch</div>
+                    <div class="map-label label-3">Oderaue</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="kundenstimmen">
+        <div class="container">
+            <div class="testimonials-header">
+                <div class="section-header reveal" style="margin-bottom: 0; text-align: left;">
+                    <span class="section-tag">Kundenstimmen</span>
+                    <h2>Was unsere Kunden sagen</h2>
+                </div>
+
+                <div class="rating-widget reveal" role="region" aria-label="Gesamtbewertung">
+                    <div class="rating-score">
+                        <div class="rating-number">4.9</div>
+                        <div class="rating-stars" aria-label="4,9 von 5 Sternen">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <div class="rating-count">127 Bewertungen</div>
+                    </div>
+                    <div class="rating-source">
+                        <div class="rating-source-logo">Google Reviews</div>
+                        <div class="rating-source-text">Verifizierte Bewertungen</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials-grid">
+                <article class="testimonial-card reveal">
+                    <div class="testimonial-stars" aria-label="5 Sterne">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Herr Schulz und sein Team haben den Verkauf unseres Hauses hervorragend begleitet. Von der Wertermittlung bis zum Notartermin fühlten wir uns bestens beraten. Absolute Empfehlung!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MK</div>
+                        <div>
+                            <div class="testimonial-name">Maria K.</div>
+                            <div class="testimonial-info">Hausverkauf in Oderaue</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card reveal">
+                    <div class="testimonial-stars" aria-label="5 Sterne">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Wir haben über das Immobiliencenter unsere Agrarflächen verkauft. Die Expertise im Bereich Land- und Forstwirtschaft ist beeindruckend. Faire Preise und professionelle Abwicklung."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">HW</div>
+                        <div>
+                            <div class="testimonial-name">Hans W.</div>
+                            <div class="testimonial-info">Agrarflächenverkauf</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card reveal">
+                    <div class="testimonial-stars" aria-label="5 Sterne">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Als Käufer wurden wir kompetent und geduldig beraten. Frau Müller hat sich viel Zeit genommen, um genau das richtige Objekt für uns zu finden. Danke für den tollen Service!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SB</div>
+                        <div>
+                            <div class="testimonial-name">Stefan B.</div>
+                            <div class="testimonial-info">Hauskauf in Bad Freienwalde</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section class="references" id="referenzen">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Referenzen</span>
+                <h2>Erfolgreich vermittelt</h2>
+                <p>Ein Auszug aus unseren erfolgreich abgeschlossenen Vermittlungen der letzten Monate.</p>
+            </div>
+
+            <div class="references-grid">
+                <article class="property-card reveal">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1598228723793-52759bba239c?w=600&q=80" alt="Verkauftes Bauernhaus in Altreetz" loading="lazy">
+                        <span class="property-badge sold">Verkauft</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Bauernhaus</div>
+                        <h3 class="property-title">Historisches Bauernhaus mit Nebengebäuden</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Altreetz, Brandenburg
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-3-2.7z"/></svg>
+                                220 m²
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                                4.200 m²
+                            </div>
+                        </div>
+                        <div class="property-date">Verkauft im Dezember 2024</div>
+                    </div>
+                </article>
+
+                <article class="property-card reveal">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80" alt="Vermietetes Einfamilienhaus" loading="lazy">
+                        <span class="property-badge rented">Vermietet</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Einfamilienhaus</div>
+                        <h3 class="property-title">Gepflegtes Einfamilienhaus mit Garten</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Bad Freienwalde
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-3-2.7z"/></svg>
+                                125 m²
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                                650 m²
+                            </div>
+                        </div>
+                        <div class="property-date">Vermietet im November 2024</div>
+                    </div>
+                </article>
+
+                <article class="property-card reveal">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?w=600&q=80" alt="Verkaufte Eigentumswohnung" loading="lazy">
+                        <span class="property-badge sold">Verkauft</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Eigentumswohnung</div>
+                        <h3 class="property-title">Helle 3-Zimmer-Wohnung mit Balkon</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Wriezen
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-3-2.7z"/></svg>
+                                78 m²
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M7 14c1.66 0 3-1.34 3-3S8.66 8 7 8s-3 1.34-3 3 1.34 3 3 3zm0-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/></svg>
+                                3 Zimmer
+                            </div>
+                        </div>
+                        <div class="property-date">Verkauft im November 2024</div>
+                    </div>
+                </article>
+
+                <article class="property-card reveal">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1500076656116-558758c991c1?w=600&q=80" alt="Verkaufte Forstfläche" loading="lazy">
+                        <span class="property-badge sold">Verkauft</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Forstfläche</div>
+                        <h3 class="property-title">Mischwald mit gutem Baumbestand</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Märkische Schweiz
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                                18 ha
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/></svg>
+                                Mischwald
+                            </div>
+                        </div>
+                        <div class="property-date">Verkauft im Oktober 2024</div>
+                    </div>
+                </article>
+
+                <article class="property-card reveal">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Verkauftes Mehrfamilienhaus" loading="lazy">
+                        <span class="property-badge sold">Verkauft</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Mehrfamilienhaus</div>
+                        <h3 class="property-title">Vollvermietetes Mehrfamilienhaus</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Letschin
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M19 9.3V4h-3v2.6L12 3 2 12h3v8h5v-6h4v6h5v-8h3l-3-2.7z"/></svg>
+                                380 m²
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M17 11V3H7v4H3v14h8v-4h2v4h8V11h-4zM7 19H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm4 4H9v-2h2v2zm0-4H9V9h2v2zm0-4H9V5h2v2zm4 8h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm4 12h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
+                                6 Einheiten
+                            </div>
+                        </div>
+                        <div class="property-date">Verkauft im Oktober 2024</div>
+                    </div>
+                </article>
+
+                <article class="property-card reveal">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Verpachtete Agrarfläche" loading="lazy">
+                        <span class="property-badge rented">Verpachtet</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Agrarfläche</div>
+                        <h3 class="property-title">Erstklassiges Ackerland im Oderbruch</h3>
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Oderbruch
+                        </div>
+                        <div class="property-details">
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                                45 ha
+                            </div>
+                            <div class="property-detail">
+                                <svg viewBox="0 0 24 24"><path d="M19.5 12c.93 0 1.78.28 2.5.76V8c0-1.1-.9-2-2-2h-6.29l-1.06-1.06 1.41-1.41-.71-.71-3.53 3.53.71.71 1.41-1.41L13 6.71V9c0 1.1-.9 2-2 2H8.96c.22.32.4.67.54 1.05L12 14.5l2.04 1.36c.31-.69.76-1.31 1.31-1.81L12 12l-1-1h3c1.66 0 3-1.34 3-3V6h3v6z"/></svg>
+                                Ackerland
+                            </div>
+                        </div>
+                        <div class="property-date">Verpachtet im September 2024</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontakt">
+        <div class="container contact-content">
+            <div class="contact-info reveal">
+                <h2>Lassen Sie uns sprechen</h2>
+                <p>Ob Sie verkaufen, kaufen oder einfach eine Beratung wünschen – wir sind persönlich für Sie da. Vereinbaren Sie jetzt Ihr kostenloses Beratungsgespräch.</p>
+
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Telefon</h4>
+                            <p><a href="tel:+493344301382">03344 – 30 13 82</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>E-Mail</h4>
+                            <p><a href="mailto:info@ihr-immobiliencenter.de">info@ihr-immobiliencenter.de</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Standorte</h4>
+                            <p>Königstraße 10, 16259 Bad Freienwalde<br>Am Dorfplatz 1, 16259 Oderaue OT Altreetz</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Geschäftsführer</h4>
+                            <p>Uwe Schulz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper reveal">
+                <form class="contact-form">
+                    <h3>Kostenlose Beratung</h3>
+                    <p>Füllen Sie das Formular aus und wir melden uns zeitnah bei Ihnen.</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-Mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">Interesse</label>
+                        <select id="interest" name="interest">
+                            <option value="">Bitte wählen...</option>
+                            <option value="sell">Immobilie verkaufen</option>
+                            <option value="buy">Immobilie kaufen</option>
+                            <option value="rent">Immobilie mieten</option>
+                            <option value="valuation">Wertermittlung</option>
+                            <option value="other">Sonstiges</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Ihre Nachricht *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L4 9v12h16V9l-8-6zm0 2.5L18 10v9H6v-9l6-4.5z"/><path d="M10 14h4v7h-4z"/></svg>
+                        </div>
+                        <span class="logo-text">Ihr Immobilien<span>center</span></span>
+                    </a>
+                    <p>Ihr regionaler Partner für Immobilien im Oderbruch und Brandenburg. Kundenorientiert und kompetent zum Ziel.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24"><path d="M22.46 6c-.85.38-1.78.64-2.75.76 1-.6 1.76-1.55 2.12-2.68-.93.55-1.96.95-3.06 1.17-.88-.94-2.13-1.53-3.51-1.53-2.66 0-4.81 2.16-4.81 4.81 0 .38.04.75.13 1.1-4-.2-7.58-2.11-9.96-5.02-.42.72-.66 1.56-.66 2.46 0 1.68.85 3.16 2.14 4.02-.79-.02-1.53-.24-2.18-.6v.06c0 2.35 1.67 4.31 3.88 4.76-.4.1-.83.16-1.27.16-.31 0-.62-.03-.92-.08.63 1.96 2.45 3.39 4.61 3.43-1.69 1.32-3.83 2.1-6.15 2.1-.4 0-.8-.02-1.19-.07 2.19 1.4 4.78 2.22 7.57 2.22 9.07 0 14.02-7.52 14.02-14.02 0-.21 0-.43-.01-.64.96-.69 1.79-1.56 2.45-2.55z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Immobilien</h4>
+                    <ul>
+                        <li><a href="#">Ein-/Zweifamilienhäuser</a></li>
+                        <li><a href="#">Landhäuser</a></li>
+                        <li><a href="#">Grundstücke</a></li>
+                        <li><a href="#">Agrarflächen</a></li>
+                        <li><a href="#">Forstflächen</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Leistungen</h4>
+                    <ul>
+                        <li><a href="#">Wertermittlung</a></li>
+                        <li><a href="#">Verkauf</a></li>
+                        <li><a href="#">Beratung</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Regionen</h4>
+                    <ul>
+                        <li><a href="#">Oderbruch</a></li>
+                        <li><a href="#">Brandenburg</a></li>
+                        <li><a href="#">Sachsen</a></li>
+                        <li><a href="#">Sachsen-Anhalt</a></li>
+                        <li><a href="#">Thüringen</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 ihr-immobiliencenter.de UG (haftungsbeschränkt). Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                    <a href="#">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Search tabs
+        const searchTabs = document.querySelectorAll('.search-tab');
+        searchTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                searchTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+
+        // Reveal animations on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.nav-mobile-toggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-mobile a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir melden uns zeitnah bei Ihnen.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
