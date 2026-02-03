@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Moderne Buro-/Ladenflache in zentraler Lage in Mitte - 120 m2 Nutzflache, 4 PKW-Stellplatze, Baujahr 2020 - HAUPTSTADT IMMOBILIEN">
+    <title>Moderne Buro-/Ladenflache in Mitte | HAUPTSTADT IMMOBILIEN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #c9a227;
+            --color-accent-secondary: #b8941f;
+            --color-accent-light: #faf5e8;
+            --color-white: #ffffff;
+            --color-cream: #faf9f7;
+            --color-text: #2d2d2d;
+            --color-text-light: #6b7280;
+            --color-border: #e5e7eb;
+            --color-success: #10b981;
+
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-cream);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* ===== STICKY HEADER ===== */
+        .detail-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+
+        .detail-header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .back-btn:hover {
+            background: var(--color-cream);
+            color: var(--color-accent);
+        }
+
+        .header-logo {
+            text-decoration: none;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .action-btn {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-cream);
+            border: none;
+            border-radius: 50%;
+            color: var(--color-text);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .action-btn:hover {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .action-btn.favorited {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+
+        /* ===== IMAGE GALLERY ===== */
+        .gallery-section {
+            margin-top: 65px;
+            background: var(--color-primary);
+            position: relative;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4px;
+            height: 500px;
+        }
+
+        .gallery-main {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-main:hover img {
+            transform: scale(1.02);
+        }
+
+        .gallery-sidebar {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 4px;
+        }
+
+        .gallery-thumb {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-thumb:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-overlay:hover {
+            background: rgba(0,0,0,0.6);
+        }
+
+        .gallery-overlay i {
+            margin-right: 0.5rem;
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(0,0,0,0.7);
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .fullscreen-btn {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.7);
+            color: var(--color-white);
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .fullscreen-btn:hover {
+            background: var(--color-accent);
+        }
+
+        /* ===== QUICK FACTS BAR ===== */
+        .quick-facts {
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 65px;
+            z-index: 100;
+        }
+
+        .quick-facts-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .quick-facts-list {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .quick-fact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .quick-fact-value {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .quick-fact-value.price {
+            color: var(--color-accent);
+        }
+
+        .quick-fact-label {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .quick-facts-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 0.9rem 1.8rem;
+            border: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            padding: 0.9rem 1.8rem;
+            border: 2px solid var(--color-accent);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Property Header */
+        .property-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .property-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-sale {
+            background: var(--color-accent-secondary);
+            color: var(--color-white);
+        }
+
+        .badge-type {
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+        }
+
+        .property-title {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .property-address {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-text-light);
+            font-size: 1.05rem;
+        }
+
+        .property-address i {
+            color: var(--color-accent);
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--color-white);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--color-border);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+        }
+
+        .description-text {
+            color: var(--color-text);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .description-text p {
+            margin-bottom: 1rem;
+        }
+
+        .description-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Ausstattung Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--color-cream);
+            border-radius: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .feature-item:hover {
+            background: var(--color-accent-light);
+        }
+
+        .feature-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-white);
+            border-radius: 50%;
+            color: var(--color-accent);
+            font-size: 0.9rem;
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        /* Lage Section */
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-cream) 0%, #e8e8e8 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .location-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: var(--color-cream);
+            border-radius: 6px;
+        }
+
+        .location-item i {
+            color: var(--color-accent);
+            width: 20px;
+        }
+
+        .location-item span {
+            font-size: 0.9rem;
+        }
+
+        .location-item .distance {
+            margin-left: auto;
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Energie Section */
+        .energie-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .energie-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .energie-label {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .energie-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .energie-scale {
+            grid-column: 1 / -1;
+            margin-top: 1rem;
+        }
+
+        .energie-bar {
+            height: 30px;
+            background: linear-gradient(to right,
+                #00a651 0%, #00a651 12.5%,
+                #50b848 12.5%, #50b848 25%,
+                #bdcf32 25%, #bdcf32 37.5%,
+                #fff100 37.5%, #fff100 50%,
+                #ffb81c 50%, #ffb81c 62.5%,
+                #f68b1f 62.5%, #f68b1f 75%,
+                #e64a19 75%, #e64a19 87.5%,
+                #c41230 87.5%, #c41230 100%
+            );
+            border-radius: 4px;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .energie-marker {
+            position: absolute;
+            top: -8px;
+            left: 12%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 12px solid var(--color-primary);
+        }
+
+        .energie-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+        }
+
+        /* Grundriss Section */
+        .grundriss-image {
+            width: 100%;
+            background: var(--color-cream);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .grundriss-image img {
+            max-width: 100%;
+            max-height: 400px;
+        }
+
+        .grundriss-placeholder {
+            text-align: center;
+            color: var(--color-text-light);
+        }
+
+        .grundriss-placeholder i {
+            font-size: 4rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .grundriss-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            position: sticky;
+            top: 140px;
+        }
+
+        .contact-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .agent-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .agent-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--color-accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            font-size: 1.8rem;
+        }
+
+        .agent-details h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .agent-details span {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .contact-phone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: var(--color-cream);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-phone:hover {
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+        }
+
+        .contact-phone i {
+            color: var(--color-accent);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--color-border);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .form-checkbox input {
+            margin-top: 0.25rem;
+        }
+
+        .form-checkbox label {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            line-height: 1.4;
+        }
+
+        .form-checkbox a {
+            color: var(--color-accent);
+        }
+
+        .submit-btn {
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 1.1rem;
+            border: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Object ID */
+        .object-id {
+            text-align: center;
+            padding: 1rem;
+            background: var(--color-cream);
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .object-id strong {
+            color: var(--color-text);
+        }
+
+        /* ===== AHNLICHE OBJEKTE ===== */
+        .similar-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .similar-header {
+            margin-bottom: 2rem;
+        }
+
+        .similar-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-primary);
+        }
+
+        .similar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .similar-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .similar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .similar-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .similar-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .similar-card:hover .similar-image img {
+            transform: scale(1.05);
+        }
+
+        .similar-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--color-accent-secondary);
+            color: var(--color-white);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .similar-content {
+            padding: 1.25rem;
+        }
+
+        .similar-type {
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .similar-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .similar-location {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .similar-location i {
+            color: var(--color-accent);
+        }
+
+        .similar-details {
+            display: flex;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .similar-detail {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .similar-detail i {
+            color: var(--color-accent);
+        }
+
+        .similar-price {
+            margin-left: auto;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        /* ===== FOOTER ===== */
+        .detail-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .detail-footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .detail-footer a {
+            color: var(--color-accent-secondary);
+        }
+
+        /* ===== MOBILE STICKY CTA ===== */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-white);
+            padding: 1rem;
+            border-top: 1px solid var(--color-border);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+        .mobile-cta-inner {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .mobile-cta .btn-primary {
+            flex: 1;
+            justify-content: center;
+        }
+
+        .mobile-cta .btn-call {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-accent-secondary);
+            color: var(--color-white);
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--color-white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: var(--color-white);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .lightbox-prev {
+            left: 1.5rem;
+        }
+
+        .lightbox-next {
+            right: 1.5rem;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-white);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr 340px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+                height: 400px;
+            }
+
+            .gallery-sidebar {
+                display: none;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                order: -1;
+            }
+
+            .similar-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-facts-cta {
+                display: none;
+            }
+
+            .mobile-cta {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 0.75rem 1rem;
+            }
+
+            .back-btn span {
+                display: none;
+            }
+
+            .gallery-container {
+                height: 300px;
+            }
+
+            .quick-facts-inner {
+                padding: 1rem;
+            }
+
+            .quick-facts-list {
+                gap: 1.5rem;
+            }
+
+            .quick-fact-value {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                padding: 1.5rem 1rem 2rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .property-title {
+                font-size: 1.6rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .energie-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .similar-section {
+                padding: 0 1rem 2rem;
+            }
+
+            .similar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quick-facts-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .quick-fact {
+                text-align: center;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="detail-header" id="detailHeader">
+        <div class="header-inner">
+            <div class="header-left">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Zuruck zur Ubersicht</span>
+                </a>
+                <a href="index.html" class="header-logo">
+                    <span style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--color-primary);">HAUPTSTADT<span style="color: var(--color-accent);">IMMOBILIEN</span></span>
+                </a>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn" title="Teilen" onclick="shareProperty()">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+                <button class="action-btn" id="favoriteBtn" title="Merken" onclick="toggleFavorite()">
+                    <i class="far fa-heart"></i>
+                </button>
+                <button class="action-btn" title="Drucken" onclick="window.print()">
+                    <i class="fas fa-print"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Image Gallery -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-main" onclick="openLightbox(0)">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80" alt="Moderne Buroflache Aussenansicht">
+                <div class="image-counter">
+                    <i class="fas fa-camera"></i>
+                    <span>1 / 8 Fotos</span>
+                </div>
+                <button class="fullscreen-btn" onclick="event.stopPropagation(); openLightbox(0)">
+                    <i class="fas fa-expand"></i>
+                    Alle Fotos
+                </button>
+            </div>
+            <div class="gallery-sidebar">
+                <div class="gallery-thumb" onclick="openLightbox(1)">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80" alt="Buroraum">
+                </div>
+                <div class="gallery-thumb" onclick="openLightbox(2)">
+                    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80" alt="Empfangsbereich">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-images"></i>
+                        +5 Fotos
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Facts Bar -->
+    <div class="quick-facts">
+        <div class="quick-facts-inner">
+            <div class="quick-facts-list">
+                <div class="quick-fact">
+                    <span class="quick-fact-value price">EUR 2.850/Monat</span>
+                    <span class="quick-fact-label">Miete</span>
+                </div>
+                <div class="quick-fact">
+                    <span class="quick-fact-value">120 m2</span>
+                    <span class="quick-fact-label">Nutzflache</span>
+                </div>
+                <div class="quick-fact">
+                    <span class="quick-fact-value">4</span>
+                    <span class="quick-fact-label">Stellplatze</span>
+                </div>
+                <div class="quick-fact">
+                    <span class="quick-fact-value">EUR 450</span>
+                    <span class="quick-fact-label">Nebenkosten</span>
+                </div>
+                <div class="quick-fact">
+                    <span class="quick-fact-value">2020</span>
+                    <span class="quick-fact-label">Baujahr</span>
+                </div>
+            </div>
+            <div class="quick-facts-cta">
+                <a href="#kontakt" class="btn-primary">
+                    <i class="fas fa-envelope"></i>
+                    Anfrage senden
+                </a>
+                <a href="tel:+4930123456789" class="btn-outline">
+                    <i class="fas fa-phone"></i>
+                    Anrufen
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-left">
+            <!-- Property Header -->
+            <div class="property-header">
+                <div class="property-badges">
+                    <span class="badge badge-sale">Zu vermieten</span>
+                    <span class="badge badge-type">Gewerbeeinheit</span>
+                </div>
+                <h1 class="property-title">Moderne Buro-/Ladenflache in zentraler Lage</h1>
+                <div class="property-address">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Mitte, Berlin</span>
+                </div>
+            </div>
+
+            <!-- Objektbeschreibung -->
+            <section class="content-section animate-in">
+                <h2 class="section-title">
+                    <i class="fas fa-building"></i>
+                    Objektbeschreibung
+                </h2>
+                <div class="description-text">
+                    <p>
+                        Diese moderne Gewerbeflache bietet Ihnen die ideale Grundlage fur Ihr Unternehmen in bester Innenstadtlage von Berlin-Mitte. Mit 120 m2 Nutzflache eignet sich das Objekt hervorragend als Buro, Praxis, Laden oder fur andere gewerbliche Nutzungen.
+                    </p>
+                    <p>
+                        Das 2020 erbaute Gebaude uberzeugt durch seine zeitgemasse Architektur und hochwertige Ausstattung. Die grosszugige Schaufensterfront sorgt fur maximale Sichtbarkeit und naturliches Tageslicht. Die flexible Raumaufteilung ermoglicht individuelle Gestaltungsmoglichkeiten je nach Geschaftskonzept.
+                    </p>
+                    <p>
+                        Die zentrale Lage in Berlin-Mitte garantiert hohe Passantenfrequenz und beste Erreichbarkeit fur Kunden und Mitarbeiter. Zahlreiche Geschafte, Restaurants und offentliche Einrichtungen befinden sich in unmittelbarer Nahe.
+                    </p>
+                    <p>
+                        Vier PKW-Stellplatze direkt am Objekt runden das attraktive Angebot ab. Die Gewerbeflache ist sofort bezugsfertig und wartet auf einen engagierten Mieter mit Visionen.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Ausstattung -->
+            <section class="content-section animate-in delay-1">
+                <h2 class="section-title">
+                    <i class="fas fa-list-check"></i>
+                    Ausstattung
+                </h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-snowflake"></i></div>
+                        <span class="feature-text">Klimaanlage</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+                        <span class="feature-text">Alarmanlage</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-wifi"></i></div>
+                        <span class="feature-text">Glasfaseranschluss</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-wheelchair"></i></div>
+                        <span class="feature-text">Barrierefreier Zugang</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-store"></i></div>
+                        <span class="feature-text">Schaufensterfront</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-restroom"></i></div>
+                        <span class="feature-text">Sanitarraume</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-mug-hot"></i></div>
+                        <span class="feature-text">Teekuche</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-car"></i></div>
+                        <span class="feature-text">4 PKW-Stellplatze</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-sun"></i></div>
+                        <span class="feature-text">Bodentiefe Fenster</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="feature-text">LED-Beleuchtung</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-plug"></i></div>
+                        <span class="feature-text">Moderne Elektrik</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-door-open"></i></div>
+                        <span class="feature-text">Separater Eingang</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lagebeschreibung -->
+            <section class="content-section animate-in delay-2">
+                <h2 class="section-title">
+                    <i class="fas fa-location-dot"></i>
+                    Lage & Umgebung
+                </h2>
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Interaktive Karte</span>
+                    <small style="margin-top: 0.5rem;">Berlin-Mitte</small>
+                </div>
+                <div class="description-text" style="margin-bottom: 1.5rem;">
+                    <p>
+                        Berlin-Mitte ist das pulsierende Herz der Hauptstadt und einer der gefragtesten Standorte fur Unternehmen aller Branchen. Die Gewerbeflache befindet sich in bester Lage mit hoher Kundenfrequenz. Die ausgezeichnete Verkehrsanbindung mit U-Bahn, S-Bahn und Bussen macht den Standort besonders attraktiv fur Unternehmen mit regionaler und uberregionaler Ausrichtung.
+                    </p>
+                </div>
+                <div class="location-highlights">
+                    <div class="location-item">
+                        <i class="fas fa-train-subway"></i>
+                        <span>U-Bahn Weinmeisterstr.</span>
+                        <span class="distance">200 m</span>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-parking"></i>
+                        <span>Offentliches Parkhaus</span>
+                        <span class="distance">150 m</span>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Hackescher Markt</span>
+                        <span class="distance">300 m</span>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-utensils"></i>
+                        <span>Restaurants & Cafes</span>
+                        <span class="distance">50 m</span>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-train"></i>
+                        <span>S-Bahn Hackescher Markt</span>
+                        <span class="distance">350 m</span>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-plane"></i>
+                        <span>Flughafen BER</span>
+                        <span class="distance">25 km</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Energieausweis -->
+            <section class="content-section animate-in delay-3">
+                <h2 class="section-title">
+                    <i class="fas fa-bolt"></i>
+                    Energieausweis
+                </h2>
+                <div class="energie-grid">
+                    <div class="energie-item">
+                        <span class="energie-label">Energieausweistyp</span>
+                        <span class="energie-value">Verbrauchsausweis</span>
+                    </div>
+                    <div class="energie-item">
+                        <span class="energie-label">Energieverbrauch</span>
+                        <span class="energie-value">45 kWh/(m2*a)</span>
+                    </div>
+                    <div class="energie-item">
+                        <span class="energie-label">Energieeffizienzklasse</span>
+                        <span class="energie-value">A</span>
+                    </div>
+                    <div class="energie-item">
+                        <span class="energie-label">Wesentlicher Energietrager</span>
+                        <span class="energie-value">Warmepumpe</span>
+                    </div>
+                    <div class="energie-item">
+                        <span class="energie-label">Baujahr Heizung</span>
+                        <span class="energie-value">2020</span>
+                    </div>
+                    <div class="energie-item">
+                        <span class="energie-label">Heizungsart</span>
+                        <span class="energie-value">Warmepumpe</span>
+                    </div>
+                    <div class="energie-scale">
+                        <div class="energie-bar">
+                            <div class="energie-marker"></div>
+                        </div>
+                        <div class="energie-labels">
+                            <span>A+</span>
+                            <span>A</span>
+                            <span>B</span>
+                            <span>C</span>
+                            <span>D</span>
+                            <span>E</span>
+                            <span>F</span>
+                            <span>G</span>
+                            <span>H</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grundriss -->
+            <section class="content-section">
+                <h2 class="section-title">
+                    <i class="fas fa-vector-square"></i>
+                    Grundriss
+                </h2>
+                <div class="grundriss-image">
+                    <div class="grundriss-placeholder">
+                        <i class="fas fa-vector-square"></i>
+                        <p>Grundriss auf Anfrage verfugbar</p>
+                    </div>
+                </div>
+                <div class="grundriss-actions">
+                    <button class="btn-outline" onclick="requestFloorplan()">
+                        <i class="fas fa-download"></i>
+                        Grundriss anfordern
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="kontakt">
+            <div class="contact-card">
+                <div class="agent-info">
+                    <div class="agent-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="agent-details">
+                        <h4>HAUPTSTADT IMMOBILIEN Team</h4>
+                        <span>Ihr Ansprechpartner</span>
+                    </div>
+                </div>
+
+                <a href="tel:+4930123456789" class="contact-phone">
+                    <i class="fas fa-phone"></i>
+                    +49 (0) 30 123456789
+                </a>
+
+                <form class="contact-form" onsubmit="submitInquiry(event)">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Ihr vollstandiger Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail *</label>
+                        <input type="email" id="email" name="email" required placeholder="ihre@email.de">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+49 ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Nachricht</label>
+                        <textarea id="message" name="message" placeholder="Ich interessiere mich fur diese Gewerbeflache und bitte um weitere Informationen..."></textarea>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="privacy" required>
+                        <label for="privacy">
+                            Ich habe die <a href="#">Datenschutzerklarung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Anfrage senden
+                    </button>
+                </form>
+            </div>
+
+            <div class="object-id">
+                Objekt-Nr: <strong>HI-2025-002</strong>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Ahnliche Objekte -->
+    <section class="similar-section">
+        <div class="similar-header">
+            <h2>Weitere Objekte</h2>
+        </div>
+        <div class="similar-grid">
+            <a href="immobilie-mehrfamilienhaus.html" class="similar-card">
+                <div class="similar-image">
+                    <img src="https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=600&q=80" alt="Mehrfamilienhaus Charlottenburg">
+                    <span class="similar-badge">Zu verkaufen</span>
+                </div>
+                <div class="similar-content">
+                    <div class="similar-type">Mehrfamilienhaus</div>
+                    <h3 class="similar-title">Gepflegtes Mehrfamilienhaus mit 4 Wohneinheiten</h3>
+                    <div class="similar-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Charlottenburg
+                    </div>
+                    <div class="similar-details">
+                        <span class="similar-detail"><i class="fas fa-ruler-combined"></i> 320 m2</span>
+                        <span class="similar-detail"><i class="fas fa-door-open"></i> 12 Zi.</span>
+                        <span class="similar-price">EUR 1.495.000</span>
+                    </div>
+                </div>
+            </a>
+            <a href="immobilie-wohnung.html" class="similar-card">
+                <div class="similar-image">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" alt="Wohnung Prenzlauer Berg">
+                    <span class="similar-badge">Zu vermieten</span>
+                </div>
+                <div class="similar-content">
+                    <div class="similar-type">Eigentumswohnung</div>
+                    <h3 class="similar-title">Helle 3-Zimmer-Wohnung mit Balkon</h3>
+                    <div class="similar-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Prenzlauer Berg
+                    </div>
+                    <div class="similar-details">
+                        <span class="similar-detail"><i class="fas fa-ruler-combined"></i> 78 m2</span>
+                        <span class="similar-detail"><i class="fas fa-door-open"></i> 3 Zi.</span>
+                        <span class="similar-price">EUR 1.450/Monat</span>
+                    </div>
+                </div>
+            </a>
+            <a href="immobilie-grundstueck.html" class="similar-card">
+                <div class="similar-image">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Grundstuck Zehlendorf">
+                    <span class="similar-badge">Zu verkaufen</span>
+                </div>
+                <div class="similar-content">
+                    <div class="similar-type">Grundstuck</div>
+                    <h3 class="similar-title">Attraktives Baugrundstuck in Sudlage</h3>
+                    <div class="similar-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Zehlendorf
+                    </div>
+                    <div class="similar-details">
+                        <span class="similar-detail"><i class="fas fa-ruler-combined"></i> 950 m2</span>
+                        <span class="similar-detail"><i class="fas fa-check"></i> Erschlossen</span>
+                        <span class="similar-price">EUR 489.000</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="detail-footer">
+        <p>&copy; 2026 HAUPTSTADT IMMOBILIEN &middot; <a href="index.html">Zuruck zur Startseite</a></p>
+    </footer>
+
+    <!-- Mobile CTA -->
+    <div class="mobile-cta">
+        <div class="mobile-cta-inner">
+            <a href="#kontakt" class="btn-primary">
+                <i class="fas fa-envelope"></i>
+                Anfrage senden
+            </a>
+            <a href="tel:+4930123456789" class="btn-call">
+                <i class="fas fa-phone"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-nav lightbox-prev" onclick="prevImage()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="Galerie Bild">
+        </div>
+        <button class="lightbox-nav lightbox-next" onclick="nextImage()">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <script>
+        // Gallery images - modern office/commercial space images
+        const galleryImages = [
+            'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80',
+            'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1600&q=80',
+            'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1600&q=80',
+            'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1600&q=80',
+            'https://images.unsplash.com/photo-1564540586988-aa4e53c3d799?w=1600&q=80',
+            'https://images.unsplash.com/photo-1497215842964-222b430dc094?w=1600&q=80',
+            'https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1600&q=80',
+            'https://images.unsplash.com/photo-1577412647305-991150c7d163?w=1600&q=80'
+        ];
+        let currentImageIndex = 0;
+
+        // Header scroll effect
+        const header = document.getElementById('detailHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Lightbox functions
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightbox();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightbox() {
+            document.getElementById('lightboxImage').src = galleryImages[currentImageIndex];
+            document.getElementById('lightboxCounter').textContent =
+                `${currentImageIndex + 1} / ${galleryImages.length}`;
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateLightbox();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightbox();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            }
+        });
+
+        // Favorite toggle
+        function toggleFavorite() {
+            const btn = document.getElementById('favoriteBtn');
+            btn.classList.toggle('favorited');
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('far');
+            icon.classList.toggle('fas');
+        }
+
+        // Share function
+        function shareProperty() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Moderne Buro-/Ladenflache in Mitte | HAUPTSTADT IMMOBILIEN',
+                    text: 'Moderne Buro-/Ladenflache in zentraler Lage - EUR 2.850/Monat',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback: Copy to clipboard
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link wurde in die Zwischenablage kopiert!');
+            }
+        }
+
+        // Form submission
+        function submitInquiry(event) {
+            event.preventDefault();
+            // Here you would typically send the form data to a server
+            alert('Vielen Dank fur Ihre Anfrage! Wir melden uns schnellstmoglich bei Ihnen.');
+        }
+
+        // Request floorplan
+        function requestFloorplan() {
+            document.getElementById('message').value =
+                'Ich interessiere mich fur diese Gewerbeflache und bitte um Zusendung des Grundrisses.';
+            document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

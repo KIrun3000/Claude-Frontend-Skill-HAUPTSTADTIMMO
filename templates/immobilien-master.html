@@ -1,0 +1,3062 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- === META-TAGS - ANPASSEN === -->
+    <meta name="description" content="FIRMENNAME - Ihr Experte für Immobilien in REGION. Professionelle Immobilienvermittlung, Bewertung und Beratung.">
+    <meta name="keywords" content="Immobilien REGION, Immobilienmakler REGION, Haus kaufen REGION">
+    <meta name="author" content="FIRMENNAME">
+    <meta property="og:title" content="FIRMENNAME - Immobilien in REGION">
+    <meta property="og:description" content="Ihr Partner für Immobilien in REGION.">
+    <meta property="og:type" content="website">
+    <title>FIRMENNAME | Immobilien in REGION</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            /* === BRANDING FARBEN - Hier anpassen === */
+            --color-primary: #1a1a2e;           /* Hauptfarbe (Header, Footer, Buttons) */
+            --color-secondary: #16213e;         /* Sekundärfarbe (Hintergründe) */
+            --color-accent: #c9a227;            /* Akzentfarbe 1 (CTAs, Links, Icons) */
+            --color-accent-secondary: #c9a227;  /* Akzentfarbe 2 (Highlights, Badges) */
+            --color-accent-light: #e8d48a;      /* Akzent hell (Hover-States) */
+
+            /* === NEUTRALE FARBEN === */
+            --color-text: #2d2d2d;
+            --color-text-light: #6b6b6b;
+            --color-white: #ffffff;
+            --color-cream: #faf8f5;
+            --color-warm-gray: #f5f3f0;
+            --color-border: #e5e2dd;
+
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+
+            --shadow-sm: 0 2px 8px rgba(26, 26, 46, 0.06);
+            --shadow-md: 0 8px 30px rgba(26, 26, 46, 0.1);
+            --shadow-lg: 0 20px 60px rgba(26, 26, 46, 0.15);
+
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Sticky Contact Bar */
+        .contact-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.6rem 2rem;
+            z-index: 1000;
+            font-size: 0.85rem;
+        }
+
+        .contact-bar-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .contact-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .contact-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-white);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-bar-item:hover {
+            color: var(--color-accent);
+        }
+
+        .contact-bar-item i {
+            color: var(--color-accent);
+            font-size: 0.9rem;
+        }
+
+        .contact-bar-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .contact-bar-hours {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .contact-bar-hours i {
+            color: var(--color-accent);
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            z-index: 999;
+            border-bottom: 1px solid var(--color-border);
+            transition: var(--transition-smooth);
+        }
+
+        .main-nav.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .logo-main {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            letter-spacing: 0.15em;
+            line-height: 1.1;
+        }
+
+        .logo-sub {
+            font-size: 0.7rem;
+            color: var(--color-accent);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Logo als Bild/SVG */
+        .logo-image {
+            flex-direction: row;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.9rem 1.8rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--color-primary);
+            transition: var(--transition-smooth);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            margin-top: 100px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                rgba(26, 26, 46, 0.85) 0%,
+                rgba(22, 33, 62, 0.7) 50%,
+                rgba(26, 26, 46, 0.6) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            color: var(--color-white);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid var(--color-accent);
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            color: var(--color-accent-light);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            color: var(--color-accent);
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 1.1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            padding: 1.1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+            border-color: var(--color-white);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.3rem;
+        }
+
+        .hero-search {
+            background: var(--color-white);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-search h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .search-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group select,
+        .form-group input {
+            padding: 1rem;
+            border: 1px solid var(--color-border);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-text);
+            background: var(--color-cream);
+            transition: var(--transition-smooth);
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .search-btn {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.2rem;
+            border: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .search-btn:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Featured Listings */
+        .listings {
+            background: var(--color-cream);
+        }
+
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .listing-card {
+            background: var(--color-white);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+
+        .listing-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+        }
+
+        .listing-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .listing-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .listing-card:hover .listing-image img {
+            transform: scale(1.05);
+        }
+
+        .listing-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .listing-type {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .listing-content {
+            padding: 1.5rem;
+        }
+
+        .listing-location {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--color-accent);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .listing-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .listing-features {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+            margin-bottom: 1rem;
+        }
+
+        .listing-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        .listing-feature i {
+            color: var(--color-accent);
+        }
+
+        .listing-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .listing-price {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .listing-price span {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--color-text-light);
+        }
+
+        .listing-cta {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition-smooth);
+        }
+
+        .listing-cta:hover {
+            color: var(--color-primary);
+        }
+
+        .listings-more {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--color-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .services-column {
+            background: var(--color-cream);
+            padding: 3rem;
+        }
+
+        .services-column-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .services-column-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .services-column-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .service-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            flex-shrink: 0;
+        }
+
+        .service-content h4 {
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .service-content p {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        .services-cta {
+            margin-top: 2rem;
+        }
+
+        .btn-dark {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 1rem 1.8rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-dark:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--color-primary);
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(201, 162, 39, 0.1) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .about-image-overlay {
+            position: absolute;
+            bottom: -2rem;
+            right: -2rem;
+            background: var(--color-accent);
+            padding: 2rem;
+            color: var(--color-primary);
+        }
+
+        .about-image-overlay .number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .about-image-overlay .label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-content .section-label {
+            color: var(--color-accent);
+        }
+
+        .about-content .section-title {
+            color: var(--color-white);
+        }
+
+        .about-content .section-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .about-feature i {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .about-feature span {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Districts Section */
+        .districts {
+            background: var(--color-cream);
+        }
+
+        .districts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .district-card {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .district-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .district-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .district-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 26, 46, 0.95) 0%, rgba(26, 26, 46, 0.4) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.25rem;
+            transition: var(--transition-smooth);
+        }
+
+        .district-card:hover .district-overlay {
+            background: linear-gradient(to top, rgba(201, 162, 39, 0.95) 0%, rgba(26, 26, 46, 0.5) 60%, transparent 100%);
+        }
+
+        .district-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--color-white);
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+
+        .district-count {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .district-card:hover .district-count {
+            color: var(--color-primary);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--color-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--color-cream);
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 3rem;
+            color: var(--color-accent);
+            opacity: 0.3;
+            font-family: var(--font-display);
+            line-height: 1;
+        }
+
+        .testimonial-rating {
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--color-secondary);
+            color: var(--color-white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(201, 162, 39, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            flex-shrink: 0;
+        }
+
+        .contact-item-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item-content a,
+        .contact-item-content span {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--color-accent);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-form label {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--color-white);
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            border-color: var(--color-accent);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+            font-family: var(--font-body);
+        }
+
+        .submit-btn {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 1.2rem 2.5rem;
+            border: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .submit-btn:hover {
+            background: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-about .logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about .logo-main {
+            color: var(--color-white);
+        }
+
+        .footer-about p {
+            opacity: 0.7;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-social a:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .footer-column h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-legal a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Floating Contact Button */
+        .floating-contact {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 998;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-smooth);
+        }
+
+        .floating-btn:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .listings-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .districts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-search {
+                max-width: 500px;
+            }
+
+            .services-grid,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-bar-left {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+
+            .contact-bar-right {
+                display: none;
+            }
+
+            .listings-grid,
+            .districts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 4rem 1rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* ===== RATING WIDGET SECTION ===== */
+        .rating-section {
+            background: var(--color-cream);
+            padding: 4rem 2rem;
+        }
+
+        .rating-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .rating-widget {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--color-white);
+            padding: 2rem 3rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .rating-score {
+            text-align: center;
+        }
+
+        .rating-number {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .rating-stars {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .rating-count {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .rating-source {
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--color-border);
+        }
+
+        .rating-source-logo {
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .rating-source-text {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .rating-badges {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .rating-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--color-text);
+        }
+
+        .rating-badge i {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+        }
+
+        .rating-badge-text {
+            font-size: 0.9rem;
+        }
+
+        .rating-badge-text strong {
+            display: block;
+            color: var(--color-primary);
+        }
+
+        /* ===== PARTNER LOGOS SECTION ===== */
+        .partners-section {
+            background: var(--color-white);
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .partners-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .partners-title {
+            text-align: center;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 1.5rem;
+            background: var(--color-cream);
+            min-width: 140px;
+            height: 70px;
+            transition: var(--transition-smooth);
+            border-radius: 4px;
+        }
+
+        .partner-logo:hover {
+            background: var(--color-white);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .partner-logo svg {
+            max-width: 100%;
+            height: auto;
+            opacity: 0.85;
+            transition: var(--transition-smooth);
+        }
+
+        .partner-logo:hover svg {
+            opacity: 1;
+        }
+
+        .partner-logo span {
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team-section {
+            background: var(--color-cream);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--color-white);
+            text-align: center;
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .team-card:hover .team-photo img {
+            transform: scale(1.05);
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-name {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            color: var(--color-accent);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .team-contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .team-contact-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-cream);
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .team-contact-links a:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        /* ===== REFERENCES SECTION ===== */
+        .references-section {
+            background: var(--color-white);
+        }
+
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .reference-card {
+            background: var(--color-cream);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .reference-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .reference-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .reference-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: var(--transition-smooth);
+        }
+
+        .reference-card:hover .reference-image img {
+            filter: grayscale(0%);
+        }
+
+        .reference-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .reference-badge.sold {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .reference-badge.rented {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .reference-content {
+            padding: 1.5rem;
+        }
+
+        .reference-type {
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .reference-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .reference-location {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .reference-details {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .reference-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .reference-detail i {
+            color: var(--color-accent);
+        }
+
+        /* ===== BLOG SECTION ===== */
+        .blog-section {
+            background: var(--color-cream);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+        }
+
+        .blog-featured {
+            background: var(--color-white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .blog-featured:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-featured-image {
+            height: 100%;
+            min-height: 350px;
+        }
+
+        .blog-featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-featured-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-category {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .blog-date {
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+        }
+
+        .blog-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .blog-link:hover {
+            color: var(--color-primary);
+        }
+
+        .blog-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .blog-card {
+            background: var(--color-white);
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .blog-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .blog-card-image {
+            width: 120px;
+            height: 100px;
+            flex-shrink: 0;
+        }
+
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .blog-card-title {
+            font-size: 1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .blog-card-date {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+
+        /* Responsive for new sections */
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .references-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-featured {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-featured-image {
+                min-height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .rating-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .rating-widget {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+
+            .rating-source {
+                padding-left: 0;
+                padding-top: 1rem;
+                border-left: none;
+                border-top: 1px solid var(--color-border);
+            }
+
+            .rating-badges {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .partners-grid {
+                gap: 1.5rem;
+            }
+
+            .partner-logo {
+                min-width: 120px;
+                padding: 0.75rem 1.5rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .references-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-cards {
+                gap: 1rem;
+            }
+
+            .blog-card {
+                flex-direction: column;
+            }
+
+            .blog-card-image {
+                width: 100%;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- === CONTACT BAR - ANPASSEN: Kontaktdaten === -->
+    <div class="contact-bar">
+        <div class="contact-bar-inner">
+            <div class="contact-bar-left">
+                <a href="tel:+49XXXXXXXXXX" class="contact-bar-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+49 (0) XXXX XXXXXX</span>
+                </a>
+                <a href="mailto:info@example.de" class="contact-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@example.de</span>
+                </a>
+                <span class="contact-bar-item">
+                    <i class="fas fa-location-dot"></i>
+                    <span>Straße Nr, PLZ Ort</span>
+                </span>
+            </div>
+            <div class="contact-bar-right">
+                <span class="contact-bar-hours">
+                    <i class="fas fa-clock"></i>
+                    <span>Mo-Fr: 9:00-18:00 | Sa: 10:00-14:00</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-inner">
+            <!-- === LOGO: Text-Version (Standard) === -->
+            <a href="#" class="logo">
+                <span class="logo-main">FIRMENNAME</span>
+                <span class="logo-sub">Slogan / Region</span>
+            </a>
+            <!-- === LOGO: Bild-Version (auskommentiert) ===
+            <a href="#" class="logo logo-image">
+                <img src="LOGO_URL_HIER" alt="Firmenname" class="logo-img">
+            </a>
+            -->
+            <ul class="nav-links">
+                <li><a href="#immobilien">Immobilien</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#referenzen">Referenzen</a></li>
+                <li><a href="#aktuelles">Aktuelles</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <a href="#kontakt" class="nav-cta">
+                <i class="fas fa-calendar-check"></i>
+                Beratungsgespräch vereinbaren
+            </a>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === HERO SECTION - ANPASSEN === -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <!-- ANPASSEN: Hero-Hintergrundbild -->
+            <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1920&q=80" alt="Hero Bild">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i>
+                    <!-- ANPASSEN: Badge-Text -->
+                    Ihr Partner seit XXXX
+                </div>
+                <h1 class="hero-title">
+                    <!-- ANPASSEN: Headline mit Region -->
+                    Ihr Immobilienmakler in <span>REGION</span>
+                </h1>
+                <p class="hero-description">
+                    <!-- ANPASSEN: Beschreibungstext -->
+                    Mit unserer langjährigen Erfahrung und lokalen Expertise finden wir die perfekte Immobilie für Sie. Persönliche Beratung, regionale Kompetenz, maximaler Erfolg.
+                </p>
+                <div class="hero-ctas">
+                    <!-- ANPASSEN: CTA-Buttons -->
+                    <a href="#kontakt" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i>
+                        Beratungsgespräch vereinbaren
+                    </a>
+                    <a href="#immobilien" class="btn-secondary">
+                        <i class="fas fa-search"></i>
+                        Alle Immobilienangebote
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <!-- ANPASSEN: Statistiken (oder entfernen) -->
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">XXX+</span>
+                        <span class="hero-stat-label">Vermittelte Objekte</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">XX%</span>
+                        <span class="hero-stat-label">Zufriedene Kunden</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">XX+</span>
+                        <span class="hero-stat-label">Jahre Erfahrung</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-search">
+                <h3><i class="fas fa-search"></i> Immobilie suchen</h3>
+                <form class="search-form">
+                    <div class="form-group">
+                        <label for="propertyType">Immobilienart</label>
+                        <select id="propertyType">
+                            <option value="">Alle Immobilienarten</option>
+                            <option value="wohnung">Wohnung</option>
+                            <option value="haus">Haus</option>
+                            <option value="buero">Bürofläche</option>
+                            <option value="gewerbe">Gewerbefläche</option>
+                            <option value="einzelhandel">Einzelhandel</option>
+                        </select>
+                    </div>
+                    <!-- ANPASSEN: Regionen/Bezirke für die lokale Region -->
+                    <div class="form-group">
+                        <label for="district">Region</label>
+                        <select id="district">
+                            <option value="">Alle Regionen</option>
+                            <option value="region1">Region 1</option>
+                            <option value="region2">Region 2</option>
+                            <option value="region3">Region 3</option>
+                            <option value="region4">Region 4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priceRange">Preisrahmen</label>
+                        <select id="priceRange">
+                            <option value="">Beliebig</option>
+                            <option value="0-200000">Bis 200.000 €</option>
+                            <option value="200000-500000">200.000 - 500.000 €</option>
+                            <option value="500000-1000000">500.000 - 1.000.000 €</option>
+                            <option value="1000000+">Über 1.000.000 €</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i>
+                        Immobilien finden
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- === LEISTUNGEN TEASER SECTION - ANPASSEN: Texte für lokales Angebot === -->
+    <section class="listings" id="immobilien">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">
+                    <i class="fas fa-home"></i>
+                    Unsere Leistungen
+                </span>
+                <!-- ANPASSEN: Überschrift -->
+                <h2 class="section-title">Was können wir für Sie tun?</h2>
+                <p class="section-description">
+                    Ob Kaufen, Verkaufen, Vermieten oder Verwaltung – wir sind Ihr kompetenter Partner für alle Immobilienangelegenheiten in REGION.
+                </p>
+            </div>
+            <div class="listings-grid">
+                <!-- Kaufen -->
+                <article class="listing-card">
+                    <div class="listing-image">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="Immobilie kaufen">
+                        <span class="listing-badge" style="background: var(--color-accent);">Kaufen</span>
+                    </div>
+                    <div class="listing-content">
+                        <div class="listing-location">
+                            <i class="fas fa-key"></i>
+                            Ihr neues Zuhause
+                        </div>
+                        <!-- ANPASSEN: Text -->
+                        <h3 class="listing-title">Wir finden Ihre Traumimmobilie</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: 1rem;">Finden Sie Häuser, Wohnungen und Grundstücke in der Region.</p>
+                        <div class="listing-footer">
+                            <a href="#kontakt" class="listing-cta">
+                                Immobilien entdecken <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Verkaufen -->
+                <article class="listing-card">
+                    <div class="listing-image">
+                        <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&q=80" alt="Immobilie verkaufen">
+                        <span class="listing-badge" style="background: var(--color-accent-secondary);">Verkaufen</span>
+                    </div>
+                    <div class="listing-content">
+                        <div class="listing-location">
+                            <i class="fas fa-handshake"></i>
+                            Bestpreis erzielen
+                        </div>
+                        <h3 class="listing-title">Professionelle Vermarktung Ihrer Immobilie</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: 1rem;">Regionale Expertise und persönliche Betreuung für den erfolgreichen Verkauf.</p>
+                        <div class="listing-footer">
+                            <a href="#kontakt" class="listing-cta">
+                                Jetzt bewerten lassen <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Vermieten -->
+                <article class="listing-card">
+                    <div class="listing-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80" alt="Immobilie vermieten">
+                        <span class="listing-badge" style="background: var(--color-accent);">Vermieten</span>
+                    </div>
+                    <div class="listing-content">
+                        <div class="listing-location">
+                            <i class="fas fa-file-contract"></i>
+                            Einfach & sicher
+                        </div>
+                        <h3 class="listing-title">Vermietung leicht gemacht</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: 1rem;">Zuverlässige Mieter, rechtssichere Verträge und professionelle Begleitung.</p>
+                        <div class="listing-footer">
+                            <a href="#kontakt" class="listing-cta">
+                                Mehr erfahren <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Verwaltung -->
+                <article class="listing-card">
+                    <div class="listing-image">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="Hausverwaltung">
+                        <span class="listing-badge" style="background: var(--color-accent-secondary);">Verwaltung</span>
+                    </div>
+                    <div class="listing-content">
+                        <div class="listing-location">
+                            <i class="fas fa-building"></i>
+                            Rundum-Service
+                        </div>
+                        <h3 class="listing-title">Professionelle Hausverwaltung</h3>
+                        <p style="color: var(--color-text-light); margin-bottom: 1rem;">Wir kümmern uns um Ihre Immobilie – zuverlässig und kompetent.</p>
+                        <div class="listing-footer">
+                            <a href="#kontakt" class="listing-cta">
+                                Verwaltung anfragen <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="listings-more">
+                <a href="#kontakt" class="btn-primary">
+                    <i class="fas fa-phone"></i>
+                    Jetzt Beratungsgespräch vereinbaren
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="leistungen">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">
+                    <i class="fas fa-handshake"></i>
+                    Unsere Leistungen
+                </span>
+                <h2 class="section-title">Kompetente Beratung für Eigentümer und Suchende</h2>
+                <p class="section-description">
+                    Ob Sie verkaufen, kaufen, vermieten oder mieten möchten – wir begleiten Sie professionell durch den gesamten Prozess.
+                </p>
+            </div>
+            <div class="services-grid">
+                <!-- Services for Owners -->
+                <div class="services-column">
+                    <div class="services-column-header">
+                        <div class="services-column-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h3 class="services-column-title">Für Eigentümer</h3>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Professionelle Immobilienbewertung</h4>
+                            <p>Kostenlose und unverbindliche Marktwertermittlung Ihrer Immobilie basierend auf aktuellen Marktdaten.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Premium-Vermarktung</h4>
+                            <p>Hochwertige Exposés mit professionellen Fotos, 360°-Rundgängen und zielgruppengerechter Ansprache.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Käufer- und Mieterauswahl</h4>
+                            <p>Sorgfältige Bonitätsprüfung und Vorauswahl qualifizierter Interessenten für Ihre Immobilie.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Vertragsabwicklung</h4>
+                            <p>Komplette Begleitung von der Verhandlung bis zum Notartermin und der Schlüsselübergabe.</p>
+                        </div>
+                    </div>
+                    <div class="services-cta">
+                        <a href="#bewertung" class="btn-dark">
+                            <i class="fas fa-calculator"></i>
+                            Immobilie bewerten lassen
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Services for Buyers/Tenants -->
+                <div class="services-column">
+                    <div class="services-column-header">
+                        <div class="services-column-icon">
+                            <i class="fas fa-search-location"></i>
+                        </div>
+                        <h3 class="services-column-title">Für Käufer & Mieter</h3>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Individuelle Suchberatung</h4>
+                            <p>Persönliche Beratung zu Ihren Wünschen, Budget und den besten Lagen für Ihre Bedürfnisse.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Exklusive Vorab-Angebote</h4>
+                            <p>Zugang zu Off-Market-Immobilien und neuen Objekten bevor sie öffentlich inseriert werden.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Besichtigungsbegleitung</h4>
+                            <p>Professionelle Führung durch die Objekte mit detaillierten Informationen zu Lage und Umgebung.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <div class="service-content">
+                            <h4>Finanzierungsberatung</h4>
+                            <p>Unterstützung bei der Finanzierung durch unser Netzwerk aus Banken und Finanzierungsexperten.</p>
+                        </div>
+                    </div>
+                    <div class="services-cta">
+                        <a href="#kontakt" class="btn-dark">
+                            <i class="fas fa-calendar-check"></i>
+                            Beratungsgespräch vereinbaren
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ÜBER UNS SECTION - ANPASSEN === -->
+    <section class="about" id="ueber-uns">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <!-- ANPASSEN: Team-/Bürofoto -->
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Team Foto">
+                    <div class="about-image-overlay">
+                        <!-- ANPASSEN: Jahre Erfahrung -->
+                        <span class="number">XX+</span>
+                        <span class="label">Jahre Erfahrung</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label">
+                        <i class="fas fa-building"></i>
+                        Über uns
+                    </span>
+                    <!-- ANPASSEN: Überschrift und Text -->
+                    <h2 class="section-title">Ihr vertrauensvoller Immobilienpartner in REGION</h2>
+                    <p class="section-description">
+                        Unsere regionale Vernetzung sowie die Zusammenarbeit mit lokalen Partnern ermöglicht es uns, Ihnen den bestmöglichen Service zu bieten. Wir kennen die Region und finden Ihre Traumimmobilie.
+                    </p>
+                    <div class="about-features">
+                        <!-- ANPASSEN: Features/Vorteile -->
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Regionale Expertise und lokale Vernetzung</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Persönlicher Ansprechpartner für jeden Kunden</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Transparente Kommunikation und faire Konditionen</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Langjährige Erfahrung am Immobilienmarkt</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Erfolgreiche Vermittlung von Immobilien</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Umfassender Service: Kauf, Verkauf, Vermietung</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === REGIONEN SECTION - Anpassen für lokale Gebiete === -->
+    <section class="districts" id="regionen">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">
+                    <i class="fas fa-map"></i>
+                    <!-- ANPASSEN: Label für Regionen -->
+                    Für Sie vor Ort
+                </span>
+                <!-- ANPASSEN: Überschrift und Beschreibung -->
+                <h2 class="section-title">Immobilien in Ihrer Region</h2>
+                <p class="section-description">
+                    Wir kennen die Region und finden Ihre Traumimmobilie. Lokale Expertise für Ihren Immobilienerfolg.
+                </p>
+            </div>
+            <!-- ANPASSEN: 4 Regionen-Karten mit lokalen Bildern und Namen -->
+            <div class="districts-grid">
+                <div class="district-card">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80" alt="Region 1" loading="lazy">
+                    <div class="district-overlay">
+                        <h3 class="district-name">Region 1</h3>
+                        <span class="district-count">Hauptstandort</span>
+                    </div>
+                </div>
+                <div class="district-card">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80" alt="Region 2" loading="lazy">
+                    <div class="district-overlay">
+                        <h3 class="district-name">Region 2</h3>
+                        <span class="district-count">Beschreibung</span>
+                    </div>
+                </div>
+                <div class="district-card">
+                    <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80" alt="Region 3" loading="lazy">
+                    <div class="district-overlay">
+                        <h3 class="district-name">Region 3</h3>
+                        <span class="district-count">Beschreibung</span>
+                    </div>
+                </div>
+                <div class="district-card">
+                    <img src="https://images.unsplash.com/photo-1597212618440-806a892e7f90?w=800&q=80" alt="Region 4" loading="lazy">
+                    <div class="district-overlay">
+                        <h3 class="district-name">Region 4</h3>
+                        <span class="district-count">Beschreibung</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">
+                    <i class="fas fa-star"></i>
+                    Kundenstimmen
+                </span>
+                <h2 class="section-title">Was unsere Kunden über uns sagen</h2>
+                <p class="section-description">
+                    Über 98% unserer Kunden empfehlen uns weiter. Lesen Sie, warum wir ihr Vertrauen genießen.
+                </p>
+            </div>
+            <!-- ANPASSEN: Testimonials mit echten Kundenstimmen -->
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        <!-- ANPASSEN: Testimonial-Text -->
+                        Professionelle und freundliche Beratung. Das Team hat uns super bei der Suche nach unserem neuen Zuhause unterstützt. Absolute Empfehlung!
+                    </p>
+                    <div class="testimonial-author">
+                        <!-- ANPASSEN: Name und Rolle -->
+                        <div class="testimonial-avatar">VN</div>
+                        <div>
+                            <div class="testimonial-name">Vorname N.</div>
+                            <div class="testimonial-role">Hauskäufer, Region 1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        Der Verkauf unseres Hauses lief reibungslos und schnell. Das Team war immer erreichbar und hat uns bestens beraten.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">VN</div>
+                        <div>
+                            <div class="testimonial-name">Vorname N.</div>
+                            <div class="testimonial-role">Verkäufer, Region 2</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        Kompetente Beratung und regionale Expertise. Das Team kennt den Markt wie kein anderer!
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">VN</div>
+                        <div>
+                            <div class="testimonial-name">Vorname N.</div>
+                            <div class="testimonial-role">Grundstückskäufer, Region 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rating Widget Section -->
+    <section class="rating-section">
+        <div class="rating-container">
+            <div class="rating-widget">
+                <div class="rating-score">
+                    <div class="rating-number">4.9</div>
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-count">156 Bewertungen</div>
+                </div>
+                <div class="rating-source">
+                    <div class="rating-source-logo"><i class="fab fa-google"></i> Google Reviews</div>
+                    <div class="rating-source-text">Verifizierte Kundenbewertungen</div>
+                </div>
+            </div>
+            <div class="rating-badges">
+                <div class="rating-badge">
+                    <i class="fas fa-award"></i>
+                    <div class="rating-badge-text">
+                        <strong>Top Makler 2024</strong>
+                        <span>ImmoScout24</span>
+                    </div>
+                </div>
+                <div class="rating-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="rating-badge-text">
+                        <strong>TÜV-geprüft</strong>
+                        <span>Servicequalität</span>
+                    </div>
+                </div>
+                <div class="rating-badge">
+                    <i class="fas fa-handshake"></i>
+                    <div class="rating-badge-text">
+                        <strong>98% Empfehlung</strong>
+                        <span>Kundenzufriedenheit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Logos Section -->
+    <section class="partners-section">
+        <div class="partners-container">
+            <div class="partners-title">Unsere Partner & Zertifizierungen</div>
+            <div class="partners-grid">
+                <!-- IVD Logo -->
+                <div class="partner-logo" title="IVD - Immobilienverband Deutschland">
+                    <svg viewBox="0 0 120 50" width="100" height="42">
+                        <rect x="5" y="8" width="34" height="34" fill="#003366" rx="2"/>
+                        <text x="22" y="32" font-family="Arial Black, sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="bold">IVD</text>
+                        <text x="80" y="25" font-family="Arial, sans-serif" font-size="8" fill="#003366" text-anchor="middle">Immobilienverband</text>
+                        <text x="80" y="35" font-family="Arial, sans-serif" font-size="8" fill="#003366" text-anchor="middle">Deutschland</text>
+                    </svg>
+                </div>
+                <!-- ImmoScout24 Logo -->
+                <div class="partner-logo" title="ImmoScout24">
+                    <svg viewBox="0 0 140 50" width="120" height="42">
+                        <circle cx="20" cy="25" r="15" fill="#FF7500"/>
+                        <path d="M15 20 L20 15 L25 20 L25 32 L15 32 Z" fill="white"/>
+                        <rect x="17" y="26" width="3" height="6" fill="#FF7500"/>
+                        <text x="85" y="30" font-family="Arial, sans-serif" font-size="14" fill="#333" font-weight="bold">ImmoScout</text>
+                        <text x="130" y="30" font-family="Arial, sans-serif" font-size="14" fill="#FF7500" font-weight="bold">24</text>
+                    </svg>
+                </div>
+                <!-- Immowelt Logo -->
+                <div class="partner-logo" title="Immowelt">
+                    <svg viewBox="0 0 130 50" width="110" height="42">
+                        <circle cx="18" cy="25" r="14" fill="#E30613"/>
+                        <path d="M13 22 L18 17 L23 22 L23 32 L13 32 Z" fill="white"/>
+                        <text x="78" y="30" font-family="Arial, sans-serif" font-size="16" fill="#E30613" font-weight="bold">immowelt</text>
+                    </svg>
+                </div>
+                <!-- Deutsche Bank Logo -->
+                <div class="partner-logo" title="Deutsche Bank">
+                    <svg viewBox="0 0 140 50" width="120" height="42">
+                        <rect x="8" y="10" width="30" height="30" fill="none" stroke="#0018A8" stroke-width="3"/>
+                        <path d="M14 33 L32 17" stroke="#0018A8" stroke-width="3"/>
+                        <text x="90" y="22" font-family="Arial, sans-serif" font-size="10" fill="#0018A8">Deutsche</text>
+                        <text x="90" y="35" font-family="Arial, sans-serif" font-size="12" fill="#0018A8" font-weight="bold">Bank</text>
+                    </svg>
+                </div>
+                <!-- Sparkasse Logo -->
+                <div class="partner-logo" title="Sparkasse">
+                    <svg viewBox="0 0 130 50" width="110" height="42">
+                        <circle cx="20" cy="25" r="16" fill="#FF0000"/>
+                        <circle cx="14" cy="22" r="4" fill="white"/>
+                        <circle cx="26" cy="22" r="4" fill="white"/>
+                        <circle cx="20" cy="31" r="4" fill="white"/>
+                        <text x="80" y="30" font-family="Arial, sans-serif" font-size="13" fill="#FF0000" font-weight="bold">Sparkasse</text>
+                    </svg>
+                </div>
+                <!-- TÜV Rheinland Logo -->
+                <div class="partner-logo" title="TÜV Rheinland">
+                    <svg viewBox="0 0 130 50" width="110" height="42">
+                        <polygon points="20,5 35,45 5,45" fill="none" stroke="#003366" stroke-width="2"/>
+                        <text x="20" y="32" font-family="Arial Black, sans-serif" font-size="10" fill="#003366" text-anchor="middle" font-weight="bold">TÜV</text>
+                        <text x="82" y="22" font-family="Arial, sans-serif" font-size="11" fill="#003366" font-weight="bold">TÜV</text>
+                        <text x="82" y="36" font-family="Arial, sans-serif" font-size="11" fill="#003366">Rheinland</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === TEAM SECTION - ANPASSEN: Team-Foto und Kontaktdaten === -->
+    <section class="team-section" id="team">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">
+                    <i class="fas fa-users"></i>
+                    Unser Team
+                </span>
+                <!-- ANPASSEN: Region -->
+                <h2 class="section-title">Ihre kompetenten Ansprechpartner</h2>
+                <p class="section-description">
+                    Unser erfahrenes Team steht Ihnen mit Rat und Tat zur Seite. Persönliche Beratung und individuelle Betreuung – von der ersten Anfrage bis zum erfolgreichen Abschluss.
+                </p>
+            </div>
+            <!-- ANPASSEN: Team-Karten mit echten Daten ODER ein Team-Foto -->
+            <div class="team-grid" style="justify-content: center;">
+                <div class="team-card" style="max-width: 500px;">
+                    <div class="team-photo">
+                        <!-- ANPASSEN: Team-Foto URL -->
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Unser Team" loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Unser Team</h3>
+                        <div class="team-role">Ihre Ansprechpartner für alle Immobilienangelegenheiten</div>
+                        <div class="team-contact-links">
+                            <!-- ANPASSEN: Kontaktdaten -->
+                            <a href="tel:+49XXXXXXXXXX" title="Anrufen"><i class="fas fa-phone"></i></a>
+                            <a href="mailto:info@example.de" title="E-Mail"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === REFERENZEN SECTION - ANPASSEN: Lokale Referenzen === -->
+    <section class="references-section" id="referenzen">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">
+                    <i class="fas fa-check-circle"></i>
+                    Referenzen
+                </span>
+                <h2 class="section-title">Erfolgreich vermittelt</h2>
+                <p class="section-description">
+                    Ein Auszug aus unseren erfolgreich abgeschlossenen Vermittlungen – zufriedene Kunden in der Region.
+                </p>
+            </div>
+            <!-- ANPASSEN: Referenzen mit lokalen Standorten -->
+            <div class="references-grid">
+                <div class="reference-card">
+                    <div class="reference-image">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Einfamilienhaus" loading="lazy">
+                        <span class="reference-badge sold">Verkauft</span>
+                    </div>
+                    <div class="reference-content">
+                        <div class="reference-type">Einfamilienhaus</div>
+                        <h3 class="reference-title">Gemütliches Einfamilienhaus mit Garten</h3>
+                        <div class="reference-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Region 1
+                        </div>
+                        <div class="reference-details">
+                            <span class="reference-detail"><i class="fas fa-ruler-combined"></i> 145 m²</span>
+                            <span class="reference-detail"><i class="fas fa-tree"></i> 800 m² Grund</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="reference-card">
+                    <div class="reference-image">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Landhaus" loading="lazy">
+                        <span class="reference-badge sold">Verkauft</span>
+                    </div>
+                    <div class="reference-content">
+                        <div class="reference-type">Landhaus</div>
+                        <h3 class="reference-title">Charmantes Landhaus mit großem Grundstück</h3>
+                        <div class="reference-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Region 2
+                        </div>
+                        <div class="reference-details">
+                            <span class="reference-detail"><i class="fas fa-ruler-combined"></i> 180 m²</span>
+                            <span class="reference-detail"><i class="fas fa-door-open"></i> 6 Zimmer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="reference-card">
+                    <div class="reference-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Wohnung" loading="lazy">
+                        <span class="reference-badge rented">Vermietet</span>
+                    </div>
+                    <div class="reference-content">
+                        <div class="reference-type">Eigentumswohnung</div>
+                        <h3 class="reference-title">Moderne 3-Zimmer-Wohnung zentral gelegen</h3>
+                        <div class="reference-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Region 3
+                        </div>
+                        <div class="reference-details">
+                            <span class="reference-detail"><i class="fas fa-ruler-combined"></i> 85 m²</span>
+                            <span class="reference-detail"><i class="fas fa-door-open"></i> 3 Zimmer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="reference-card">
+                    <div class="reference-image">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Grundstück" loading="lazy">
+                        <span class="reference-badge sold">Verkauft</span>
+                    </div>
+                    <div class="reference-content">
+                        <div class="reference-type">Grundstück</div>
+                        <h3 class="reference-title">Baugrundstück in ruhiger Lage</h3>
+                        <div class="reference-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Region 4
+                        </div>
+                        <div class="reference-details">
+                            <span class="reference-detail"><i class="fas fa-ruler-combined"></i> 1.200 m²</span>
+                            <span class="reference-detail"><i class="fas fa-check"></i> Voll erschlossen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="aktuelles">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">
+                    <i class="fas fa-newspaper"></i>
+                    Aktuelles
+                </span>
+                <h2 class="section-title">News & Ratgeber</h2>
+                <!-- ANPASSEN: Blog-Beschreibung mit Region -->
+                <p class="section-description">
+                    Bleiben Sie informiert: Markttrends, Expertentipps und Neuigkeiten aus der regionalen Immobilienwelt.
+                </p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-featured">
+                    <div class="blog-featured-image">
+                        <!-- ANPASSEN: Blog-Bild alt-Text -->
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="Immobilienbewertung" loading="lazy">
+                    </div>
+                    <div class="blog-featured-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Ratgeber</span>
+                            <span class="blog-date">15. Januar 2025</span>
+                        </div>
+                        <!-- ANPASSEN: Blog-Titel und Excerpt mit Region -->
+                        <h3 class="blog-title">So ermitteln Sie den richtigen Verkaufspreis für Ihre Immobilie</h3>
+                        <p class="blog-excerpt">
+                            Der Verkaufspreis ist einer der wichtigsten Faktoren beim Immobilienverkauf. Erfahren Sie, welche Methoden zur Wertermittlung es gibt und worauf Sie besonders achten sollten.
+                        </p>
+                        <a href="#" class="blog-link">
+                            Weiterlesen <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+                <div class="blog-cards">
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300&q=80" alt="Zinsentwicklung" loading="lazy">
+                        </div>
+                        <div class="blog-card-content">
+                            <h4 class="blog-card-title">Zinsentwicklung 2025: Was bedeutet das für Käufer?</h4>
+                            <span class="blog-card-date">10. Januar 2025</span>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <!-- ANPASSEN: Blog-Bild alt-Text -->
+                            <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=300&q=80" alt="Regionaler Immobilienmarkt" loading="lazy">
+                        </div>
+                        <div class="blog-card-content">
+                            <!-- ANPASSEN: Blog-Titel mit Region -->
+                            <h4 class="blog-card-title">Marktbericht: Diese Regionen sind 2025 im Aufwind</h4>
+                            <span class="blog-card-date">5. Januar 2025</span>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=300&q=80" alt="Energieausweis" loading="lazy">
+                        </div>
+                        <div class="blog-card-content">
+                            <h4 class="blog-card-title">Neues GEG: Energieausweis-Pflichten für Eigentümer</h4>
+                            <span class="blog-card-date">28. Dezember 2024</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontakt">
+        <div class="section-container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Sprechen Sie mit uns</h3>
+                    <p>
+                        Ob Sie eine Immobilie suchen, verkaufen oder bewerten lassen möchten – wir sind für Sie da. Vereinbaren Sie jetzt Ihr persönliches Beratungsgespräch.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Telefon</h4>
+                                <!-- ANPASSEN: Telefonnummer -->
+                                <a href="tel:+49XXXXXXXXXXXX">+49 (0) XXXX XXX XXX</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>E-Mail</h4>
+                                <!-- ANPASSEN: E-Mail-Adresse -->
+                                <a href="mailto:info@FIRMENNAME.de">info@FIRMENNAME.de</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Adresse</h4>
+                                <!-- ANPASSEN: Firmenadresse -->
+                                <span>Musterstraße 1<br>12345 REGION</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Öffnungszeiten</h4>
+                                <span>Mo-Fr: 9:00-18:00 Uhr<br>Sa: 10:00-14:00 Uhr</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Kontaktformular</h3>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Vorname *</label>
+                                <input type="text" id="firstName" placeholder="Ihr Vorname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Nachname *</label>
+                                <input type="text" id="lastName" placeholder="Ihr Nachname" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-Mail *</label>
+                                <input type="email" id="email" placeholder="ihre@email.de" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" placeholder="+49 ...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Ich interessiere mich für</label>
+                            <select id="interest">
+                                <option value="">Bitte wählen</option>
+                                <option value="kaufen">Immobilie kaufen</option>
+                                <option value="mieten">Immobilie mieten</option>
+                                <option value="verkaufen">Immobilie verkaufen</option>
+                                <option value="vermieten">Immobilie vermieten</option>
+                                <option value="bewertung">Immobilienbewertung</option>
+                                <option value="beratung">Allgemeine Beratung</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ihre Nachricht</label>
+                            <textarea id="message" placeholder="Wie können wir Ihnen helfen?"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Nachricht senden
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === FOOTER - Firmeninfos anpassen === -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <!-- LOGO: Text oder Bild (siehe Header) -->
+                <a href="#" class="logo">
+                    <span class="logo-main">FIRMENNAME</span>
+                    <span class="logo-sub">Slogan / Region</span>
+                </a>
+                <!-- ANPASSEN: Firmenbeschreibung -->
+                <p>
+                    Ihr zuverlässiger Partner für Immobilien in der Region. Profitieren Sie von unserer lokalen Expertise und persönlichen Beratung.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Xing"><i class="fab fa-xing"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Immobilien</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Wohnungen kaufen</a></li>
+                    <li><a href="#">Häuser kaufen</a></li>
+                    <li><a href="#">Wohnungen mieten</a></li>
+                    <li><a href="#">Gewerbeimmobilien</a></li>
+                    <li><a href="#">Neubauprojekte</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Service</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Immobilienbewertung</a></li>
+                    <li><a href="#">Verkauf & Vermietung</a></li>
+                    <li><a href="#">Finanzierungsberatung</a></li>
+                    <li><a href="#">Off-Market Angebote</a></li>
+                    <li><a href="#">Suchauftrag erstellen</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Unternehmen</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Über uns</a></li>
+                    <li><a href="#">Unser Team</a></li>
+                    <li><a href="#">Karriere</a></li>
+                    <li><a href="#">Presse</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <!-- ANPASSEN: Copyright -->
+            <span>© 2024 FIRMENNAME. Alle Rechte vorbehalten.</span>
+            <div class="footer-legal">
+                <a href="#">Impressum</a>
+                <a href="#">Datenschutz</a>
+                <a href="#">AGB</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Button - ANPASSEN: Telefonnummer -->
+    <div class="floating-contact">
+        <a href="tel:+49XXXXXXXXXX" class="floating-btn" aria-label="Jetzt anrufen">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        const mainNav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                mainNav.classList.add('scrolled');
+            } else {
+                mainNav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.listing-card, .service-item, .district-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
