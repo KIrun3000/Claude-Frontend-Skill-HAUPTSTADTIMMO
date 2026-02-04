@@ -1,0 +1,248 @@
+---
+import type { ServicesProps } from '../../../schema/site.schema';
+
+interface Props extends ServicesProps {}
+
+const { label, title, subtitle, columns } = Astro.props;
+---
+
+<section class="services-classic" id="leistungen">
+  <div class="section-container">
+    <div class="section-header">
+      {label && (
+        <span class="section-label">
+          <i class="fas fa-handshake"></i>
+          {label}
+        </span>
+      )}
+      <h2 class="section-title">{title}</h2>
+      {subtitle && <p class="section-description">{subtitle}</p>}
+    </div>
+    
+    {columns && (
+      <div class="services-grid">
+        {columns.map(column => (
+          <div class="services-column">
+            <div class="services-column-header">
+              <div class="services-column-icon">
+                <i class={`fas ${column.icon}`}></i>
+              </div>
+              <h3 class="services-column-title">{column.title}</h3>
+            </div>
+            
+            {column.services.map(service => (
+              <div class="service-item">
+                <div class="service-icon">
+                  <i class={`fas ${service.icon}`}></i>
+                </div>
+                <div class="service-content">
+                  <h4>{service.title}</h4>
+                  <p>{service.description}</p>
+                </div>
+              </div>
+            ))}
+            
+            {column.cta && (
+              <div class="services-cta">
+                <a href={column.cta.href} class="btn-dark">
+                  <i class="fas fa-arrow-right"></i>
+                  {column.cta.text}
+                </a>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .services-classic {
+    background: var(--color-white);
+    padding: 6rem 2rem;
+  }
+
+  .section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .section-description {
+    font-size: 1.05rem;
+    color: var(--color-text-light, #6b6b6b);
+    line-height: 1.7;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .services-column {
+    background: var(--color-cream, #faf8f5);
+    padding: 3rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .services-column:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .services-column-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .services-column-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  .services-column-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  .service-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: padding-left 0.3s ease;
+  }
+
+  .service-item:hover {
+    padding-left: 0.5rem;
+  }
+
+  .service-item:last-of-type {
+    border-bottom: none;
+  }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .service-content h4 {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .service-content p {
+    font-size: 0.95rem;
+    color: var(--color-text-light, #6b6b6b);
+    line-height: 1.6;
+  }
+
+  .services-cta {
+    margin-top: 2rem;
+  }
+
+  .btn-dark {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 1rem 1.8rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 992px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .services-column {
+      padding: 2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .services-classic {
+      padding: 4rem 1.5rem;
+    }
+
+    .services-column {
+      padding: 1.5rem;
+    }
+
+    .services-column-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 1.2rem;
+    }
+
+    .services-column-title {
+      font-size: 1.2rem;
+    }
+
+    .service-content h4 {
+      font-size: 1rem;
+    }
+
+    .service-content p {
+      font-size: 0.9rem;
+    }
+  }
+</style>

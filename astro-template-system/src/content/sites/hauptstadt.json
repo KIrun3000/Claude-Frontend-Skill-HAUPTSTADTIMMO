@@ -2,6 +2,8 @@
   "meta": {
     "domain": "hauptstadt-immobilien.de",
     "template": "template-a",
+    "sectionStylePreset": "hauptstadt-classic",
+    "detailPageVariant": "vo",
     "brand": {
       "name": "HAUPTSTADT IMMOBILIEN",
       "tagline": "Ihr Partner für exklusive Immobilien in Berlin",
@@ -17,9 +19,10 @@
       }
     },
     "contact": {
-      "phone": "+49 30 123456789",
+      "phone": "+49 30 123 456 78",
       "email": "info@hauptstadt-immobilien.de",
       "address": "Kurfürstendamm 195, 10707 Berlin-Charlottenburg",
+      "hours": "Mo-Fr: 9:00-18:00 | Sa: 10:00-14:00",
       "social": {
         "facebook": "https://facebook.com/hauptstadt-immobilien",
         "instagram": "https://instagram.com/hauptstadt-immobilien",
@@ -35,26 +38,44 @@
       "sections": [
         {
           "type": "hero",
-          "variant": "A",
+          "variant": "B",
           "order": 1,
           "visible": true,
           "props": {
-            "title": "Finden Sie Ihre Traumimmobilie",
-            "subtitle": "in Berlin",
-            "description": "Über 25 Jahre Erfahrung in der Hauptstadt",
+            "badge": {
+              "icon": "fa-award",
+              "text": "Ihr Partner seit 1998"
+            },
+            "title": "Exklusive Immobilien in Berlin finden und verkaufen",
+            "description": "Als führender Immobilienmakler in Berlin verbinden wir Käufer und Verkäufer mit erstklassigen Wohn- und Gewerbeimmobilien in der Hauptstadt. Persönliche Beratung, lokale Expertise, maximaler Erfolg.",
+            "backgroundImage": "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1920&q=80",
             "cta": {
               "primary": {
-                "text": "Immobilien ansehen",
-                "href": "/angebote"
+                "text": "Immobilie bewerten lassen",
+                "href": "#bewertung"
               },
               "secondary": {
-                "text": "Beratung anfordern",
-                "href": "/kontakt"
+                "text": "Immobilien entdecken",
+                "href": "#immobilien"
               }
             },
+            "stats": [
+              {
+                "value": "2.500+",
+                "label": "Vermittelte Objekte"
+              },
+              {
+                "value": "98%",
+                "label": "Zufriedene Kunden"
+              },
+              {
+                "value": "25+",
+                "label": "Jahre Erfahrung"
+              }
+            ],
             "search": {
               "enabled": true,
-              "types": ["wohnung", "haus", "gewerbe", "grundstueck"],
+              "types": ["wohnung", "haus", "buero", "gewerbe", "einzelhandel"],
               "filters": ["kaufen", "mieten"]
             }
           }
@@ -107,39 +128,80 @@
         },
         {
           "type": "services",
-          "variant": "A",
+          "variant": "B",
           "order": 4,
           "visible": true,
           "props": {
-            "title": "Unsere Leistungen",
-            "subtitle": "Umfassender Service für Ihre Immobilie",
-            "items": [
-              {
-                "icon": "fa-building",
-                "title": "Immobilienvermittlung",
-                "description": "Wohn- und Gewerbeimmobilien in allen Berliner Bezirken"
-              },
-              {
-                "icon": "fa-calculator",
-                "title": "Immobilienbewertung",
-                "description": "Professionelle Wertermittlung nach ImmoWertV"
-              },
-              {
-                "icon": "fa-file-contract",
-                "title": "Vertragsmanagement",
-                "description": "Rechtssichere Vertragsabwicklung und Beratung"
-              },
+            "label": "Unsere Leistungen",
+            "title": "Kompetente Beratung für Eigentümer und Suchende",
+            "subtitle": "Ob Sie verkaufen, kaufen, vermieten oder mieten möchten – wir begleiten Sie professionell durch den gesamten Prozess.",
+            "columns": [
               {
                 "icon": "fa-key",
-                "title": "Objektverwaltung",
-                "description": "Rundum-Service für Eigentümer und Investoren"
+                "title": "Für Eigentümer",
+                "services": [
+                  {
+                    "icon": "fa-chart-line",
+                    "title": "Professionelle Immobilienbewertung",
+                    "description": "Kostenlose und unverbindliche Marktwertermittlung Ihrer Immobilie basierend auf aktuellen Marktdaten."
+                  },
+                  {
+                    "icon": "fa-camera",
+                    "title": "Premium-Vermarktung",
+                    "description": "Hochwertige Exposés mit professionellen Fotos, 360°-Rundgängen und zielgruppengerechter Ansprache."
+                  },
+                  {
+                    "icon": "fa-users",
+                    "title": "Käufer- und Mieterauswahl",
+                    "description": "Sorgfältige Bonitätsprüfung und Vorauswahl qualifizierter Interessenten für Ihre Immobilie."
+                  },
+                  {
+                    "icon": "fa-file-signature",
+                    "title": "Vertragsabwicklung",
+                    "description": "Komplette Begleitung von der Verhandlung bis zum Notartermin und der Schlüsselübergabe."
+                  }
+                ],
+                "cta": {
+                  "text": "Immobilie bewerten lassen",
+                  "href": "#bewertung"
+                }
+              },
+              {
+                "icon": "fa-search-location",
+                "title": "Für Käufer & Mieter",
+                "services": [
+                  {
+                    "icon": "fa-bullseye",
+                    "title": "Individuelle Suchberatung",
+                    "description": "Persönliche Beratung zu Ihren Wünschen, Budget und den besten Lagen für Ihre Bedürfnisse."
+                  },
+                  {
+                    "icon": "fa-bell",
+                    "title": "Exklusive Vorab-Angebote",
+                    "description": "Zugang zu Off-Market-Immobilien und neuen Objekten bevor sie öffentlich inseriert werden."
+                  },
+                  {
+                    "icon": "fa-map-marked-alt",
+                    "title": "Besichtigungsbegleitung",
+                    "description": "Professionelle Führung durch die Objekte mit detaillierten Informationen zu Lage und Umgebung."
+                  },
+                  {
+                    "icon": "fa-euro-sign",
+                    "title": "Finanzierungsberatung",
+                    "description": "Unterstützung bei der Finanzierung durch unser Netzwerk aus Banken und Finanzierungsexperten."
+                  }
+                ],
+                "cta": {
+                  "text": "Beratungsgespräch vereinbaren",
+                  "href": "#kontakt"
+                }
               }
             ]
           }
         },
         {
           "type": "about",
-          "variant": "A",
+          "variant": "B",
           "order": 5,
           "visible": true,
           "props": {
@@ -193,17 +255,17 @@
               {
                 "name": "Mitte",
                 "count": "45 Objekte verfügbar",
-                "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80"
+                "image": "/assets/images/bezirke/mitte.webp"
               },
               {
                 "name": "Friedrichshain-Kreuzberg",
                 "count": "38 Objekte verfügbar",
-                "image": "https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?w=800&q=80"
+                "image": "/assets/images/bezirke/friedrichshain-kreuzberg.webp"
               },
               {
                 "name": "Pankow",
                 "count": "42 Objekte verfügbar",
-                "image": "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800&q=80"
+                "image": "/assets/images/bezirke/pankow.webp"
               },
               {
                 "name": "Charlottenburg-Wilmersdorf",
@@ -213,22 +275,22 @@
               {
                 "name": "Tempelhof-Schöneberg",
                 "count": "28 Objekte verfügbar",
-                "image": "https://images.unsplash.com/photo-1587330979470-3595ac045ab0?w=800&q=80"
+                "image": "/assets/images/bezirke/tempelhof-schoeneberg.webp"
               },
               {
                 "name": "Steglitz-Zehlendorf",
                 "count": "24 Objekte verfügbar",
-                "image": "https://images.unsplash.com/photo-1597212618440-806a892e7f90?w=800&q=80"
+                "image": "/assets/images/bezirke/steglitz-zehlendorf.webp"
               },
               {
                 "name": "Neukölln",
                 "count": "26 Objekte verfügbar",
-                "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80"
+                "image": "/assets/images/bezirke/neukoelln.webp"
               },
               {
                 "name": "Lichtenberg",
                 "count": "18 Objekte verfügbar",
-                "image": "https://images.unsplash.com/photo-1567449303078-57ad995bd329?w=800&q=80"
+                "image": "/assets/images/bezirke/lichtenberg.webp"
               },
               {
                 "name": "Spandau",
@@ -238,17 +300,17 @@
               {
                 "name": "Treptow-Köpenick",
                 "count": "16 Objekte verfügbar",
-                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80"
+                "image": "/assets/images/bezirke/treptow-koepenick.webp"
               },
               {
                 "name": "Marzahn-Hellersdorf",
                 "count": "12 Objekte verfügbar",
-                "image": "https://images.unsplash.com/photo-1486718448742-163732cd1544?w=800&q=80"
+                "image": "/assets/images/bezirke/marzahn-hellersdorf.webp"
               },
               {
                 "name": "Reinickendorf",
                 "count": "14 Objekte verfügbar",
-                "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&q=80"
+                "image": "/assets/images/bezirke/reinickendorf.webp"
               }
             ]
           }

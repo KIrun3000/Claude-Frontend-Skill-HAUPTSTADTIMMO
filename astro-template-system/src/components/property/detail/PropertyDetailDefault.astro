@@ -1,0 +1,356 @@
+---
+interface Props {
+  property: any;
+  meta: any;
+}
+
+const { property, meta } = Astro.props;
+
+const formatPrice = (price: typeof property.price) => {
+  if (price.type === 'kauf') {
+    return `${price.currency} ${price.value.toLocaleString('de-DE')}`;
+  }
+  return `${price.currency} ${price.value.toLocaleString('de-DE')}/Monat`;
+};
+
+const getStatusLabel = (status: string) => {
+  return status === 'kaufen' ? 'Zu verkaufen' : 'Zu vermieten';
+};
+
+const getTypeLabel = (type: string) => {
+  const types: Record<string, string> = {
+    wohnung: 'Wohnung',
+    haus: 'Haus',
+    gewerbe: 'Gewerbe',
+    grundstueck: 'Grundstück'
+  };
+  return types[type] || type;
+};
+---
+
+<div class="property-detail">
+  <!-- Hero Image -->
+  <div class="property-hero">
+    <img 
+      src={property.images[0]?.url} 
+      alt={property.title}
+    />
+    <div class="property-badges">
+      <span class={`badge badge-${property.status}`}>
+        {getStatusLabel(property.status)}
+      </span>
+      <span class="badge badge-type">
+        {getTypeLabel(property.type)}
+      </span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="property-content container">
+    <div class="content-main">
+      <!-- Header -->
+      <div class="property-header">
+        <h1 class="property-title">{property.title}</h1>
+        <div class="property-location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>{property.location.district}, {property.location.city}</span>
+        </div>
+      </div>
+
+      <!-- Quick Facts -->
+      <div class="quick-facts">
+        <div class="fact">
+          <span class="fact-value">{property.details.area} m²</span>
+          <span class="fact-label">Wohnfläche</span>
+        </div>
+        {property.details.rooms && (
+          <div class="fact">
+            <span class="fact-value">{property.details.rooms}</span>
+            <span class="fact-label">Zimmer</span>
+          </div>
+        )}
+        {property.details.floor && (
+          <div class="fact">
+            <span class="fact-value">{property.details.floor}</span>
+            <span class="fact-label">Etage</span>
+          </div>
+        )}
+        <div class="fact fact-price">
+          <span class="fact-value">{formatPrice(property.price)}</span>
+          <span class="fact-label">{property.price.type === 'kauf' ? 'Kaufpreis' : 'Kaltmiete'}</span>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <section class="content-section">
+        <h2>Objektbeschreibung</h2>
+        <p>{property.description}</p>
+      </section>
+
+      <!-- Features -->
+      {property.features.length > 0 && (
+        <section class="content-section">
+          <h2>Ausstattung</h2>
+          <div class="features-grid">
+            {property.features.map((feature: any) => (
+              <div class="feature-item">
+                <i class="fas fa-check"></i>
+                <span>{typeof feature === 'string' ? feature : feature.text}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="contact-card">
+        <h3>Interesse?</h3>
+        <p>Kontaktieren Sie uns für weitere Informationen oder eine Besichtigung.</p>
+        
+        <a href={`tel:${meta.contact.phone}`} class="btn btn-primary">
+          <i class="fas fa-phone"></i>
+          Anrufen
+        </a>
+        
+        <a href="/kontakt" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i>
+          Anfrage senden
+        </a>
+        
+        <div class="contact-info">
+          <p><strong>{meta.brand.name}</strong></p>
+          <p>{meta.contact.phone}</p>
+          <p>{meta.contact.email}</p>
+        </div>
+      </div>
+
+      <div class="object-id">
+        Objekt-ID: <strong>{property.id}</strong>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<style>
+  .property-detail {
+    background: var(--color-cream);
+  }
+
+  .property-hero {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+  }
+
+  .property-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .property-badges {
+    position: absolute;
+    top: var(--spacing-xl);
+    left: var(--spacing-xl);
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-sm);
+  }
+
+  .badge-kaufen {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .badge-mieten {
+    background: var(--color-success);
+    color: var(--color-white);
+  }
+
+  .badge-type {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+  }
+
+  .property-content {
+    padding: var(--spacing-3xl) var(--spacing-xl);
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--spacing-3xl);
+    align-items: start;
+  }
+
+  .property-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .property-title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .property-location {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: var(--text-lg);
+  }
+
+  .property-location i {
+    color: var(--color-accent);
+  }
+
+  .quick-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-xl);
+    padding: var(--spacing-2xl);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .fact {
+    text-align: center;
+  }
+
+  .fact-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .fact-price .fact-value {
+    color: var(--color-accent);
+  }
+
+  .fact-label {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .content-section {
+    background: var(--color-white);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .content-section h2 {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--color-cream);
+    border-radius: var(--radius-md);
+  }
+
+  .feature-item i {
+    color: var(--color-accent);
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: sticky;
+    top: calc(var(--header-height) + 50px);
+  }
+
+  .contact-card {
+    background: var(--color-white);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .contact-card h3 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-card p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .contact-card .btn {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-info {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-sm);
+  }
+
+  .contact-info p {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .object-id {
+    background: var(--color-cream);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+  }
+
+  @media (max-width: 992px) {
+    .property-content {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      position: static;
+    }
+
+    .quick-facts {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .property-hero {
+      height: 300px;
+    }
+
+    .property-title {
+      font-size: var(--text-2xl);
+    }
+  }
+</style>

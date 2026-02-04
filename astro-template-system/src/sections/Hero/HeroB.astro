@@ -1,91 +1,415 @@
 ---
 import type { HeroProps } from '../../../schema/site.schema';
 
-interface Props extends Partial<HeroProps> {}
+interface Props extends HeroProps {}
 
 const { 
+  badge, 
   title, 
-  subtitle, 
-  description,
-  image 
+  description, 
+  backgroundImage, 
+  cta, 
+  stats, 
+  search 
 } = Astro.props;
 ---
 
-<section class="hero hero-b">
-  {image && (
-    <div class="hero-image">
-      <img src={image} alt={title} />
+<section class="hero-classic">
+  <div class="hero-bg">
+    {backgroundImage && <img src={backgroundImage} alt="Hero Background" />}
+  </div>
+  <div class="hero-overlay"></div>
+  
+  <div class="hero-content">
+    <div class="hero-text">
+      {badge && (
+        <div class="hero-badge">
+          {badge.icon && <i class={`fas ${badge.icon}`}></i>}
+          {badge.text}
+        </div>
+      )}
+      
+      <h1 class="hero-title">{title}</h1>
+      
+      {description && (
+        <p class="hero-description">{description}</p>
+      )}
+      
+      {cta && (
+        <div class="hero-ctas">
+          <a href={cta.primary.href} class="btn-primary">
+            {cta.primary.text}
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          {cta.secondary && (
+            <a href={cta.secondary.href} class="btn-secondary">
+              {cta.secondary.text}
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          )}
+        </div>
+      )}
+      
+      {stats && stats.length > 0 && (
+        <div class="hero-stats">
+          {stats.map(stat => (
+            <div class="hero-stat">
+              <span class="hero-stat-number">{stat.value}</span>
+              <span class="hero-stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
-  )}
-  <div class="hero-content container">
-    <h1 class="hero-title">
-      {title}
-      {subtitle && <span class="hero-subtitle">{subtitle}</span>}
-    </h1>
-    {description && <p class="hero-description">{description}</p>}
+    
+    {search?.enabled && (
+      <div class="hero-search">
+        <h3>Immobilie finden</h3>
+        <form class="search-form">
+          <div class="form-group">
+            <label for="search-type">Art der Immobilie</label>
+            <select id="search-type" name="type">
+              <option value="">Bitte wählen...</option>
+              {search.types?.map(type => (
+                <option value={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</option>
+              ))}
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="search-action">Ich möchte...</label>
+            <select id="search-action" name="action">
+              <option value="">Bitte wählen...</option>
+              {search.filters?.map(filter => (
+                <option value={filter}>{filter.charAt(0).toUpperCase() + filter.slice(1)}</option>
+              ))}
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="search-location">Bezirk / Lage</label>
+            <input type="text" id="search-location" name="location" placeholder="z.B. Charlottenburg" />
+          </div>
+          
+          <button type="submit" class="search-btn">
+            <i class="fas fa-search"></i>
+            Suchen
+          </button>
+        </form>
+      </div>
+    )}
   </div>
 </section>
 
 <style>
-  .hero-b {
+  .hero-classic {
+    min-height: 100vh;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
     position: relative;
-    padding: var(--spacing-4xl) 0 var(--spacing-3xl);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    color: var(--color-white);
     overflow: hidden;
   }
 
-  .hero-image {
+  .hero-bg {
     position: absolute;
     inset: 0;
-    z-index: 0;
+    z-index: -1;
   }
 
-  .hero-image img {
+  .hero-bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.2;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+      rgba(26, 26, 46, 0.85) 0%,
+      rgba(22, 33, 62, 0.7) 50%,
+      rgba(26, 26, 46, 0.6) 100%);
   }
 
   .hero-content {
     position: relative;
-    z-index: 1;
-    text-align: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-text {
+    color: var(--color-white);
+    animation: fadeInLeft 0.8s ease forwards;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(201, 162, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    color: var(--color-accent-light, #e8d48a);
+    margin-bottom: 2rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: fadeIn 0.6s ease forwards;
   }
 
   .hero-title {
-    font-size: 3rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 600;
-    color: var(--color-white);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .hero-subtitle {
-    display: block;
-    font-size: 1.5rem;
-    color: var(--color-accent);
-    margin-top: 0.5rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
   }
 
   .hero-description {
-    font-size: var(--text-lg);
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 600px;
-    margin: 0 auto;
+    font-size: 1.15rem;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+    line-height: 1.8;
   }
 
-  @media (max-width: 768px) {
-    .hero-b {
-      padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    padding: 1.1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-white);
+    padding: 1.1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.3rem;
+  }
+
+  .hero-search {
+    background: var(--color-white);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    animation: fadeInRight 0.8s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .hero-search h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .form-group select,
+  .form-group input {
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text);
+    background: var(--color-cream, #faf8f5);
+    transition: var(--transition-smooth);
+  }
+
+  .form-group select:focus,
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .search-btn {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 1.2rem;
+    border: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .search-btn:hover {
+    background: var(--color-accent);
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero-stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .hero-stat-number {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-classic {
+      margin-top: 80px;
+    }
+
+    .hero-content {
+      padding: 3rem 1.5rem;
     }
 
     .hero-title {
-      font-size: 2rem;
+      font-size: clamp(2rem, 8vw, 2.5rem);
     }
 
-    .hero-subtitle {
-      font-size: 1.2rem;
+    .hero-description {
+      font-size: 1rem;
+    }
+
+    .hero-stats {
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+    }
+
+    .hero-stat-number {
+      font-size: 1.5rem;
+    }
+
+    .hero-stat-label {
+      font-size: 0.75rem;
+    }
+
+    .hero-search {
+      padding: 1.5rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 1rem 1.5rem;
+      font-size: 0.9rem;
     }
   }
 </style>

@@ -1,0 +1,119 @@
+---
+import type { Contact } from '../../../schema/site.schema';
+
+interface Props {
+  contact: Contact;
+}
+
+const { contact } = Astro.props;
+---
+
+<div class="contact-bar-classic">
+  <div class="contact-bar-inner">
+    <div class="contact-bar-left">
+      <a href={`tel:${contact.phone}`} class="contact-bar-item">
+        <i class="fas fa-phone"></i>
+        <span>{contact.phone}</span>
+      </a>
+      <a href={`mailto:${contact.email}`} class="contact-bar-item">
+        <i class="fas fa-envelope"></i>
+        <span>{contact.email}</span>
+      </a>
+      <span class="contact-bar-item">
+        <i class="fas fa-location-dot"></i>
+        <span>{contact.address}</span>
+      </span>
+    </div>
+    <div class="contact-bar-right">
+      <span class="contact-bar-hours">
+        <i class="fas fa-clock"></i>
+        <span>{contact.hours || "Mo-Fr: 9-18 Uhr"}</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .contact-bar-classic {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.6rem 2rem;
+    z-index: 1000;
+    font-size: 0.85rem;
+  }
+
+  .contact-bar-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .contact-bar-left {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .contact-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+  }
+
+  .contact-bar-item:hover {
+    color: var(--color-accent);
+  }
+
+  .contact-bar-item i {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+  }
+
+  .contact-bar-right {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .contact-bar-hours {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.9;
+  }
+
+  .contact-bar-hours i {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 992px) {
+    .contact-bar-left {
+      gap: 1rem;
+    }
+    
+    .contact-bar-right {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-bar-classic {
+      padding: 0.6rem 1rem;
+    }
+
+    .contact-bar-item span {
+      display: none;
+    }
+  }
+</style>

@@ -40,6 +40,7 @@ const sortedSections = [...page.sections]
   description={page.description}
   brand={meta.brand}
   contact={meta.contact}
+  sectionStylePreset={meta.sectionStylePreset}
 >
   {sortedSections.map(section => {
     const Component = getSection(section.type, section.variant);
@@ -52,7 +53,12 @@ const sortedSections = [...page.sections]
       );
     }
 
-    return <Component {...section.props} />;
+    // Pass brand and contact to footer section
+    const props = section.type === 'footer' 
+      ? { ...section.props, brand: meta.brand, contact: meta.contact }
+      : section.props;
+
+    return <Component {...props} />;
   })}
 </BaseLayout>
 

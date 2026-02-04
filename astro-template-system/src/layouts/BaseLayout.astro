@@ -1,5 +1,7 @@
 ---
 import type { Brand, Contact } from '../../schema/site.schema';
+import ContactBarClassic from '../components/shell/ContactBarClassic.astro';
+import HeaderClassic from '../components/shell/HeaderClassic.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -7,9 +9,11 @@ interface Props {
   description?: string;
   brand: Brand;
   contact: Contact;
+  sectionStylePreset?: 'modern' | 'hauptstadt-classic';
 }
 
-const { title, description, brand, contact } = Astro.props;
+const { title, description, brand, contact, sectionStylePreset = 'modern' } = Astro.props;
+const isClassic = sectionStylePreset === 'hauptstadt-classic';
 ---
 
 <!DOCTYPE html>
@@ -43,64 +47,97 @@ const { title, description, brand, contact } = Astro.props;
   </style>
 </head>
 <body>
-  <!-- Contact Bar -->
-  <div class="contact-bar">
-    <div class="contact-bar-inner">
-      <div class="contact-bar-left">
-        <a href={`tel:${contact.phone}`} class="contact-bar-item">
-          <i class="fas fa-phone"></i>
-          <span>{contact.phone}</span>
-        </a>
-        <a href={`mailto:${contact.email}`} class="contact-bar-item">
-          <i class="fas fa-envelope"></i>
-          <span>{contact.email}</span>
-        </a>
+  {isClassic ? (
+    <>
+      <ContactBarClassic contact={contact} />
+      <HeaderClassic brand={brand} />
+    </>
+  ) : (
+    <>
+      <!-- Contact Bar -->
+      <div class="contact-bar">
+        <div class="contact-bar-inner">
+          <div class="contact-bar-left">
+            <a href={`tel:${contact.phone}`} class="contact-bar-item">
+              <i class="fas fa-phone"></i>
+              <span>{contact.phone}</span>
+            </a>
+            <a href={`mailto:${contact.email}`} class="contact-bar-item">
+              <i class="fas fa-envelope"></i>
+              <span>{contact.email}</span>
+            </a>
+          </div>
+          <div class="contact-bar-right">
+            <span class="contact-bar-item">
+              <i class="fas fa-clock"></i>
+              <span>{contact.hours || "Mo-Fr: 9-18 Uhr"}</span>
+            </span>
+          </div>
+        </div>
       </div>
-      <div class="contact-bar-right">
-        <span class="contact-bar-item">
-          <i class="fas fa-clock"></i>
-          <span>{contact.hours || "Mo-Fr: 9-18 Uhr"}</span>
-        </span>
-      </div>
-    </div>
-  </div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-inner">
-      <a href="/" class="logo">
-        {brand.logo ? (
-          <img src={brand.logo} alt={brand.name} />
-        ) : (
-          <span class="logo-text">
-            {brand.name.split(' ').map((word, i) => 
-              i === brand.name.split(' ').length - 1 
-                ? <span class="accent">{word}</span>
-                : <span>{word}</span>
+      <!-- Header -->
+      <header class="header">
+        <div class="header-inner">
+          <a href="/" class="logo">
+            {brand.logo ? (
+              <img src={brand.logo} alt={brand.name} />
+            ) : (
+              <span class="logo-text">
+                {brand.name.split(' ').map((word, i) => 
+                  i === brand.name.split(' ').length - 1 
+                    ? <span class="accent">{word}</span>
+                    : <span>{word}</span>
+                )}
+              </span>
             )}
-          </span>
-        )}
-      </a>
-      
-      <nav class="nav">
-        <a href="/">Start</a>
-        <a href="/angebote">Angebote</a>
-        <a href="/ueber-uns">Über uns</a>
-        <a href="/leistungen">Leistungen</a>
-        <a href="/kontakt">Kontakt</a>
-      </nav>
-    </div>
-  </header>
+          </a>
+          
+          <nav class="nav">
+            <a href="/">Start</a>
+            <a href="/angebote">Angebote</a>
+            <a href="/ueber-uns">Über uns</a>
+            <a href="/leistungen">Leistungen</a>
+            <a href="/kontakt">Kontakt</a>
+          </nav>
+        </div>
+      </header>
+    </>
+  )}
 
   <!-- Main Content -->
   <main>
     <slot />
   </main>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with animate-on-scroll class
+    document.addEventListener('DOMContentLoaded', () => {
+      const animateElements = document.querySelectorAll('.animate-on-scroll');
+      animateElements.forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
 
 <style>
-  /* Contact Bar */
+  /* Contact Bar (Modern) */
   .contact-bar {
     position: fixed;
     top: 0;
@@ -142,7 +179,7 @@ const { title, description, brand, contact } = Astro.props;
     color: var(--color-accent);
   }
 
-  /* Header */
+  /* Header (Modern) */
   .header {
     position: fixed;
     top: 38px;

@@ -46,6 +46,10 @@ export const HeroPropsSchema = z.object({
   title: z.string().max(80),
   subtitle: z.string().max(100).optional(),
   description: z.string().max(200).optional(),
+  badge: z.object({
+    icon: z.string().optional(),
+    text: z.string().max(50),
+  }).optional(),
   cta: z.object({
     primary: CTASchema,
     secondary: CTASchema.optional(),
@@ -55,8 +59,13 @@ export const HeroPropsSchema = z.object({
     types: z.array(z.string()),
     filters: z.array(z.string()),
   }).optional(),
+  stats: z.array(z.object({
+    value: z.string().max(20),
+    label: z.string().max(50),
+  })).optional(),
   image: z.string().url().optional(),
   video: z.string().url().optional(),
+  backgroundImage: z.string().url().optional(),
 });
 
 // USPs Section Props
@@ -81,11 +90,22 @@ export const FeaturedListingsPropsSchema = z.object({
 export const ServicesPropsSchema = z.object({
   title: z.string().max(60),
   subtitle: z.string().max(120).optional(),
+  label: z.string().max(50).optional(),
   items: z.array(z.object({
     icon: z.string(),
     title: z.string().max(50),
     description: z.string().max(150),
-  })).min(2).max(8),
+  })).min(2).max(8).optional(),
+  columns: z.array(z.object({
+    icon: z.string(),
+    title: z.string().max(50),
+    services: z.array(z.object({
+      icon: z.string(),
+      title: z.string().max(80),
+      description: z.string().max(200),
+    })),
+    cta: CTASchema.optional(),
+  })).optional(),
 });
 
 // Trust/Stats Props
@@ -286,6 +306,8 @@ export const SiteSchema = z.object({
   meta: z.object({
     domain: z.string(),
     template: z.enum(['template-a', 'template-b', 'template-c']),
+    sectionStylePreset: z.enum(['modern', 'hauptstadt-classic']).default('modern'),
+    detailPageVariant: z.enum(['default', 'vo']).default('default'),
     brand: BrandSchema,
     contact: ContactSchema,
   }),

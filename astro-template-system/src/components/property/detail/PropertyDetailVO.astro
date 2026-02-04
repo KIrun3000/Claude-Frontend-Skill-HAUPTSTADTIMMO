@@ -1,0 +1,433 @@
+---
+import GalleryLightbox from '../GalleryLightbox.astro';
+import QuickFactsBar from '../QuickFactsBar.astro';
+import SidebarContactCard from '../SidebarContactCard.astro';
+import EnergyCertificate from '../EnergyCertificate.astro';
+import PropertyFeaturesGrid from '../PropertyFeaturesGrid.astro';
+import PropertyLocation from '../PropertyLocation.astro';
+import FloorplanSection from '../FloorplanSection.astro';
+import SimilarProperties from '../SimilarProperties.astro';
+
+interface Props {
+  property: any;
+  meta: any;
+}
+
+const { property, meta } = Astro.props;
+
+const formatPrice = (price: typeof property.price) => {
+  if (price.type === 'kauf') {
+    return `${price.currency} ${price.value.toLocaleString('de-DE')}`;
+  }
+  return `${price.currency} ${price.value.toLocaleString('de-DE')}/Monat`;
+};
+
+const getStatusLabel = (status: string) => {
+  return status === 'kaufen' ? 'Zu verkaufen' : 'Zu vermieten';
+};
+
+const getTypeLabel = (type: string) => {
+  const types: Record<string, string> = {
+    wohnung: 'Wohnung',
+    haus: 'Haus',
+    gewerbe: 'Gewerbe',
+    grundstueck: 'Grundstück',
+    buero: 'Büro',
+    einzelhandel: 'Einzelhandel'
+  };
+  return types[type] || type;
+};
+
+const galleryImages = property.galleryImages || property.images.map((img: any) => img.url);
+---
+
+<div class="property-detail-vo">
+  <!-- Breadcrumb/Back -->
+  <div class="detail-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="/" class="back-btn">
+          <i class="fas fa-arrow-left"></i>
+          Zurück zur Übersicht
+        </a>
+      </div>
+      <div class="header-actions">
+        <button class="action-btn" title="Favorit">
+          <i class="far fa-heart"></i>
+        </button>
+        <button class="action-btn" title="Teilen">
+          <i class="fas fa-share-alt"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <section class="gallery-section">
+    <GalleryLightbox images={galleryImages} title={property.title} />
+  </section>
+
+  <!-- Sticky Quick Facts Bar -->
+  <QuickFactsBar 
+    price={formatPrice(property.price)}
+    facts={property.quickFacts || [
+      { icon: 'fa-ruler-combined', label: 'Wohnfläche', value: `${property.details.area} m²` },
+      { icon: 'fa-door-open', label: 'Zimmer', value: property.details.rooms?.toString() || 'n/a' },
+      { icon: 'fa-layer-group', label: 'Etage', value: property.details.floor || 'n/a' }
+    ]}
+    ctaText="Besichtigung anfragen"
+    ctaLink="#kontakt"
+  />
+
+  <!-- Main Content Grid -->
+  <div class="content-container">
+    <div class="content-main">
+      <!-- Title & Status -->
+      <div class="property-header-vo">
+        <div class="property-badges-vo">
+          <span class={`badge-vo badge-${property.status}`}>
+            {getStatusLabel(property.status)}
+          </span>
+          <span class="badge-vo badge-type">
+            {getTypeLabel(property.type)}
+          </span>
+        </div>
+        <h1 class="property-title-vo">{property.title}</h1>
+        <div class="property-location-vo">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>{property.location.address}, {property.location.district}</span>
+        </div>
+        <div class="property-price-vo">{formatPrice(property.price)}</div>
+      </div>
+
+      <!-- Description -->
+      <section class="content-section-vo">
+        <h2 class="section-title-vo">Objektbeschreibung</h2>
+        <div class="section-text">
+          <p>{property.longDescription || property.description}</p>
+        </div>
+      </section>
+
+      <!-- Features -->
+      {property.features && property.features.length > 0 && (
+        <section class="content-section-vo">
+          <h2 class="section-title-vo">Ausstattung & Highlights</h2>
+          <PropertyFeaturesGrid features={property.features.map((f: any) => typeof f === 'string' ? f : f.text)} />
+        </section>
+      )}
+
+      <!-- Location -->
+      {property.location && property.location.highlights && (
+        <section class="content-section-vo">
+          <h2 class="section-title-vo">Lage & Infrastruktur</h2>
+          <PropertyLocation 
+            highlights={property.location.highlights}
+            mapPlaceholder="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80"
+          />
+        </section>
+      )}
+
+      <!-- Energy Certificate -->
+      {property.energy && (
+        <section class="content-section-vo">
+          <h2 class="section-title-vo">Energieausweis</h2>
+          <EnergyCertificate 
+            type={property.energy.type}
+            consumption={property.energy.consumption}
+            energyClass={property.energy.class}
+            carrier={property.energy.carrier}
+            heatingYear={property.energy.heatingYear}
+            heatingType={property.energy.heatingType}
+          />
+        </section>
+      )}
+
+      <!-- Floorplan -->
+      {property.floorplan && (
+        <section class="content-section-vo">
+          <h2 class="section-title-vo">Grundriss</h2>
+          <FloorplanSection 
+            floorplanUrl={typeof property.floorplan === 'string' ? property.floorplan : property.floorplan.url}
+            requestText={typeof property.floorplan === 'object' ? property.floorplan.requestText : undefined}
+          />
+        </section>
+      )}
+
+      <!-- Similar Properties -->
+      {property.similar && property.similar.length > 0 && (
+        <section class="content-section-vo">
+          <h2 class="section-title-vo">Weitere passende Objekte</h2>
+          <SimilarProperties properties={property.similar} />
+        </section>
+      )}
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar-vo">
+      <SidebarContactCard 
+        agent={property.agent || {
+          name: meta.brand.name,
+          role: 'Immobilienmakler',
+          phone: meta.contact.phone,
+          email: meta.contact.email
+        }}
+        objectId={property.objectNumber || property.id}
+      />
+    </aside>
+  </div>
+</div>
+
+<style>
+  .property-detail-vo {
+    background: var(--color-cream, #faf9f7);
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .detail-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 1000;
+    transition: var(--transition-smooth);
+  }
+
+  .detail-header.scrolled {
+    box-shadow: var(--shadow-md);
+  }
+
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: var(--transition-smooth);
+  }
+
+  .back-btn:hover {
+    background: var(--color-cream, #faf9f7);
+    color: var(--color-accent);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .action-btn {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-cream, #faf9f7);
+    border: none;
+    border-radius: 50%;
+    color: var(--color-text);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+  }
+
+  .action-btn:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  /* Gallery */
+  .gallery-section {
+    margin-top: 65px;
+    background: var(--color-primary);
+  }
+
+  /* Content */
+  .content-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .property-header-vo {
+    margin-bottom: 2.5rem;
+  }
+
+  .property-badges-vo {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .badge-vo {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+  }
+
+  .badge-kaufen {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .badge-mieten {
+    background: var(--color-success, #10b981);
+    color: var(--color-white);
+  }
+
+  .badge-type {
+    background: var(--color-accent-light, #e8f4fc);
+    color: var(--color-accent);
+  }
+
+  .property-title-vo {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .property-location-vo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-light, #6b7280);
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  .property-location-vo i {
+    color: var(--color-accent);
+  }
+
+  .property-price-vo {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .content-section-vo {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .section-title-vo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .section-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .section-text p {
+    margin-bottom: 1rem;
+  }
+
+  /* Sidebar */
+  .sidebar-vo {
+    position: sticky;
+    top: calc(65px + 150px);
+  }
+
+  @media (max-width: 992px) {
+    .content-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .sidebar-vo {
+      position: static;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-inner {
+      padding: 0.75rem 1rem;
+    }
+
+    .back-btn span {
+      display: none;
+    }
+
+    .content-container {
+      padding: 2rem 1rem;
+    }
+
+    .property-title-vo {
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .content-section-vo {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Scroll effect on header
+  const header = document.querySelector('.detail-header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  }
+
+  // Favorite toggle
+  const favoriteBtn = document.querySelector('.action-btn[title="Favorit"]');
+  favoriteBtn?.addEventListener('click', () => {
+    favoriteBtn.classList.toggle('favorited');
+    const icon = favoriteBtn.querySelector('i');
+    if (icon) {
+      icon.classList.toggle('far');
+      icon.classList.toggle('fas');
+    }
+  });
+</script>

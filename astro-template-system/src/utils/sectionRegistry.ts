@@ -10,6 +10,7 @@ import ListingsA from '../sections/Listings/ListingsA.astro';
 
 // Services Sections
 import ServicesA from '../sections/Services/ServicesA.astro';
+import ServicesB from '../sections/Services/ServicesB.astro';
 
 // Trust Sections
 import TrustA from '../sections/Trust/TrustA.astro';
@@ -19,6 +20,7 @@ import ContactA from '../sections/Contact/ContactA.astro';
 
 // About Sections
 import AboutA from '../sections/About/AboutA.astro';
+import AboutB from '../sections/About/AboutB.astro';
 
 // Districts Sections
 import DistrictsA from '../sections/Districts/DistrictsA.astro';
@@ -54,6 +56,7 @@ export const SectionRegistry = {
   },
   services: {
     A: ServicesA,
+    B: ServicesB,
   },
   trust: {
     A: TrustA,
@@ -63,6 +66,7 @@ export const SectionRegistry = {
   },
   about: {
     A: AboutA,
+    B: AboutB,
   },
   districts: {
     A: DistrictsA,
