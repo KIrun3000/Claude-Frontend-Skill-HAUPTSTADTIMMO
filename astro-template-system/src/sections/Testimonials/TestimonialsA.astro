@@ -1,0 +1,184 @@
+---
+import type { TestimonialsProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<TestimonialsProps> {}
+
+const { 
+  label,
+  title,
+  subtitle,
+  items = []
+} = Astro.props;
+---
+
+<section class="testimonials section">
+  <div class="container">
+    <div class="section-header">
+      {label && (
+        <span class="section-label">
+          <i class="fas fa-star"></i>
+          {label}
+        </span>
+      )}
+      <h2 class="section-title">{title}</h2>
+      {subtitle && <p class="section-subtitle">{subtitle}</p>}
+    </div>
+
+    <div class="testimonials-grid">
+      {items.map((testimonial, index) => (
+        <div class="testimonial-card" style={`animation-delay: ${index * 0.15}s`}>
+          <span class="testimonial-quote">"</span>
+          <div class="testimonial-rating">
+            {Array.from({ length: testimonial.rating }).map(() => (
+              <i class="fas fa-star"></i>
+            ))}
+          </div>
+          <p class="testimonial-text">{testimonial.text}</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              {testimonial.avatar || testimonial.author.split(' ').map(n => n[0]).join('').slice(0, 2)}
+            </div>
+            <div>
+              <div class="testimonial-name">{testimonial.author}</div>
+              {testimonial.role && (
+                <div class="testimonial-role">{testimonial.role}</div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background: var(--color-cream);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-accent);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+
+  .testimonial-card {
+    background: var(--color-white);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .testimonial-quote {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--color-accent-light);
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    line-height: 1;
+    opacity: 0.3;
+  }
+
+  .testimonial-rating {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+  }
+
+  .testimonial-rating i {
+    color: var(--color-accent);
+    font-size: var(--text-sm);
+  }
+
+  .testimonial-text {
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+  }
+
+  .testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-full);
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-lg);
+    flex-shrink: 0;
+  }
+
+  .testimonial-name {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .testimonial-role {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 992px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

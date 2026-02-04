@@ -1,0 +1,152 @@
+---
+interface Highlight {
+  icon: string;
+  label: string;
+  distance: string;
+}
+
+interface Props {
+  highlights: Highlight[];
+  mapPlaceholder?: string;
+}
+
+const { highlights, mapPlaceholder = "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80" } = Astro.props;
+---
+
+<div class="location-section">
+  <h3>Lage & Umgebung</h3>
+  
+  <div class="location-content">
+    <div class="location-map">
+      <img src={mapPlaceholder} alt="Lage der Immobilie" />
+      <div class="map-overlay">
+        <i class="fas fa-map-marker-alt"></i>
+        Karte ansehen
+      </div>
+    </div>
+
+    <div class="location-highlights">
+      {highlights.map(highlight => (
+        <div class="highlight-item">
+          <i class={`fas ${highlight.icon}`}></i>
+          <div>
+            <div class="highlight-label">{highlight.label}</div>
+            <div class="highlight-distance">{highlight.distance}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .location-section {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .location-section h3 {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .location-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+  }
+
+  .location-map {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 300px;
+    cursor: pointer;
+  }
+
+  .location-map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .location-map:hover img {
+    transform: scale(1.05);
+  }
+
+  .map-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-weight: 600;
+    gap: var(--spacing-sm);
+    transition: var(--transition-smooth);
+  }
+
+  .map-overlay i {
+    font-size: 2rem;
+  }
+
+  .location-map:hover .map-overlay {
+    background: rgba(0,0,0,0.5);
+  }
+
+  .location-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-cream);
+    border-radius: var(--radius-md);
+  }
+
+  .highlight-item i {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    border-radius: var(--radius-full);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .highlight-label {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.2rem;
+  }
+
+  .highlight-distance {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+  }
+
+  @media (max-width: 768px) {
+    .location-content {
+      grid-template-columns: 1fr;
+    }
+
+    .location-map {
+      height: 200px;
+    }
+  }
+</style>

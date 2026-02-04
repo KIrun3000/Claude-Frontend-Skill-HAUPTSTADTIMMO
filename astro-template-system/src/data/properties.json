@@ -1,0 +1,585 @@
+[
+  {
+    "id": "1",
+    "slug": "helle-3-zimmer-wohnung-prenzlauer-berg",
+    "type": "wohnung",
+    "status": "mieten",
+    "title": "Helle 3-Zimmer-Wohnung mit Balkon",
+    "location": {
+      "city": "Berlin",
+      "district": "Prenzlauer Berg",
+      "address": "Kollwitzstraße 45",
+      "highlights": [
+        {
+          "icon": "fa-train",
+          "label": "U-Bahn Senefelderplatz",
+          "distance": "200 m"
+        },
+        {
+          "icon": "fa-shopping-cart",
+          "label": "Edeka Supermarkt",
+          "distance": "150 m"
+        },
+        {
+          "icon": "fa-tree",
+          "label": "Kollwitzplatz",
+          "distance": "300 m"
+        },
+        {
+          "icon": "fa-graduation-cap",
+          "label": "Grundschule",
+          "distance": "400 m"
+        }
+      ]
+    },
+    "price": {
+      "value": 1450,
+      "type": "miete-kalt",
+      "currency": "EUR"
+    },
+    "details": {
+      "area": 78,
+      "rooms": 3,
+      "floor": "2. OG",
+      "yearBuilt": 2018,
+      "bathrooms": 1,
+      "bedrooms": 2
+    },
+    "quickFacts": [
+      {"icon": "fa-ruler-combined", "label": "Wohnfläche", "value": "78 m²"},
+      {"icon": "fa-bed", "label": "Zimmer", "value": "3"},
+      {"icon": "fa-building", "label": "Etage", "value": "2. OG"},
+      {"icon": "fa-calendar", "label": "Baujahr", "value": "2018"}
+    ],
+    "features": [
+      {"icon": "fa-check-circle", "text": "Balkon mit Südausrichtung"},
+      {"icon": "fa-check-circle", "text": "Hochwertige Einbauküche"},
+      {"icon": "fa-check-circle", "text": "Fußbodenheizung"},
+      {"icon": "fa-check-circle", "text": "Personenaufzug"},
+      {"icon": "fa-check-circle", "text": "Echtholz-Parkett"},
+      {"icon": "fa-check-circle", "text": "Bodengleiche Dusche"},
+      {"icon": "fa-check-circle", "text": "Videosprechanlage"},
+      {"icon": "fa-check-circle", "text": "Kellerraum"},
+      {"icon": "fa-check-circle", "text": "Fahrradkeller"},
+      {"icon": "fa-check-circle", "text": "Glasfaser-Internet"}
+    ],
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=80",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80",
+      "https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=1200&q=80",
+      "https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1200&q=80",
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80",
+      "https://images.unsplash.com/photo-1556909114-b5ab01b74e10?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80"
+    ],
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
+        "alt": "Wohnzimmer",
+        "order": 1
+      }
+    ],
+    "description": "Lichtdurchflutete 3-Zimmer-Wohnung in beliebter Lage des Prenzlauer Bergs. Die Wohnung überzeugt durch eine durchdachte Raumaufteilung, hochwertige Ausstattung und einen sonnigen Balkon mit Südausrichtung.",
+    "longDescription": "Diese attraktive 3-Zimmer-Wohnung befindet sich in einem modernen Neubau aus dem Jahr 2018 und bietet auf 78 m² höchsten Wohnkomfort. Die helle Wohnung im 2. Obergeschoss verfügt über bodentiefe Fenster, die für viel Tageslicht sorgen. Der großzügige Wohn-/Essbereich mit offener Küche bildet das Herzstück der Wohnung und bietet direkten Zugang zum sonnigen Südbalkon.\n\nDie hochwertige Einbauküche ist mit Markengeräten (Siemens) ausgestattet und lässt keine Wünsche offen. Beide Schlafzimmer sind großzügig geschnitten und bieten ausreichend Platz für Betten und Schränke. Das moderne Tageslichtbad verfügt über eine bodengleiche Dusche, ein WC und einen Waschtisch mit Unterschrank.\n\nZur Wohnung gehört ein großzügiger Kellerraum sowie ein Fahrradstellplatz im Fahrradkeller. Das Haus verfügt über einen Aufzug und eine Video-Gegensprechanlage. Die Lage im beliebten Kollwitzkiez bietet beste Infrastruktur mit zahlreichen Cafés, Restaurants und Einkaufsmöglichkeiten in unmittelbarer Nähe.",
+    "energy": {
+      "type": "Verbrauchsausweis",
+      "consumption": "58 kWh/(m²·a)",
+      "energyClass": "B",
+      "carrier": "Erdgas",
+      "heatingYear": 2018,
+      "heatingType": "Zentralheizung",
+      "markerPosition": 28
+    },
+    "floorplan": null,
+    "floorplanRequestText": "Grundriss auf Anfrage verfügbar.",
+    "agent": {
+      "name": "Julia Schneider",
+      "role": "Senior Beraterin Wohnimmobilien",
+      "phone": "+49 30 123 456 78",
+      "email": "schneider@hauptstadt-immobilien.de",
+      "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
+    },
+    "similar": ["4", "5"]
+  },
+  {
+    "id": "2",
+    "slug": "moderne-bueroflaeche-mitte",
+    "type": "gewerbe",
+    "status": "mieten",
+    "title": "Moderne Büro-/Ladenfläche in Mitte",
+    "location": {
+      "city": "Berlin",
+      "district": "Mitte",
+      "address": "Friedrichstraße 120",
+      "highlights": [
+        {
+          "icon": "fa-train",
+          "label": "S+U Friedrichstraße",
+          "distance": "100 m"
+        },
+        {
+          "icon": "fa-shopping-bag",
+          "label": "Galeries Lafayette",
+          "distance": "200 m"
+        },
+        {
+          "icon": "fa-utensils",
+          "label": "Restaurants",
+          "distance": "50 m"
+        },
+        {
+          "icon": "fa-car",
+          "label": "Tiefgarage",
+          "distance": "im Haus"
+        }
+      ]
+    },
+    "price": {
+      "value": 2850,
+      "type": "miete-kalt",
+      "currency": "EUR"
+    },
+    "details": {
+      "area": 120,
+      "yearBuilt": 2020
+    },
+    "quickFacts": [
+      {"icon": "fa-ruler-combined", "label": "Nutzfläche", "value": "120 m²"},
+      {"icon": "fa-building", "label": "Etage", "value": "EG"},
+      {"icon": "fa-calendar", "label": "Baujahr", "value": "2020"},
+      {"icon": "fa-car", "label": "Parkplätze", "value": "2 TG-Stellplätze"}
+    ],
+    "features": [
+      {"icon": "fa-check-circle", "text": "Klimaanlage"},
+      {"icon": "fa-check-circle", "text": "Barrierefreier Zugang"},
+      {"icon": "fa-check-circle", "text": "2 TG-Stellplätze"},
+      {"icon": "fa-check-circle", "text": "Glasfaser 1 Gbit/s"},
+      {"icon": "fa-check-circle", "text": "Moderne Sanitäranlagen"},
+      {"icon": "fa-check-circle", "text": "Alarmanlage"},
+      {"icon": "fa-check-circle", "text": "Große Schaufensterfront"},
+      {"icon": "fa-check-circle", "text": "Lager-/Technikraum"}
+    ],
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1200&q=80",
+      "https://images.unsplash.com/photo-1462826303086-329426d1aef5?w=1200&q=80",
+      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&q=80"
+    ],
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+        "alt": "Bürofläche",
+        "order": 1
+      }
+    ],
+    "description": "Repräsentative Gewerbefläche in absoluter Top-Lage an der Friedrichstraße",
+    "longDescription": "Diese hochwertige Gewerbefläche bietet auf 120 m² perfekte Bedingungen für Ihr Unternehmen oder Ihre Retail-Konzepte. Die großzügige Raumaufteilung mit hohen Decken und bodentiefen Fenstern sorgt für ein helles und modernes Arbeitsumfeld.",
+    "energy": {
+      "type": "Bedarfsausweis",
+      "consumption": "65 kWh/(m²·a)",
+      "energyClass": "B",
+      "carrier": "Fernwärme",
+      "heatingYear": 2020,
+      "heatingType": "Zentralheizung mit Klimaanlage",
+      "markerPosition": 32
+    },
+    "floorplan": null,
+    "agent": {
+      "name": "Thomas Richter",
+      "role": "Leiter Gewerbeimmobilien",
+      "phone": "+49 30 123 456 79",
+      "email": "richter@hauptstadt-immobilien.de",
+      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
+    },
+    "similar": []
+  },
+  {
+    "id": "3",
+    "slug": "baugrundstück-zehlendorf",
+    "type": "grundstueck",
+    "status": "kaufen",
+    "title": "Attraktives Baugrundstück in Südlage",
+    "location": {
+      "city": "Berlin",
+      "district": "Zehlendorf",
+      "address": "Am Schlachtensee",
+      "highlights": [
+        {
+          "icon": "fa-water",
+          "label": "Schlachtensee",
+          "distance": "800 m"
+        },
+        {
+          "icon": "fa-bus",
+          "label": "Bus 115",
+          "distance": "300 m"
+        },
+        {
+          "icon": "fa-tree",
+          "label": "Grunewald",
+          "distance": "1,2 km"
+        },
+        {
+          "icon": "fa-shopping-cart",
+          "label": "REWE",
+          "distance": "600 m"
+        }
+      ]
+    },
+    "price": {
+      "value": 489000,
+      "type": "kauf",
+      "currency": "EUR"
+    },
+    "details": {
+      "area": 950,
+      "yearBuilt": null
+    },
+    "quickFacts": [
+      {"icon": "fa-ruler-combined", "label": "Grundstücksfläche", "value": "950 m²"},
+      {"icon": "fa-compass", "label": "Ausrichtung", "value": "Südlage"},
+      {"icon": "fa-home", "label": "Bebaubar", "value": "bis 280 m² WF"},
+      {"icon": "fa-tree", "label": "Zustand", "value": "Voll erschlossen"}
+    ],
+    "features": [
+      {"icon": "fa-check-circle", "text": "Voll erschlossen"},
+      {"icon": "fa-check-circle", "text": "Südausrichtung"},
+      {"icon": "fa-check-circle", "text": "Ruhige Wohnlage"},
+      {"icon": "fa-check-circle", "text": "Bebaubar (GFZ 0.6)"},
+      {"icon": "fa-check-circle", "text": "Alter Baumbestand"},
+      {"icon": "fa-check-circle", "text": "Kanalisiert"},
+      {"icon": "fa-check-circle", "text": "Strom/Wasser/Gas vorhanden"}
+    ],
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80",
+      "https://images.unsplash.com/photo-1464146072230-91cabc968266?w=1200&q=80",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80",
+      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1200&q=80"
+    ],
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
+        "alt": "Grundstück",
+        "order": 1
+      }
+    ],
+    "description": "Perfektes Grundstück für Ihr Traumhaus in begehrter Lage Zehlendorfs",
+    "longDescription": "Dieses attraktive Baugrundstück bietet Ihnen die einmalige Gelegenheit, Ihr individuelles Traumhaus in einer der begehrtesten Wohnlagen Berlins zu realisieren. Mit einer Fläche von 950 m² und einer günstigen GFZ von 0.6 können Sie ein repräsentatives Einfamilienhaus mit bis zu 280 m² Wohnfläche errichten.",
+    "energy": null,
+    "floorplan": null,
+    "agent": {
+      "name": "Marcus Weber",
+      "role": "Geschäftsführer",
+      "phone": "+49 30 123 456 77",
+      "email": "weber@hauptstadt-immobilien.de",
+      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
+    },
+    "similar": []
+  },
+  {
+    "id": "4",
+    "slug": "luxus-penthouse-charlottenburg",
+    "type": "wohnung",
+    "status": "kaufen",
+    "title": "Exklusives Penthouse mit Dachterrasse",
+    "location": {
+      "city": "Berlin",
+      "district": "Charlottenburg",
+      "address": "Kurfürstendamm 180",
+      "highlights": [
+        {
+          "icon": "fa-train",
+          "label": "U-Bahn Uhlandstraße",
+          "distance": "300 m"
+        },
+        {
+          "icon": "fa-shopping-bag",
+          "label": "KaDeWe",
+          "distance": "800 m"
+        },
+        {
+          "icon": "fa-tree",
+          "label": "Lietzenseepark",
+          "distance": "400 m"
+        },
+        {
+          "icon": "fa-utensils",
+          "label": "Restaurants",
+          "distance": "100 m"
+        }
+      ]
+    },
+    "price": {
+      "value": 1250000,
+      "type": "kauf",
+      "currency": "EUR"
+    },
+    "details": {
+      "area": 145,
+      "rooms": 4,
+      "floor": "6. OG (Penthouse)",
+      "yearBuilt": 2021,
+      "bathrooms": 2,
+      "bedrooms": 3
+    },
+    "quickFacts": [
+      {"icon": "fa-ruler-combined", "label": "Wohnfläche", "value": "145 m²"},
+      {"icon": "fa-bed", "label": "Zimmer", "value": "4"},
+      {"icon": "fa-building", "label": "Etage", "value": "6. OG"},
+      {"icon": "fa-sun", "label": "Terrasse", "value": "80 m²"}
+    ],
+    "features": [
+      {"icon": "fa-check-circle", "text": "80 m² Dachterrasse"},
+      {"icon": "fa-check-circle", "text": "Smart Home System"},
+      {"icon": "fa-check-circle", "text": "2 TG-Stellplätze"},
+      {"icon": "fa-check-circle", "text": "Concierge-Service"},
+      {"icon": "fa-check-circle", "text": "Designerküche Bulthaup"},
+      {"icon": "fa-check-circle", "text": "Marmorbäder"},
+      {"icon": "fa-check-circle", "text": "Klimaanlage"},
+      {"icon": "fa-check-circle", "text": "Fußbodenheizung/-kühlung"},
+      {"icon": "fa-check-circle", "text": "Elektrische Außenbeschattung"},
+      {"icon": "fa-check-circle", "text": "Video-Türsprechanlage"},
+      {"icon": "fa-check-circle", "text": "Privater Fahrstuhl"},
+      {"icon": "fa-check-circle", "text": "Weinkeller"}
+    ],
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600563438938-a9a27216b4f5?w=1200&q=80"
+    ],
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+        "alt": "Luxus Penthouse",
+        "order": 1
+      }
+    ],
+    "description": "Wohnen auf höchstem Niveau - Exklusives Penthouse direkt am Kurfürstendamm",
+    "longDescription": "Dieses außergewöhnliche Penthouse auf zwei Ebenen vereint Luxus, Design und modernste Technologie auf insgesamt 145 m² Wohnfläche plus 80 m² Dachterrasse. Die lichtdurchfluteten Räume mit raumhohen Fenstern bieten einen atemberaubenden Blick über die Dächer Charlottenburgs.\n\nDas Penthouse verfügt über einen großzügigen Wohn-/Essbereich mit offener Designerküche von Bulthaup, drei Schlafzimmer (darunter ein Master-Bedroom mit begehbarem Kleiderschrank und eigenem Marmorbad), ein weiteres Gästebad sowie einen separaten Hauswirtschaftsraum.\n\nDie 80 m² große Dachterrasse mit Outdoor-Küche, Lounge-Bereich und Jacuzzi ist der perfekte Rückzugsort und bietet ungestörte Privatsphäre. Zur Ausstattung gehören unter anderem ein umfassendes Smart-Home-System, Fußboden-Heizung und -Kühlung, elektrische Raffstores sowie ein privater Fahrstuhl direkt in die Wohnung.\n\nZur Wohnung gehören zwei Tiefgaragenstellplätze mit E-Ladestation sowie ein Kellerabteil und ein eigener Weinkeller. Das Gebäude bietet Concierge-Service und höchste Sicherheitsstandards.",
+    "energy": {
+      "type": "Bedarfsausweis",
+      "consumption": "42 kWh/(m²·a)",
+      "energyClass": "A+",
+      "carrier": "Fernwärme + Photovoltaik",
+      "heatingYear": 2021,
+      "heatingType": "Fußbodenheizung/-kühlung",
+      "markerPosition": 18
+    },
+    "floorplan": null,
+    "agent": {
+      "name": "Marcus Weber",
+      "role": "Geschäftsführer",
+      "phone": "+49 30 123 456 77",
+      "email": "weber@hauptstadt-immobilien.de",
+      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
+    },
+    "similar": ["1", "6"]
+  },
+  {
+    "id": "5",
+    "slug": "mehrfamilienhaus-wedding",
+    "type": "haus",
+    "status": "kaufen",
+    "title": "Gepflegtes Mehrfamilienhaus mit 6 Einheiten",
+    "location": {
+      "city": "Berlin",
+      "district": "Wedding",
+      "address": "Müllerstraße 158",
+      "highlights": [
+        {
+          "icon": "fa-train",
+          "label": "U-Bahn Wedding",
+          "distance": "250 m"
+        },
+        {
+          "icon": "fa-shopping-cart",
+          "label": "Einkaufszentrum",
+          "distance": "300 m"
+        },
+        {
+          "icon": "fa-hospital",
+          "label": "Virchow-Klinikum",
+          "distance": "1 km"
+        },
+        {
+          "icon": "fa-tree",
+          "label": "Volkspark Rehberge",
+          "distance": "800 m"
+        }
+      ]
+    },
+    "price": {
+      "value": 950000,
+      "type": "kauf",
+      "currency": "EUR"
+    },
+    "details": {
+      "area": 380,
+      "rooms": 18,
+      "yearBuilt": 1960,
+      "units": 6
+    },
+    "quickFacts": [
+      {"icon": "fa-home", "label": "Einheiten", "value": "6 Wohnungen"},
+      {"icon": "fa-ruler-combined", "label": "Gesamtfläche", "value": "380 m²"},
+      {"icon": "fa-calendar", "label": "Baujahr", "value": "1960"},
+      {"icon": "fa-percent", "label": "Rendite", "value": "4,2%"}
+    ],
+    "features": [
+      {"icon": "fa-check-circle", "text": "Voll vermietet"},
+      {"icon": "fa-check-circle", "text": "Fassade 2019 saniert"},
+      {"icon": "fa-check-circle", "text": "Neue Fenster"},
+      {"icon": "fa-check-circle", "text": "Dach gedämmt"},
+      {"icon": "fa-check-circle", "text": "Gasheizung erneuert 2020"},
+      {"icon": "fa-check-circle", "text": "Großer Hinterhof"},
+      {"icon": "fa-check-circle", "text": "Kellerräume"},
+      {"icon": "fa-check-circle", "text": "Fahrradkeller"},
+      {"icon": "fa-check-circle", "text": "Solide Bausubstanz"}
+    ],
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=1200&q=80",
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80"
+    ],
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1625602812206-5ec545ca1231?w=800&q=80",
+        "alt": "Mehrfamilienhaus",
+        "order": 1
+      }
+    ],
+    "description": "Renditestarke Kapitalanlage - Voll vermietetes MFH in gefragter Lage",
+    "longDescription": "Dieses gepflegte Mehrfamilienhaus bietet sechs vermietete Wohneinheiten mit einer Gesamtwohnfläche von 380 m². Das 1960 erbaute Gebäude wurde kontinuierlich instand gehalten und in den letzten Jahren umfassend modernisiert. Die Jahresmiete beträgt derzeit 40.000 EUR, was einer Rendite von 4,2% entspricht.",
+    "energy": {
+      "type": "Verbrauchsausweis",
+      "consumption": "98 kWh/(m²·a)",
+      "energyClass": "D",
+      "carrier": "Erdgas",
+      "heatingYear": 2020,
+      "heatingType": "Gas-Etagenheizung",
+      "markerPosition": 52
+    },
+    "floorplan": null,
+    "agent": {
+      "name": "Thomas Richter",
+      "role": "Leiter Gewerbeimmobilien",
+      "phone": "+49 30 123 456 79",
+      "email": "richter@hauptstadt-immobilien.de",
+      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
+    },
+    "similar": ["4"]
+  },
+  {
+    "id": "6",
+    "slug": "villa-grunewald",
+    "type": "haus",
+    "status": "kaufen",
+    "title": "Historische Villa am Grunewald",
+    "location": {
+      "city": "Berlin",
+      "district": "Grunewald",
+      "address": "Teplitzer Straße 12",
+      "highlights": [
+        {
+          "icon": "fa-train",
+          "label": "S-Bahn Grunewald",
+          "distance": "600 m"
+        },
+        {
+          "icon": "fa-tree",
+          "label": "Grunewald",
+          "distance": "200 m"
+        },
+        {
+          "icon": "fa-shopping-cart",
+          "label": "Edeka",
+          "distance": "900 m"
+        },
+        {
+          "icon": "fa-graduation-cap",
+          "label": "Internationale Schulen",
+          "distance": "1,5 km"
+        }
+      ]
+    },
+    "price": {
+      "value": 3500000,
+      "type": "kauf",
+      "currency": "EUR"
+    },
+    "details": {
+      "area": 450,
+      "rooms": 10,
+      "yearBuilt": 1920,
+      "plot": 1800,
+      "bathrooms": 4,
+      "bedrooms": 6
+    },
+    "quickFacts": [
+      {"icon": "fa-ruler-combined", "label": "Wohnfläche", "value": "450 m²"},
+      {"icon": "fa-bed", "label": "Zimmer", "value": "10"},
+      {"icon": "fa-tree", "label": "Grundstück", "value": "1.800 m²"},
+      {"icon": "fa-calendar", "label": "Baujahr", "value": "1920"}
+    ],
+    "features": [
+      {"icon": "fa-check-circle", "text": "Parkähnliches Grundstück 1.800 m²"},
+      {"icon": "fa-check-circle", "text": "Beheizter Outdoor-Pool"},
+      {"icon": "fa-check-circle", "text": "Finnische Sauna"},
+      {"icon": "fa-check-circle", "text": "Offener Kamin im Wohnzimmer"},
+      {"icon": "fa-check-circle", "text": "Doppelgarage + Carport"},
+      {"icon": "fa-check-circle", "text": "Weinkeller"},
+      {"icon": "fa-check-circle", "text": "Bibliothek"},
+      {"icon": "fa-check-circle", "text": "Wintergarten"},
+      {"icon": "fa-check-circle", "text": "Gästehaus"},
+      {"icon": "fa-check-circle", "text": "Smart Home"},
+      {"icon": "fa-check-circle", "text": "Alarmanlage"},
+      {"icon": "fa-check-circle", "text": "Denkmalschutz"}
+    ],
+    "galleryImages": [
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600563438938-a9a27216b4f5?w=1200&q=80"
+    ],
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+        "alt": "Villa",
+        "order": 1
+      }
+    ],
+    "description": "Einzigartiges Anwesen in begehrter Lage - Denkmalgeschützte Villa mit Park",
+    "longDescription": "Diese außergewöhnliche Villa aus dem Jahr 1920 vereint historischen Charme mit modernstem Wohnkomfort. Auf 450 m² Wohnfläche und einem parkähnlichen Grundstück von 1.800 m² bietet dieses Anwesen höchste Privatsphäre und Exklusivität in einer der begehrtesten Wohnlagen Berlins.\n\nDas denkmalgeschützte Haupthaus beeindruckt mit prachtvollen Räumen, hohen Stuckdecken, original Parkettböden und einem repräsentativen Eingangsbereich mit geschwungener Treppe. Neben sechs großzügigen Schlafzimmern, vier Bädern, einer modernen Wohnküche und mehreren Empfangsräumen verfügt die Villa über eine Bibliothek, einen Wintergarten und einen Weinkeller.\n\nDas Highlight des Anwesens ist der traumhafte Garten mit altem Baumbestand, beheiztem Outdoor-Pool und einem separaten Gästehaus. Sauna, Fitnessraum und mehrere Terrassen runden das Angebot ab.\n\nDie Villa wurde 2018-2020 umfassend und denkmalgerecht saniert. Dabei wurde ein modernes Smart-Home-System integriert, die Haustechnik erneuert und höchste Energieeffizienz erreicht. Zur Immobilie gehört eine Doppelgarage mit E-Ladestation sowie ein überdachter Carport.",
+    "energy": {
+      "type": "Bedarfsausweis",
+      "consumption": "78 kWh/(m²·a)",
+      "energyClass": "C",
+      "carrier": "Erdwärme + Solar",
+      "heatingYear": 2019,
+      "heatingType": "Erdwärme-Fußbodenheizung",
+      "markerPosition": 42
+    },
+    "floorplan": null,
+    "agent": {
+      "name": "Marcus Weber",
+      "role": "Geschäftsführer",
+      "phone": "+49 30 123 456 77",
+      "email": "weber@hauptstadt-immobilien.de",
+      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
+    },
+    "similar": ["4"]
+  }
+]

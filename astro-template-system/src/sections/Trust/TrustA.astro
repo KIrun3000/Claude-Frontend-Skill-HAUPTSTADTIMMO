@@ -1,0 +1,88 @@
+---
+import type { TrustProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<TrustProps> {}
+
+const { 
+  title,
+  stats = [] 
+} = Astro.props;
+---
+
+<section class="trust section">
+  <div class="container">
+    {title && <h2 class="section-title">{title}</h2>}
+    
+    <div class="stats-grid">
+      {stats.map((stat, index) => (
+        <div class="stat-card" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="stat-value">{stat.value}</div>
+          <div class="stat-label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .trust .section-title {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-2xl);
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stat-value {
+      font-size: 2.5rem;
+    }
+
+    .stat-label {
+      font-size: var(--text-base);
+    }
+  }
+</style>

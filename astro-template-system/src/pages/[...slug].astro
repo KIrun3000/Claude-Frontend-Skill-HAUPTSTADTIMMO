@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSection } from '../utils/sectionRegistry';
+
+// Get all sites
+export async function getStaticPaths() {
+  const sites = await getCollection('sites');
+  
+  const paths = [];
+  
+  for (const site of sites) {
+    for (const page of site.data.pages) {
+      paths.push({
+        params: { 
+          slug: page.slug === '/' ? undefined : page.slug.replace(/^\//, '')
+        },
+        props: { 
+          site: site.data,
+          page 
+        }
+      });
+    }
+  }
+  
+  return paths;
+}
+
+const { site, page } = Astro.props;
+const { meta } = site;
+
+// Sort sections by order
+const sortedSections = [...page.sections]
+  .filter(s => s.visible !== false)
+  .sort((a, b) => a.order - b.order);
+---
+
+<BaseLayout 
+  title={page.title}
+  description={page.description}
+  brand={meta.brand}
+  contact={meta.contact}
+>
+  {sortedSections.map(section => {
+    const Component = getSection(section.type, section.variant);
+    
+    if (!Component) {
+      return (
+        <div class="section-error">
+          <p>Section {section.type}:{section.variant} not found</p>
+        </div>
+      );
+    }
+
+    return <Component {...section.props} />;
+  })}
+</BaseLayout>
+
+<style>
+  .section-error {
+    padding: var(--spacing-2xl);
+    background: #fee;
+    border: 2px solid #c00;
+    border-radius: var(--radius-md);
+    text-align: center;
+    color: #c00;
+  }
+</style>

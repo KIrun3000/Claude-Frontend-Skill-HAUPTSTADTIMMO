@@ -1,0 +1,156 @@
+---
+interface SimilarProperty {
+  slug: string;
+  title: string;
+  location: string;
+  price: string;
+  image: string;
+  rooms: string;
+  area: string;
+}
+
+interface Props {
+  properties: SimilarProperty[];
+}
+
+const { properties } = Astro.props;
+---
+
+<div class="similar-properties">
+  <h3>Ähnliche Objekte</h3>
+  
+  <div class="similar-grid">
+    {properties.map(property => (
+      <a href={`/objekte/${property.slug}`} class="similar-card">
+        <div class="similar-image">
+          <img src={property.image} alt={property.title} />
+        </div>
+        <div class="similar-content">
+          <h4 class="similar-title">{property.title}</h4>
+          <p class="similar-location">
+            <i class="fas fa-map-marker-alt"></i>
+            {property.location}
+          </p>
+          <div class="similar-facts">
+            <span><i class="fas fa-bed"></i> {property.rooms}</span>
+            <span><i class="fas fa-ruler-combined"></i> {property.area}</span>
+          </div>
+          <div class="similar-price">{property.price}</div>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .similar-properties {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .similar-properties h3 {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .similar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .similar-card {
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+  }
+
+  .similar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .similar-image {
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .similar-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .similar-card:hover .similar-image img {
+    transform: scale(1.1);
+  }
+
+  .similar-content {
+    padding: var(--spacing-lg);
+  }
+
+  .similar-title {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.3;
+  }
+
+  .similar-location {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .similar-location i {
+    color: var(--color-accent);
+  }
+
+  .similar-facts {
+    display: flex;
+    gap: var(--spacing-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .similar-facts span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .similar-facts i {
+    color: var(--color-accent);
+  }
+
+  .similar-price {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 992px) {
+    .similar-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .similar-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,231 @@
+{
+  "meta": {
+    "domain": "hauptstadt-immobilien.de",
+    "template": "template-a",
+    "brand": {
+      "name": "HAUPTSTADT IMMOBILIEN",
+      "tagline": "Ihr Partner für exklusive Immobilien in Berlin",
+      "colors": {
+        "primary": "#1a1a2e",
+        "secondary": "#16213e",
+        "accent": "#c9a227",
+        "accentLight": "#faf5e8"
+      },
+      "fonts": {
+        "display": "Playfair Display",
+        "body": "DM Sans"
+      }
+    },
+    "contact": {
+      "phone": "+49 30 123456789",
+      "email": "info@hauptstadt-immobilien.de",
+      "address": "Unter den Linden 1, 10117 Berlin"
+    }
+  },
+  "pages": [
+    {
+      "slug": "/",
+      "title": "HAUPTSTADT IMMOBILIEN | Wohn- & Gewerbeimmobilien in Berlin",
+      "description": "Über 20 Jahre Erfahrung in der Immobilienvermittlung in Berlin. Wohnungen, Häuser, Gewerbeimmobilien und Grundstücke.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "A",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "title": "Finden Sie Ihre Traumimmobilie",
+            "subtitle": "in Berlin",
+            "description": "Über 20 Jahre Erfahrung in der Hauptstadt",
+            "cta": {
+              "primary": {
+                "text": "Immobilien ansehen",
+                "href": "/angebote"
+              },
+              "secondary": {
+                "text": "Beratung anfordern",
+                "href": "/kontakt"
+              }
+            },
+            "search": {
+              "enabled": true,
+              "types": ["wohnung", "haus", "gewerbe", "grundstueck"],
+              "filters": ["kaufen", "mieten"]
+            }
+          }
+        },
+        {
+          "type": "usps",
+          "variant": "A",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "items": [
+              {
+                "icon": "fa-award",
+                "title": "Über 20 Jahre Erfahrung",
+                "description": "Expertenwissen seit 2003"
+              },
+              {
+                "icon": "fa-handshake",
+                "title": "Persönliche Betreuung",
+                "description": "Ihr fester Ansprechpartner"
+              },
+              {
+                "icon": "fa-shield-halved",
+                "title": "Geprüfte Objekte",
+                "description": "Nur verifizierte Immobilien"
+              },
+              {
+                "icon": "fa-star",
+                "title": "4.9/5 Zufriedenheit",
+                "description": "Über 500 Bewertungen"
+              }
+            ]
+          }
+        },
+        {
+          "type": "featured-listings",
+          "variant": "A",
+          "order": 3,
+          "visible": true,
+          "props": {
+            "title": "Aktuelle Angebote",
+            "subtitle": "Entdecken Sie unsere neuesten Immobilien",
+            "limit": 6,
+            "layout": "grid",
+            "cta": {
+              "text": "Alle Angebote",
+              "href": "/angebote"
+            }
+          }
+        },
+        {
+          "type": "trust",
+          "variant": "A",
+          "order": 4,
+          "visible": true,
+          "props": {
+            "stats": [
+              {
+                "value": "500+",
+                "label": "Zufriedene Kunden"
+              },
+              {
+                "value": "20+",
+                "label": "Jahre Erfahrung"
+              },
+              {
+                "value": "1.200+",
+                "label": "Vermittelte Objekte"
+              },
+              {
+                "value": "95%",
+                "label": "Empfehlungsrate"
+              }
+            ]
+          }
+        },
+        {
+          "type": "services",
+          "variant": "A",
+          "order": 5,
+          "visible": true,
+          "props": {
+            "title": "Unsere Leistungen",
+            "items": [
+              {
+                "icon": "fa-building",
+                "title": "Immobilienvermittlung",
+                "description": "Wohn- und Gewerbeimmobilien in allen Berliner Bezirken"
+              },
+              {
+                "icon": "fa-calculator",
+                "title": "Immobilienbewertung",
+                "description": "Professionelle Wertermittlung nach ImmoWertV"
+              },
+              {
+                "icon": "fa-file-contract",
+                "title": "Vertragsmanagement",
+                "description": "Rechtssichere Vertragsabwicklung und Beratung"
+              },
+              {
+                "icon": "fa-key",
+                "title": "Objektverwaltung",
+                "description": "Rundum-Service für Eigentümer und Investoren"
+              }
+            ]
+          }
+        },
+        {
+          "type": "contact",
+          "variant": "A",
+          "order": 6,
+          "visible": true,
+          "props": {
+            "title": "Kontaktieren Sie uns",
+            "subtitle": "Wir sind für Sie da",
+            "showMap": true,
+            "formFields": ["name", "email", "phone", "message"]
+          }
+        }
+      ]
+    },
+    {
+      "slug": "/angebote",
+      "title": "Aktuelle Immobilienangebote | HAUPTSTADT IMMOBILIEN",
+      "description": "Durchsuchen Sie unsere aktuellen Immobilienangebote in Berlin.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "B",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "title": "Aktuelle Immobilienangebote",
+            "subtitle": "Finden Sie Ihre Wunschimmobilie"
+          }
+        },
+        {
+          "type": "featured-listings",
+          "variant": "A",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "title": "Alle Objekte",
+            "limit": 12,
+            "layout": "grid"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "/kontakt",
+      "title": "Kontakt | HAUPTSTADT IMMOBILIEN",
+      "description": "Nehmen Sie Kontakt mit uns auf. Wir beraten Sie gerne.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "B",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "title": "Kontakt",
+            "subtitle": "Wir freuen uns auf Ihre Nachricht"
+          }
+        },
+        {
+          "type": "contact",
+          "variant": "A",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "title": "Schreiben Sie uns",
+            "showMap": true,
+            "formFields": ["name", "email", "phone", "subject", "message"]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+---
+import type { Brand, Contact } from '../../schema/site.schema';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  brand: Brand;
+  contact: Contact;
+}
+
+const { title, description, brand, contact } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description || `${brand.name} - ${brand.tagline}`}>
+  <title>{title}</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href={`https://fonts.googleapis.com/css2?family=${brand.fonts.display.replace(' ', '+')}:wght@400;500;600;700&family=${brand.fonts.body.replace(' ', '+')}:wght@300;400;500;600;700&display=swap`}
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Brand-specific CSS Variables -->
+  <style is:inline define:vars={{
+    'color-primary': brand.colors.primary,
+    'color-secondary': brand.colors.secondary,
+    'color-accent': brand.colors.accent,
+    'color-accent-light': brand.colors.accentLight,
+    'font-display': brand.fonts.display,
+    'font-body': brand.fonts.body,
+  }}>
+  </style>
+</head>
+<body>
+  <!-- Contact Bar -->
+  <div class="contact-bar">
+    <div class="contact-bar-inner">
+      <div class="contact-bar-left">
+        <a href={`tel:${contact.phone}`} class="contact-bar-item">
+          <i class="fas fa-phone"></i>
+          <span>{contact.phone}</span>
+        </a>
+        <a href={`mailto:${contact.email}`} class="contact-bar-item">
+          <i class="fas fa-envelope"></i>
+          <span>{contact.email}</span>
+        </a>
+      </div>
+      <div class="contact-bar-right">
+        <span class="contact-bar-item">
+          <i class="fas fa-clock"></i>
+          <span>{contact.hours || "Mo-Fr: 9-18 Uhr"}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        {brand.logo ? (
+          <img src={brand.logo} alt={brand.name} />
+        ) : (
+          <span class="logo-text">
+            {brand.name.split(' ').map((word, i) => 
+              i === brand.name.split(' ').length - 1 
+                ? <span class="accent">{word}</span>
+                : <span>{word}</span>
+            )}
+          </span>
+        )}
+      </a>
+      
+      <nav class="nav">
+        <a href="/">Start</a>
+        <a href="/angebote">Angebote</a>
+        <a href="/ueber-uns">Über uns</a>
+        <a href="/leistungen">Leistungen</a>
+        <a href="/kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <slot />
+  </main>
+</body>
+</html>
+
+<style>
+  /* Contact Bar */
+  .contact-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.6rem 2rem;
+    z-index: 1000;
+    font-size: 0.85rem;
+  }
+
+  .contact-bar-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .contact-bar-left, .contact-bar-right {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .contact-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+  }
+
+  .contact-bar-item:hover {
+    color: var(--color-accent);
+  }
+
+  /* Header */
+  .header {
+    position: fixed;
+    top: 38px;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 999;
+    transition: var(--transition-smooth);
+  }
+
+  .header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .logo-text {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .logo-text .accent {
+    color: var(--color-accent);
+  }
+
+  .nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav a {
+    color: var(--color-text);
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    position: relative;
+  }
+
+  .nav a:hover {
+    color: var(--color-accent);
+  }
+
+  .nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transition: var(--transition-smooth);
+  }
+
+  .nav a:hover::after {
+    width: 100%;
+  }
+
+  /* Main */
+  main {
+    margin-top: calc(38px + 73px); /* contact bar + header */
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .contact-bar-right {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-bar-inner {
+      padding: 0.6rem 1rem;
+    }
+
+    .contact-bar-left {
+      gap: 1rem;
+    }
+
+    .contact-bar-item span {
+      display: none;
+    }
+
+    .header-inner {
+      padding: 1rem;
+    }
+
+    .nav {
+      display: none; /* Mobile menu would go here */
+    }
+  }
+</style>

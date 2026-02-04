@@ -1,0 +1,164 @@
+---
+interface QuickFact {
+  icon: string;
+  label: string;
+  value: string;
+}
+
+interface Props {
+  price: string;
+  facts: QuickFact[];
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const { price, facts, ctaText = "Besichtigung anfragen", ctaLink = "#kontakt" } = Astro.props;
+---
+
+<div class="quick-facts-bar" id="quick-facts-bar">
+  <div class="quick-facts-inner">
+    <div class="quick-facts-left">
+      <div class="price-display">{price}</div>
+      <div class="quick-facts-grid">
+        {facts.map(fact => (
+          <div class="quick-fact">
+            <i class={`fas ${fact.icon}`}></i>
+            <div>
+              <div class="quick-fact-label">{fact.label}</div>
+              <div class="quick-fact-value">{fact.value}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="quick-facts-right">
+      <a href={ctaLink} class="cta-btn">
+        <i class="fas fa-calendar-check"></i>
+        {ctaText}
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .quick-facts-bar {
+    position: sticky;
+    top: 65px;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .quick-facts-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .quick-facts-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .price-display {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  .quick-facts-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .quick-fact {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .quick-fact i {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+  }
+
+  .quick-fact-label {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .quick-fact-value {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .quick-facts-right {
+    flex-shrink: 0;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 2rem;
+    background: var(--color-accent);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta-btn:hover {
+    background: var(--color-accent-secondary, #b8941f);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (max-width: 992px) {
+    .quick-facts-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .quick-facts-grid {
+      gap: 1rem;
+    }
+
+    .quick-facts-right {
+      width: 100%;
+    }
+
+    .cta-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .quick-facts-inner {
+      padding: 1rem;
+    }
+
+    .price-display {
+      font-size: 1.5rem;
+    }
+
+    .quick-facts-grid {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+</style>

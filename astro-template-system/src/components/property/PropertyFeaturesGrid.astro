@@ -1,0 +1,78 @@
+---
+interface Feature {
+  icon: string;
+  text: string;
+}
+
+interface Props {
+  features: Feature[];
+}
+
+const { features } = Astro.props;
+---
+
+<div class="features-grid-section">
+  <h3>Ausstattung & Merkmale</h3>
+  <div class="features-grid">
+    {features.map(feature => (
+      <div class="feature-item">
+        <i class={`fas ${feature.icon}`}></i>
+        <span>{feature.text}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .features-grid-section {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .features-grid-section h3 {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-cream);
+    border-radius: var(--radius-md);
+    transition: var(--transition-smooth);
+  }
+
+  .feature-item:hover {
+    background: var(--color-accent-light);
+    transform: translateX(5px);
+  }
+
+  .feature-item i {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .feature-item span {
+    color: var(--color-text);
+    font-size: var(--text-sm);
+  }
+
+  @media (max-width: 600px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

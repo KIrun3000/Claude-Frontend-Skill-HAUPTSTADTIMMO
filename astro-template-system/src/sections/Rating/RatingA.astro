@@ -1,0 +1,189 @@
+---
+import type { RatingProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<RatingProps> {}
+
+const { 
+  score = 4.9,
+  count = 0,
+  source = "Google Reviews",
+  sourceIcon = "fab fa-google",
+  badges = []
+} = Astro.props;
+---
+
+<section class="rating section">
+  <div class="rating-container">
+    <div class="rating-widget">
+      <div class="rating-score">
+        <div class="rating-number">{score}</div>
+        <div class="rating-stars">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <i class={`fas fa-star ${i < Math.floor(score) ? 'filled' : ''}`}></i>
+          ))}
+        </div>
+        <div class="rating-count">{count} Bewertungen</div>
+      </div>
+      <div class="rating-source">
+        <div class="rating-source-logo">
+          <i class={sourceIcon}></i> {source}
+        </div>
+        <div class="rating-source-text">Verifizierte Kundenbewertungen</div>
+      </div>
+    </div>
+
+    {badges.length > 0 && (
+      <div class="rating-badges">
+        {badges.map(badge => (
+          <div class="rating-badge">
+            <i class={`fas ${badge.icon}`}></i>
+            <div class="rating-badge-text">
+              <strong>{badge.title}</strong>
+              <span>{badge.subtitle}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .rating {
+    background: var(--color-white);
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .rating-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-3xl);
+    flex-wrap: wrap;
+  }
+
+  .rating-widget {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3xl);
+  }
+
+  .rating-score {
+    text-align: center;
+  }
+
+  .rating-number {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .rating-stars {
+    display: flex;
+    gap: var(--spacing-xs);
+    justify-content: center;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .rating-stars i {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+  }
+
+  .rating-count {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+  }
+
+  .rating-source {
+    text-align: left;
+  }
+
+  .rating-source-logo {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .rating-source-logo i {
+    color: var(--color-accent);
+  }
+
+  .rating-source-text {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+  }
+
+  .rating-badges {
+    display: flex;
+    gap: var(--spacing-xl);
+    flex-wrap: wrap;
+  }
+
+  .rating-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--color-cream);
+    border-radius: var(--radius-md);
+  }
+
+  .rating-badge i {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+  }
+
+  .rating-badge-text strong {
+    display: block;
+    color: var(--color-primary);
+    font-size: var(--text-base);
+    margin-bottom: 0.2rem;
+  }
+
+  .rating-badge-text span {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+  }
+
+  @media (max-width: 992px) {
+    .rating-container {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .rating-widget {
+      flex-direction: column;
+    }
+
+    .rating-source {
+      text-align: center;
+    }
+
+    .rating-badges {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .rating-badges {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .rating-badge {
+      justify-content: center;
+    }
+  }
+</style>

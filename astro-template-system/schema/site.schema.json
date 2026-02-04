@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://immobilien-template-system/site.schema.json",
+  "title": "Immobilien Site Schema",
+  "description": "Schema for canonical site data input from Extract project",
+  "type": "object",
+  "required": ["meta", "pages"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["domain", "template", "brand", "contact"],
+      "properties": {
+        "domain": {
+          "type": "string",
+          "description": "The domain of the site"
+        },
+        "template": {
+          "type": "string",
+          "enum": ["template-a", "template-b", "template-c"],
+          "description": "Which template variant to use"
+        },
+        "brand": {
+          "type": "object",
+          "required": ["name", "colors", "fonts"],
+          "properties": {
+            "name": { "type": "string" },
+            "tagline": { "type": "string" },
+            "logo": { "type": "string", "format": "uri" },
+            "colors": {
+              "type": "object",
+              "required": ["primary", "secondary", "accent", "accentLight"],
+              "properties": {
+                "primary": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+                "secondary": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+                "accent": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+                "accentLight": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+              }
+            },
+            "fonts": {
+              "type": "object",
+              "required": ["display", "body"],
+              "properties": {
+                "display": { "type": "string" },
+                "body": { "type": "string" }
+              }
+            }
+          }
+        },
+        "contact": {
+          "type": "object",
+          "required": ["phone", "email", "address"],
+          "properties": {
+            "phone": { "type": "string" },
+            "email": { "type": "string", "format": "email" },
+            "address": { "type": "string" },
+            "hours": { "type": "string" },
+            "social": {
+              "type": "object",
+              "properties": {
+                "facebook": { "type": "string", "format": "uri" },
+                "instagram": { "type": "string", "format": "uri" },
+                "linkedin": { "type": "string", "format": "uri" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["slug", "title", "sections"],
+        "properties": {
+          "slug": { "type": "string" },
+          "title": { "type": "string", "maxLength": 80 },
+          "description": { "type": "string", "maxLength": 160 },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["type", "variant", "order", "props"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "hero",
+                    "usps",
+                    "featured-listings",
+                    "services",
+                    "trust",
+                    "contact",
+                    "about",
+                    "footer"
+                  ]
+                },
+                "variant": { "type": "string" },
+                "order": { "type": "number" },
+                "visible": { "type": "boolean", "default": true },
+                "props": { "type": "object" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,238 @@
+---
+import type { ContactProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<ContactProps> {}
+
+const { 
+  title = "Kontaktieren Sie uns",
+  subtitle,
+  showMap = false,
+  formFields = ['name', 'email', 'phone', 'message']
+} = Astro.props;
+---
+
+<section class="contact section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{title}</h2>
+      {subtitle && <p class="section-subtitle">{subtitle}</p>}
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-form-wrapper">
+        <form class="contact-form" id="contactForm">
+          {formFields.includes('name') && (
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                placeholder="Ihr vollständiger Name"
+              />
+            </div>
+          )}
+
+          {formFields.includes('email') && (
+            <div class="form-group">
+              <label for="email">E-Mail *</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                placeholder="ihre@email.de"
+              />
+            </div>
+          )}
+
+          {formFields.includes('phone') && (
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                placeholder="+49 ..."
+              />
+            </div>
+          )}
+
+          {formFields.includes('subject') && (
+            <div class="form-group">
+              <label for="subject">Betreff</label>
+              <input 
+                type="text" 
+                id="subject" 
+                name="subject" 
+                placeholder="Worum geht es?"
+              />
+            </div>
+          )}
+
+          {formFields.includes('message') && (
+            <div class="form-group">
+              <label for="message">Nachricht *</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="5" 
+                required
+                placeholder="Ihre Nachricht an uns..."
+              ></textarea>
+            </div>
+          )}
+
+          <div class="form-group form-checkbox">
+            <input type="checkbox" id="privacy" required />
+            <label for="privacy">
+              Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten zu. *
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn">
+            <i class="fas fa-paper-plane"></i>
+            Nachricht senden
+          </button>
+        </form>
+      </div>
+
+      {showMap && (
+        <div class="contact-map">
+          <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt"></i>
+            <p>Interaktive Karte</p>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--color-cream);
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: start;
+  }
+
+  .contact-form-wrapper {
+    background: var(--color-white);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .form-group label {
+    font-weight: 500;
+    color: var(--color-text);
+    font-size: var(--text-sm);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    transition: var(--transition-smooth);
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-checkbox {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .form-checkbox input {
+    margin-top: 0.25rem;
+    width: auto;
+  }
+
+  .form-checkbox label {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+  }
+
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-map {
+    height: 100%;
+    min-height: 400px;
+  }
+
+  .map-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-cream) 0%, #e8e8e8 100%);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+  }
+
+  .map-placeholder i {
+    font-size: 4rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-md);
+  }
+
+  @media (max-width: 992px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Here you would typically send the form data to a server
+    alert('Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen.');
+    form.reset();
+  });
+</script>

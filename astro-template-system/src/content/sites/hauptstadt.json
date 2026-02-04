@@ -1,0 +1,631 @@
+{
+  "meta": {
+    "domain": "hauptstadt-immobilien.de",
+    "template": "template-a",
+    "brand": {
+      "name": "HAUPTSTADT IMMOBILIEN",
+      "tagline": "Ihr Partner für exklusive Immobilien in Berlin",
+      "colors": {
+        "primary": "#1a1a2e",
+        "secondary": "#16213e",
+        "accent": "#c9a227",
+        "accentLight": "#faf5e8"
+      },
+      "fonts": {
+        "display": "Playfair Display",
+        "body": "DM Sans"
+      }
+    },
+    "contact": {
+      "phone": "+49 30 123456789",
+      "email": "info@hauptstadt-immobilien.de",
+      "address": "Kurfürstendamm 195, 10707 Berlin-Charlottenburg",
+      "social": {
+        "facebook": "https://facebook.com/hauptstadt-immobilien",
+        "instagram": "https://instagram.com/hauptstadt-immobilien",
+        "linkedin": "https://linkedin.com/company/hauptstadt-immobilien"
+      }
+    }
+  },
+  "pages": [
+    {
+      "slug": "/",
+      "title": "HAUPTSTADT IMMOBILIEN | Wohn- & Gewerbeimmobilien in Berlin",
+      "description": "Über 25 Jahre Erfahrung in der Immobilienvermittlung in Berlin. Wohnungen, Häuser, Gewerbeimmobilien und Grundstücke.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "A",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "title": "Finden Sie Ihre Traumimmobilie",
+            "subtitle": "in Berlin",
+            "description": "Über 25 Jahre Erfahrung in der Hauptstadt",
+            "cta": {
+              "primary": {
+                "text": "Immobilien ansehen",
+                "href": "/angebote"
+              },
+              "secondary": {
+                "text": "Beratung anfordern",
+                "href": "/kontakt"
+              }
+            },
+            "search": {
+              "enabled": true,
+              "types": ["wohnung", "haus", "gewerbe", "grundstueck"],
+              "filters": ["kaufen", "mieten"]
+            }
+          }
+        },
+        {
+          "type": "usps",
+          "variant": "A",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "items": [
+              {
+                "icon": "fa-award",
+                "title": "Über 25 Jahre Erfahrung",
+                "description": "Expertenwissen seit 1998"
+              },
+              {
+                "icon": "fa-handshake",
+                "title": "Persönliche Betreuung",
+                "description": "Ihr fester Ansprechpartner"
+              },
+              {
+                "icon": "fa-shield-halved",
+                "title": "Geprüfte Objekte",
+                "description": "Nur verifizierte Immobilien"
+              },
+              {
+                "icon": "fa-star",
+                "title": "4.9/5 Zufriedenheit",
+                "description": "Über 156 Bewertungen"
+              }
+            ]
+          }
+        },
+        {
+          "type": "featured-listings",
+          "variant": "A",
+          "order": 3,
+          "visible": true,
+          "props": {
+            "title": "Aktuelle Angebote",
+            "subtitle": "Entdecken Sie unsere neuesten Immobilien",
+            "limit": 6,
+            "layout": "grid",
+            "cta": {
+              "text": "Alle Angebote",
+              "href": "/angebote"
+            }
+          }
+        },
+        {
+          "type": "services",
+          "variant": "A",
+          "order": 4,
+          "visible": true,
+          "props": {
+            "title": "Unsere Leistungen",
+            "subtitle": "Umfassender Service für Ihre Immobilie",
+            "items": [
+              {
+                "icon": "fa-building",
+                "title": "Immobilienvermittlung",
+                "description": "Wohn- und Gewerbeimmobilien in allen Berliner Bezirken"
+              },
+              {
+                "icon": "fa-calculator",
+                "title": "Immobilienbewertung",
+                "description": "Professionelle Wertermittlung nach ImmoWertV"
+              },
+              {
+                "icon": "fa-file-contract",
+                "title": "Vertragsmanagement",
+                "description": "Rechtssichere Vertragsabwicklung und Beratung"
+              },
+              {
+                "icon": "fa-key",
+                "title": "Objektverwaltung",
+                "description": "Rundum-Service für Eigentümer und Investoren"
+              }
+            ]
+          }
+        },
+        {
+          "type": "about",
+          "variant": "A",
+          "order": 5,
+          "visible": true,
+          "props": {
+            "label": "Über uns",
+            "title": "Ihr vertrauensvoller Immobilienpartner in Berlin",
+            "subtitle": "Seit 1998 sind wir als familiengeführtes Unternehmen in Berlin verwurzelt. Unser Team aus erfahrenen Immobilienexperten kennt jeden Bezirk, jede Straße und jeden Markttrend der Hauptstadt. Wir verbinden traditionelle Werte mit modernen Methoden für Ihren maximalen Erfolg.",
+            "content": "Mit über 25 Jahren Erfahrung im Berliner Immobilienmarkt haben wir uns als einer der führenden Makler etabliert. Unser Erfolgsgeheimnis: persönliche Betreuung, lokale Expertise und absolute Transparenz.",
+            "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
+            "imageOverlay": {
+              "number": "25+",
+              "label": "Jahre Erfahrung"
+            },
+            "features": [
+              {
+                "icon": "fa-check-circle",
+                "text": "IVD-Mitglied mit höchsten Qualitätsstandards"
+              },
+              {
+                "icon": "fa-check-circle",
+                "text": "Lokale Expertise in allen 12 Berliner Bezirken"
+              },
+              {
+                "icon": "fa-check-circle",
+                "text": "Persönlicher Ansprechpartner für jeden Kunden"
+              },
+              {
+                "icon": "fa-check-circle",
+                "text": "Transparente Kommunikation und faire Konditionen"
+              },
+              {
+                "icon": "fa-check-circle",
+                "text": "Über 2.500 erfolgreich vermittelte Immobilien"
+              },
+              {
+                "icon": "fa-check-circle",
+                "text": "Spezialisiert auf Wohn- und Gewerbeimmobilien"
+              }
+            ]
+          }
+        },
+        {
+          "type": "districts",
+          "variant": "A",
+          "order": 6,
+          "visible": true,
+          "props": {
+            "label": "Alle 12 Berliner Bezirke",
+            "title": "Immobilien in ganz Berlin",
+            "subtitle": "Von Mitte bis Spandau, von Pankow bis Neukölln – wir kennen jeden Kiez und finden Ihre Traumimmobilie in allen 12 Berliner Bezirken.",
+            "items": [
+              {
+                "name": "Mitte",
+                "count": "45 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80"
+              },
+              {
+                "name": "Friedrichshain-Kreuzberg",
+                "count": "38 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?w=800&q=80"
+              },
+              {
+                "name": "Pankow",
+                "count": "42 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800&q=80"
+              },
+              {
+                "name": "Charlottenburg-Wilmersdorf",
+                "count": "36 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80"
+              },
+              {
+                "name": "Tempelhof-Schöneberg",
+                "count": "28 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1587330979470-3595ac045ab0?w=800&q=80"
+              },
+              {
+                "name": "Steglitz-Zehlendorf",
+                "count": "24 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1597212618440-806a892e7f90?w=800&q=80"
+              },
+              {
+                "name": "Neukölln",
+                "count": "26 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80"
+              },
+              {
+                "name": "Lichtenberg",
+                "count": "18 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1567449303078-57ad995bd329?w=800&q=80"
+              },
+              {
+                "name": "Spandau",
+                "count": "15 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80"
+              },
+              {
+                "name": "Treptow-Köpenick",
+                "count": "16 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80"
+              },
+              {
+                "name": "Marzahn-Hellersdorf",
+                "count": "12 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1486718448742-163732cd1544?w=800&q=80"
+              },
+              {
+                "name": "Reinickendorf",
+                "count": "14 Objekte verfügbar",
+                "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&q=80"
+              }
+            ]
+          }
+        },
+        {
+          "type": "testimonials",
+          "variant": "A",
+          "order": 7,
+          "visible": true,
+          "props": {
+            "label": "Kundenstimmen",
+            "title": "Was unsere Kunden über uns sagen",
+            "subtitle": "Über 98% unserer Kunden empfehlen uns weiter. Lesen Sie, warum wir ihr Vertrauen genießen.",
+            "items": [
+              {
+                "text": "Dank HAUPTSTADT IMMOBILIEN haben wir unsere Traumwohnung in Prenzlauer Berg gefunden. Die persönliche Beratung und die schnelle Abwicklung waren hervorragend. Absolute Empfehlung!",
+                "author": "Maria & Stefan K.",
+                "role": "Wohnungskäufer, Prenzlauer Berg",
+                "rating": 5,
+                "avatar": "MS"
+              },
+              {
+                "text": "Als Unternehmer war ich auf der Suche nach repräsentativen Büroflächen. Das Team hat genau verstanden, was ich brauche, und innerhalb von 3 Wochen die perfekte Location gefunden.",
+                "author": "Thomas H.",
+                "role": "Geschäftsführer, IT-Startup",
+                "rating": 5,
+                "avatar": "TH"
+              },
+              {
+                "text": "Der Verkauf unserer Wohnung in Charlottenburg war dank der professionellen Vermarktung innerhalb von 6 Wochen abgeschlossen – und das zum Wunschpreis. Vielen Dank für die tolle Arbeit!",
+                "author": "Eva B.",
+                "role": "Eigentümerin, Charlottenburg",
+                "rating": 5,
+                "avatar": "EB"
+              }
+            ]
+          }
+        },
+        {
+          "type": "rating",
+          "variant": "A",
+          "order": 8,
+          "visible": true,
+          "props": {
+            "score": 4.9,
+            "count": 156,
+            "source": "Google Reviews",
+            "sourceIcon": "fab fa-google",
+            "badges": [
+              {
+                "icon": "fa-award",
+                "title": "Top Makler 2024",
+                "subtitle": "ImmoScout24"
+              },
+              {
+                "icon": "fa-shield-alt",
+                "title": "TÜV-geprüft",
+                "subtitle": "Servicequalität"
+              },
+              {
+                "icon": "fa-handshake",
+                "title": "98% Empfehlung",
+                "subtitle": "Kundenzufriedenheit"
+              }
+            ]
+          }
+        },
+        {
+          "type": "team",
+          "variant": "A",
+          "order": 9,
+          "visible": true,
+          "props": {
+            "label": "Unser Team",
+            "title": "Ihre Ansprechpartner in Berlin",
+            "subtitle": "Lernen Sie unser erfahrenes Team kennen. Persönliche Beratung und individuelle Betreuung – von der ersten Anfrage bis zum erfolgreichen Abschluss.",
+            "members": [
+              {
+                "name": "Marcus Weber",
+                "role": "Geschäftsführer",
+                "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+                "phone": "+493012345678",
+                "email": "weber@hauptstadt-immobilien.de",
+                "linkedin": "#"
+              },
+              {
+                "name": "Julia Schneider",
+                "role": "Senior Beraterin Wohnimmobilien",
+                "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+                "phone": "+493012345678",
+                "email": "schneider@hauptstadt-immobilien.de",
+                "linkedin": "#"
+              },
+              {
+                "name": "Thomas Richter",
+                "role": "Leiter Gewerbeimmobilien",
+                "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+                "phone": "+493012345678",
+                "email": "richter@hauptstadt-immobilien.de",
+                "linkedin": "#"
+              },
+              {
+                "name": "Anna Müller",
+                "role": "Kundenbetreuung & Backoffice",
+                "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
+                "phone": "+493012345678",
+                "email": "mueller@hauptstadt-immobilien.de",
+                "linkedin": "#"
+              }
+            ]
+          }
+        },
+        {
+          "type": "references",
+          "variant": "A",
+          "order": 10,
+          "visible": true,
+          "props": {
+            "label": "Referenzen",
+            "title": "Erfolgreich vermittelt",
+            "subtitle": "Ein Auszug aus unseren erfolgreich abgeschlossenen Vermittlungen – jede Immobilie eine eigene Geschichte.",
+            "items": [
+              {
+                "type": "Altbauwohnung",
+                "title": "Stilvolle 4-Zimmer-Wohnung mit Balkon",
+                "location": "Prenzlauer Berg",
+                "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80",
+                "status": "Verkauft",
+                "stats": [
+                  {
+                    "icon": "fa-ruler-combined",
+                    "value": "120 m²"
+                  },
+                  {
+                    "icon": "fa-bed",
+                    "value": "4 Zimmer"
+                  }
+                ]
+              },
+              {
+                "type": "Penthouse",
+                "title": "Luxus-Penthouse mit Dachterrasse",
+                "location": "Charlottenburg",
+                "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80",
+                "status": "Verkauft",
+                "stats": [
+                  {
+                    "icon": "fa-ruler-combined",
+                    "value": "180 m²"
+                  },
+                  {
+                    "icon": "fa-bed",
+                    "value": "5 Zimmer"
+                  }
+                ]
+              },
+              {
+                "type": "Gewerbe",
+                "title": "Repräsentative Bürofläche im Loft-Style",
+                "location": "Kreuzberg",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80",
+                "status": "Vermietet",
+                "stats": [
+                  {
+                    "icon": "fa-ruler-combined",
+                    "value": "250 m²"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "blog",
+          "variant": "A",
+          "order": 11,
+          "visible": true,
+          "props": {
+            "label": "Aktuelles",
+            "title": "News & Ratgeber",
+            "subtitle": "Bleiben Sie informiert: Markttrends, Expertentipps und Neuigkeiten aus der Berliner Immobilienwelt.",
+            "featured": {
+              "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
+              "category": "Ratgeber",
+              "date": "15. Januar 2025",
+              "title": "So ermitteln Sie den richtigen Verkaufspreis für Ihre Berliner Immobilie",
+              "excerpt": "Der Verkaufspreis ist einer der wichtigsten Faktoren beim Immobilienverkauf. Erfahren Sie, welche Methoden zur Wertermittlung es gibt und worauf Sie in Berlin besonders achten sollten.",
+              "link": "#"
+            },
+            "posts": [
+              {
+                "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300&q=80",
+                "title": "Zinsentwicklung 2025: Was bedeutet das für Käufer?",
+                "date": "10. Januar 2025",
+                "link": "#"
+              },
+              {
+                "image": "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=300&q=80",
+                "title": "Marktbericht: Diese Berliner Bezirke sind 2025 im Aufwind",
+                "date": "5. Januar 2025",
+                "link": "#"
+              },
+              {
+                "image": "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=300&q=80",
+                "title": "Neues GEG: Energieausweis-Pflichten für Eigentümer",
+                "date": "28. Dezember 2024",
+                "link": "#"
+              }
+            ]
+          }
+        },
+        {
+          "type": "trust",
+          "variant": "A",
+          "order": 12,
+          "visible": true,
+          "props": {
+            "stats": [
+              {
+                "value": "2.500+",
+                "label": "Vermittelte Objekte"
+              },
+              {
+                "value": "25+",
+                "label": "Jahre Erfahrung"
+              },
+              {
+                "value": "98%",
+                "label": "Empfehlungsrate"
+              },
+              {
+                "value": "12",
+                "label": "Berliner Bezirke"
+              }
+            ]
+          }
+        },
+        {
+          "type": "contact",
+          "variant": "A",
+          "order": 13,
+          "visible": true,
+          "props": {
+            "title": "Kontaktieren Sie uns",
+            "subtitle": "Wir sind für Sie da",
+            "showMap": true,
+            "formFields": ["name", "email", "phone", "message"]
+          }
+        },
+        {
+          "type": "footer",
+          "variant": "A",
+          "order": 14,
+          "visible": true,
+          "props": {
+            "about": {
+              "text": "Seit 1998 Ihr zuverlässiger Partner für Wohn- und Gewerbeimmobilien in Berlin. Profitieren Sie von unserer lokalen Expertise und persönlichen Beratung.",
+              "social": [
+                {
+                  "platform": "Facebook",
+                  "icon": "fab fa-facebook-f",
+                  "url": "https://facebook.com/hauptstadt-immobilien"
+                },
+                {
+                  "platform": "Instagram",
+                  "icon": "fab fa-instagram",
+                  "url": "https://instagram.com/hauptstadt-immobilien"
+                },
+                {
+                  "platform": "LinkedIn",
+                  "icon": "fab fa-linkedin-in",
+                  "url": "https://linkedin.com/company/hauptstadt-immobilien"
+                },
+                {
+                  "platform": "Xing",
+                  "icon": "fab fa-xing",
+                  "url": "#"
+                }
+              ]
+            },
+            "columns": [
+              {
+                "title": "Immobilien",
+                "links": [
+                  {"text": "Wohnungen kaufen", "href": "#"},
+                  {"text": "Häuser kaufen", "href": "#"},
+                  {"text": "Wohnungen mieten", "href": "#"},
+                  {"text": "Gewerbeimmobilien", "href": "#"},
+                  {"text": "Neubauprojekte", "href": "#"}
+                ]
+              },
+              {
+                "title": "Service",
+                "links": [
+                  {"text": "Immobilienbewertung", "href": "#"},
+                  {"text": "Verkauf & Vermietung", "href": "#"},
+                  {"text": "Finanzierungsberatung", "href": "#"},
+                  {"text": "Off-Market Angebote", "href": "#"},
+                  {"text": "Suchauftrag erstellen", "href": "#"}
+                ]
+              },
+              {
+                "title": "Unternehmen",
+                "links": [
+                  {"text": "Über uns", "href": "/ueber-uns"},
+                  {"text": "Unser Team", "href": "#team"},
+                  {"text": "Karriere", "href": "#"},
+                  {"text": "Presse", "href": "#"},
+                  {"text": "Kontakt", "href": "/kontakt"}
+                ]
+              }
+            ],
+            "legal": [
+              {"text": "Impressum", "href": "/impressum"},
+              {"text": "Datenschutz", "href": "/datenschutz"},
+              {"text": "AGB", "href": "#"}
+            ],
+            "copyright": "© 2024 HAUPTSTADT IMMOBILIEN. Alle Rechte vorbehalten."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "/angebote",
+      "title": "Aktuelle Immobilienangebote | HAUPTSTADT IMMOBILIEN",
+      "description": "Durchsuchen Sie unsere aktuellen Immobilienangebote in Berlin.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "B",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "title": "Aktuelle Immobilienangebote",
+            "subtitle": "Finden Sie Ihre Wunschimmobilie"
+          }
+        },
+        {
+          "type": "featured-listings",
+          "variant": "A",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "title": "Alle Objekte",
+            "limit": 12,
+            "layout": "grid"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "/kontakt",
+      "title": "Kontakt | HAUPTSTADT IMMOBILIEN",
+      "description": "Nehmen Sie Kontakt mit uns auf. Wir beraten Sie gerne.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "B",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "title": "Kontakt",
+            "subtitle": "Wir freuen uns auf Ihre Nachricht"
+          }
+        },
+        {
+          "type": "contact",
+          "variant": "A",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "title": "Schreiben Sie uns",
+            "showMap": true,
+            "formFields": ["name", "email", "phone", "subject", "message"]
+          }
+        }
+      ]
+    }
+  ]
+}

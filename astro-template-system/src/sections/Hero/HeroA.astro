@@ -1,0 +1,236 @@
+---
+import type { HeroProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<HeroProps> {}
+
+const { 
+  title, 
+  subtitle, 
+  description, 
+  cta, 
+  search 
+} = Astro.props;
+---
+
+<section class="hero hero-a">
+  <div class="hero-background"></div>
+  <div class="hero-content container">
+    <div class="hero-text">
+      <h1 class="hero-title">
+        {title}
+        {subtitle && <span class="hero-subtitle">{subtitle}</span>}
+      </h1>
+      {description && <p class="hero-description">{description}</p>}
+
+      {cta && (
+        <div class="hero-ctas">
+          <a href={cta.primary.href} class="btn btn-primary">
+            {cta.primary.text}
+          </a>
+          {cta.secondary && (
+            <a href={cta.secondary.href} class="btn btn-secondary">
+              {cta.secondary.text}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+
+    {search?.enabled && (
+      <div class="hero-search">
+        <div class="search-tabs">
+          {search.filters.map(filter => (
+            <button class="search-tab" data-filter={filter}>
+              {filter.charAt(0).toUpperCase() + filter.slice(1)}
+            </button>
+          ))}
+        </div>
+        <div class="search-form">
+          <select class="search-select">
+            <option value="">Objekttyp wählen</option>
+            {search.types.map(type => (
+              <option value={type}>
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+              </option>
+            ))}
+          </select>
+          <input 
+            type="text" 
+            class="search-input" 
+            placeholder="Ort oder PLZ"
+          />
+          <button class="btn btn-primary search-btn">
+            <i class="fas fa-search"></i>
+            Suchen
+          </button>
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero-a {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-4xl) 0;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    z-index: -1;
+  }
+
+  .hero-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80') center/cover;
+    opacity: 0.1;
+  }
+
+  .hero-content {
+    width: 100%;
+    z-index: 1;
+  }
+
+  .hero-text {
+    text-align: center;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    display: block;
+    color: var(--color-accent);
+    margin-top: 0.5rem;
+  }
+
+  .hero-description {
+    font-size: var(--text-xl);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Search Widget */
+  .hero-search {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-xl);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .search-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .search-tab {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: transparent;
+    border: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+  }
+
+  .search-tab:hover,
+  .search-tab.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .search-form {
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    gap: var(--spacing-md);
+    align-items: center;
+  }
+
+  .search-select,
+  .search-input {
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    transition: var(--transition-smooth);
+  }
+
+  .search-select:focus,
+  .search-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+  }
+
+  .search-btn {
+    white-space: nowrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-a {
+      min-height: 500px;
+      padding: var(--spacing-3xl) 0;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-description {
+      font-size: var(--text-base);
+    }
+
+    .search-form {
+      grid-template-columns: 1fr;
+    }
+
+    .search-tabs {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+</style>
+
+<script>
+  // Simple tab switching
+  document.querySelectorAll('.search-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+  
+  // Set first tab as active by default
+  document.querySelector('.search-tab')?.classList.add('active');
+</script>

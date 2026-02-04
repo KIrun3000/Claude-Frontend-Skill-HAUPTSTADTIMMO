@@ -1,0 +1,185 @@
+---
+import type { TeamProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<TeamProps> {}
+
+const { 
+  label,
+  title,
+  subtitle,
+  members = []
+} = Astro.props;
+---
+
+<section class="team section" id="team">
+  <div class="container">
+    <div class="section-header">
+      {label && (
+        <span class="section-label">
+          <i class="fas fa-users"></i>
+          {label}
+        </span>
+      )}
+      <h2 class="section-title">{title}</h2>
+      {subtitle && <p class="section-subtitle">{subtitle}</p>}
+    </div>
+
+    <div class="team-grid">
+      {members.map((member, index) => (
+        <div class="team-card" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="team-photo">
+            <img src={member.image} alt={member.name} loading="lazy" />
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">{member.name}</h3>
+            <div class="team-role">{member.role}</div>
+            <div class="team-contact-links">
+              {member.phone && (
+                <a href={`tel:${member.phone}`} title="Anrufen">
+                  <i class="fas fa-phone"></i>
+                </a>
+              )}
+              {member.email && (
+                <a href={`mailto:${member.email}`} title="E-Mail">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              )}
+              {member.linkedin && (
+                <a href={member.linkedin} title="LinkedIn" target="_blank" rel="noopener">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .team {
+    background: var(--color-white);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-accent);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+  }
+
+  .team-card {
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .team-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+  }
+
+  .team-card:hover .team-photo {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .team-card:hover .team-photo img {
+    transform: scale(1.05);
+  }
+
+  .team-name {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .team-role {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .team-contact-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+  }
+
+  .team-contact-links a {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background: var(--color-cream);
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+  }
+
+  .team-contact-links a:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .team-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

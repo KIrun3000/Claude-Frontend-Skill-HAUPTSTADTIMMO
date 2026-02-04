@@ -1,0 +1,105 @@
+---
+import type { USPsProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<USPsProps> {}
+
+const { items = [] } = Astro.props;
+---
+
+<section class="usps section">
+  <div class="container">
+    <div class="usps-grid">
+      {items.map((item, index) => (
+        <div class="usp-card" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="usp-icon">
+            <i class={`fas ${item.icon}`}></i>
+          </div>
+          <h3 class="usp-title">{item.title}</h3>
+          <p class="usp-description">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .usps {
+    background: var(--color-white);
+  }
+
+  .usps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+  }
+
+  .usp-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    transition: var(--transition-smooth);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .usp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    background: var(--color-accent-light);
+  }
+
+  .usp-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-radius: var(--radius-full);
+    font-size: 1.8rem;
+    transition: var(--transition-bounce);
+  }
+
+  .usp-card:hover .usp-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .usp-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .usp-description {
+    color: var(--color-text-light);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 992px) {
+    .usps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .usps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

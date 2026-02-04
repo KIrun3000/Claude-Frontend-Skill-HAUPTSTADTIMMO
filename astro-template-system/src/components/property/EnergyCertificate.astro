@@ -1,0 +1,191 @@
+---
+interface Props {
+  type: string;
+  consumption: string;
+  energyClass: string;
+  carrier: string;
+  heatingYear?: number;
+  heatingType?: string;
+  markerPosition?: number;
+}
+
+const { type, consumption, energyClass, carrier, heatingYear, heatingType, markerPosition = 50 } = Astro.props;
+
+const energyClasses = ['A+', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+const colors = ['#00a651', '#4fb14e', '#b3d334', '#fff200', '#ffc20e', '#f39200', '#ed1c24', '#c1121c', '#8b0000'];
+---
+
+<div class="energy-certificate">
+  <h3>Energieausweis</h3>
+  
+  <div class="energy-info">
+    <div class="energy-row">
+      <span class="label">Energieausweistyp:</span>
+      <span class="value">{type}</span>
+    </div>
+    <div class="energy-row">
+      <span class="label">Endenergieverbrauch:</span>
+      <span class="value">{consumption}</span>
+    </div>
+    <div class="energy-row">
+      <span class="label">Energieeffizienzklasse:</span>
+      <span class="value energy-class">{energyClass}</span>
+    </div>
+    <div class="energy-row">
+      <span class="label">Wesentlicher Energieträger:</span>
+      <span class="value">{carrier}</span>
+    </div>
+    {heatingType && (
+      <div class="energy-row">
+        <span class="label">Heizungsart:</span>
+        <span class="value">{heatingType}</span>
+      </div>
+    )}
+    {heatingYear && (
+      <div class="energy-row">
+        <span class="label">Baujahr Heizung:</span>
+        <span class="value">{heatingYear}</span>
+      </div>
+    )}
+  </div>
+
+  <div class="energy-scale">
+    {energyClasses.map((cls, index) => (
+      <div 
+        class="energy-bar" 
+        style={`background-color: ${colors[index]};`}
+      >
+        <span class="energy-bar-label">{cls}</span>
+      </div>
+    ))}
+    <div 
+      class="energy-marker" 
+      style={`left: ${markerPosition}%;`}
+      title={energyClass}
+    >
+      <div class="energy-marker-arrow"></div>
+      <div class="energy-marker-label">{consumption}</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .energy-certificate {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .energy-certificate h3 {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .energy-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .energy-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .energy-row .label {
+    color: var(--color-text-light);
+    font-size: var(--text-sm);
+  }
+
+  .energy-row .value {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .energy-row .energy-class {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+  }
+
+  .energy-scale {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: var(--spacing-xl);
+  }
+
+  .energy-bar {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing-md);
+    position: relative;
+  }
+
+  .energy-bar-label {
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  .energy-marker {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  .energy-marker-arrow {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid var(--color-primary);
+    margin: 0 auto;
+  }
+
+  .energy-marker-label {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: var(--text-xs);
+    text-align: center;
+    white-space: nowrap;
+    margin-top: -2px;
+  }
+
+  @media (max-width: 600px) {
+    .energy-certificate {
+      padding: var(--spacing-lg);
+    }
+
+    .energy-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+
+    .energy-bar {
+      height: 25px;
+    }
+
+    .energy-bar-label {
+      font-size: 0.7rem;
+    }
+  }
+</style>
