@@ -6,6 +6,9 @@ dist/
 # dependencies
 node_modules/
 
+# generated site imports
+src/content/sites/generated/*.json
+
 # logs
 npm-debug.log*
 yarn-debug.log*

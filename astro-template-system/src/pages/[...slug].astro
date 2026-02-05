@@ -5,15 +5,30 @@ import { getSection } from '../utils/sectionRegistry';
 
 // Get all sites
 export async function getStaticPaths() {
+  // NOTE: Astro hoists `getStaticPaths()` outside the component function.
+  // Any frontmatter `const` values may end up scoped to the component only,
+  // so read env vars inside `getStaticPaths()` to avoid "is not defined" at build time.
+  const activeSiteId = process.env.PROMAKLER_SITE_ID || '';
   const sites = await getCollection('sites');
+  const selectedSites = activeSiteId
+    ? sites.filter((site) => site.data?.meta?.domain === activeSiteId)
+    : sites;
+
+  if (activeSiteId && selectedSites.length === 0) {
+    console.warn(
+      `[promakler] PROMAKLER_SITE_ID=${activeSiteId} did not match any site (by meta.domain).`
+    );
+  }
   
   const paths = [];
   
-  for (const site of sites) {
+  for (const site of selectedSites) {
     for (const page of site.data.pages) {
+      // Backward-compat: older exports used "home" instead of "/" for the homepage.
+      const normalizedSlug = page.slug === 'home' ? '/' : page.slug;
       paths.push({
         params: { 
-          slug: page.slug === '/' ? undefined : page.slug.replace(/^\//, '')
+          slug: normalizedSlug === '/' ? undefined : normalizedSlug.replace(/^\//, '')
         },
         props: { 
           site: site.data,

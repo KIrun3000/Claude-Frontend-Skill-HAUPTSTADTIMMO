@@ -26,7 +26,7 @@ if (!siteId) {
   process.exit(1);
 }
 
-const targetDir = path.resolve(process.cwd(), 'src', 'content', 'sites');
+const targetDir = path.resolve(process.cwd(), 'src', 'content', 'sites', 'generated');
 fs.mkdirSync(targetDir, { recursive: true });
 
 const targetPath = path.join(targetDir, `${siteId}.json`);
