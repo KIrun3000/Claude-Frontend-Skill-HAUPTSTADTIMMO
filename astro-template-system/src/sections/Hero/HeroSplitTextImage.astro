@@ -1,0 +1,429 @@
+---
+import type { HeroProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<HeroProps> {}
+
+const {
+  badge,
+  title = "Ihr Partner für Immobilien",
+  subtitle,
+  description,
+  image,
+  cta,
+  stats
+} = Astro.props;
+---
+
+<section class="hero-split">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-content-inner">
+        {badge && (
+          <div class="hero-badge">
+            {badge.icon && <i class={`fas ${badge.icon}`}></i>}
+            <span>{badge.text}</span>
+          </div>
+        )}
+
+        <h1 class="hero-title">
+          {title}
+          {subtitle && <span class="hero-subtitle">{subtitle}</span>}
+        </h1>
+
+        {description && (
+          <p class="hero-description">{description}</p>
+        )}
+
+        {cta && (
+          <div class="hero-ctas">
+            <a href={cta.primary.href} class="btn-split-primary">
+              <span>{cta.primary.text}</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            {cta.secondary && (
+              <a href={cta.secondary.href} class="btn-split-secondary">
+                <span>{cta.secondary.text}</span>
+              </a>
+            )}
+          </div>
+        )}
+
+        {stats && stats.length > 0 && (
+          <div class="hero-stats">
+            {stats.map(stat => (
+              <div class="hero-stat">
+                <span class="stat-value">{stat.value}</span>
+                <span class="stat-label">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div class="hero-image-wrapper">
+      <div class="hero-image-container">
+        {image ? (
+          <img src={image} alt={title} class="hero-image" loading="eager" />
+        ) : (
+          <div class="hero-image-placeholder">
+            <i class="fas fa-building"></i>
+          </div>
+        )}
+
+        <div class="hero-image-accent"></div>
+        <div class="hero-image-dots"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bg-pattern"></div>
+</section>
+
+<style>
+  .hero-split {
+    position: relative;
+    min-height: calc(100vh - 111px);
+    background: var(--color-cream);
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 111px);
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .hero-content {
+    display: flex;
+    align-items: center;
+    padding: 4rem 3rem 4rem 4rem;
+  }
+
+  .hero-content-inner {
+    max-width: 580px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeInLeft 0.6s ease forwards;
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    animation: fadeInLeft 0.6s ease forwards 0.1s;
+    opacity: 0;
+  }
+
+  .hero-subtitle {
+    display: block;
+    color: var(--color-accent);
+    margin-top: 0.3rem;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+    animation: fadeInLeft 0.6s ease forwards 0.2s;
+    opacity: 0;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    animation: fadeInLeft 0.6s ease forwards 0.3s;
+    opacity: 0;
+  }
+
+  .btn-split-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    padding: 1rem 1.8rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-split-primary:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px var(--color-primary-20);
+  }
+
+  .btn-split-primary i {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-split-primary:hover i {
+    transform: translateX(3px);
+  }
+
+  .btn-split-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: transparent;
+    color: var(--color-primary);
+    padding: 1rem 1.8rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 2px solid var(--color-border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-split-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    animation: fadeInLeft 0.6s ease forwards 0.4s;
+    opacity: 0;
+  }
+
+  .hero-stat {
+    text-align: left;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.4rem;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+  }
+
+  .hero-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    animation: fadeInRight 0.8s ease forwards 0.2s;
+    opacity: 0;
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .hero-image-placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-image-placeholder i {
+    font-size: 4rem;
+    color: var(--color-accent);
+    opacity: 0.3;
+  }
+
+  .hero-image-accent {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60%;
+    height: 60%;
+    background: var(--color-accent);
+    z-index: 1;
+  }
+
+  .hero-image-dots {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    background-image: radial-gradient(var(--color-accent) 2px, transparent 2px);
+    background-size: 12px 12px;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-02) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-badge,
+    .hero-title,
+    .hero-description,
+    .hero-ctas,
+    .hero-stats,
+    .hero-image-container {
+      animation: none;
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .hero-content {
+      padding: 3rem 2rem;
+    }
+
+    .hero-image-wrapper {
+      padding: 2rem;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-split {
+      min-height: auto;
+    }
+
+    .hero-content {
+      padding: 4rem 2rem 3rem;
+      order: 1;
+    }
+
+    .hero-content-inner {
+      max-width: 100%;
+    }
+
+    .hero-image-wrapper {
+      order: 2;
+      padding: 0 2rem 4rem;
+    }
+
+    .hero-image-container {
+      max-width: 450px;
+    }
+
+    .hero-stats {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-content {
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    .hero-image-wrapper {
+      padding: 0 1.5rem 3rem;
+    }
+
+    .hero-image-accent {
+      top: -15px;
+      right: -15px;
+    }
+
+    .hero-image-dots {
+      bottom: -20px;
+      left: -20px;
+      width: 80px;
+      height: 80px;
+    }
+
+    .hero-stats {
+      flex-wrap: wrap;
+      gap: 1.5rem 2rem;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+    }
+
+    .btn-split-primary,
+    .btn-split-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,0 +1,310 @@
+---
+import type { TrustProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<TrustProps> {}
+
+const {
+  title = "Was unsere Kunden sagen",
+  subtitle,
+  reviewScore,
+  reviews = []
+} = Astro.props;
+
+const displayedReviews = reviews.slice(0, 3);
+const fullStars = Math.floor(reviewScore?.score || 0);
+const hasHalfStar = (reviewScore?.score || 0) - fullStars >= 0.5;
+---
+
+<section class="trust-reviews section">
+  <div class="container">
+    <div class="reviews-layout">
+      <div class="reviews-summary">
+        <div class="summary-content">
+          {title && <h2 class="section-title">{title}</h2>}
+          {subtitle && <p class="section-subtitle">{subtitle}</p>}
+
+          {reviewScore && (
+            <div class="score-box">
+              <div class="score-main">
+                <span class="score-value">{reviewScore.score.toFixed(1)}</span>
+                <div class="score-details">
+                  <div class="score-stars">
+                    {[...Array(5)].map((_, i) => (
+                      <i class={`fas ${i < fullStars ? 'fa-star' : (i === fullStars && hasHalfStar ? 'fa-star-half-alt' : 'fa-star')}`}
+                         style={i >= fullStars && !(i === fullStars && hasHalfStar) ? 'opacity: 0.3' : ''}></i>
+                    ))}
+                  </div>
+                  <span class="score-count">
+                    Basierend auf {reviewScore.count.toLocaleString('de-DE')} Bewertungen
+                  </span>
+                </div>
+              </div>
+              {reviewScore.source && (
+                <div class="score-source">
+                  <i class="fas fa-check-circle"></i>
+                  Verifiziert durch {reviewScore.source}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div class="reviews-quotes">
+        {displayedReviews.map((review, index) => (
+          <blockquote class="review-card" style={`--delay: ${index * 0.15}s`}>
+            <div class="review-stars">
+              {[...Array(5)].map((_, i) => (
+                <i class={`fas fa-star ${i < review.rating ? 'active' : ''}`}></i>
+              ))}
+            </div>
+            <p class="review-text">"{review.text}"</p>
+            <footer class="review-author">
+              {review.avatar && (
+                <img src={review.avatar} alt={review.author} class="author-avatar" />
+              )}
+              <div class="author-info">
+                <cite class="author-name">{review.author}</cite>
+                {review.role && <span class="author-role">{review.role}</span>}
+              </div>
+              {review.source && (
+                <span class="review-source">{review.source}</span>
+              )}
+            </footer>
+            <div class="review-decoration"></div>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-reviews {
+    background: var(--color-cream);
+  }
+
+  .reviews-layout {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .reviews-summary {
+    position: sticky;
+    top: 140px;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 0.75rem;
+    text-align: left;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0 0 2rem;
+    text-align: left;
+  }
+
+  .score-box {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .score-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .score-value {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .score-details {
+    padding-top: 0.3rem;
+  }
+
+  .score-stars {
+    display: flex;
+    gap: 0.2rem;
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .score-count {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  .score-source {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-success);
+    font-weight: 500;
+  }
+
+  .reviews-quotes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    position: relative;
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-accent);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin: 0;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideIn 0.6s ease forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .review-stars {
+    display: flex;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .review-stars i {
+    font-size: 0.9rem;
+    color: var(--color-border);
+  }
+
+  .review-stars i.active {
+    color: var(--color-accent);
+  }
+
+  .review-text {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-text);
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-info {
+    flex: 1;
+  }
+
+  .author-name {
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .author-role {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  .review-source {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    background: var(--color-cream);
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .review-decoration {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--color-accent);
+    opacity: 0.1;
+  }
+
+  .review-decoration::before {
+    content: '"';
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .review-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .reviews-layout {
+      grid-template-columns: 320px 1fr;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .reviews-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .reviews-summary {
+      position: static;
+    }
+
+    .score-box {
+      max-width: 400px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .review-card {
+      padding: 1.5rem;
+    }
+
+    .review-author {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .review-source {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>

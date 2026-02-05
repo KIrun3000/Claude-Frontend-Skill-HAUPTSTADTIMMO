@@ -1,0 +1,307 @@
+---
+import type { ServicesProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<ServicesProps> {}
+
+const {
+  label,
+  title = "Unsere Leistungen",
+  subtitle,
+  items = []
+} = Astro.props;
+---
+
+<section class="services-card-grid section">
+  <div class="container">
+    <div class="section-header">
+      {label && (
+        <span class="section-label">
+          <i class="fas fa-briefcase"></i>
+          {label}
+        </span>
+      )}
+      <h2 class="section-title">{title}</h2>
+      {subtitle && <p class="section-subtitle">{subtitle}</p>}
+    </div>
+
+    <div class="services-grid">
+      {items.map((item, index) => (
+        <article class="service-card" style={`--delay: ${index * 0.15}s`}>
+          <div class="card-header">
+            {item.image ? (
+              <div class="card-image">
+                <img src={item.image} alt={item.title} loading="lazy" />
+                <div class="card-image-overlay"></div>
+              </div>
+            ) : (
+              <div class="card-icon-header">
+                <div class="card-icon">
+                  <i class={`fas ${item.icon}`}></i>
+                </div>
+              </div>
+            )}
+            <span class="card-number">{String(index + 1).padStart(2, '0')}</span>
+          </div>
+
+          <div class="card-content">
+            <h3 class="card-title">{item.title}</h3>
+            <p class="card-description">{item.description}</p>
+
+            {item.cta && (
+              <a href={item.cta.href} class="card-cta">
+                <span>{item.cta.text}</span>
+                <i class="fas fa-long-arrow-alt-right"></i>
+              </a>
+            )}
+          </div>
+
+          <div class="card-accent"></div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-card-grid {
+    background: var(--color-cream);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-3xl);
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .service-card {
+    position: relative;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.7s ease forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px var(--color-primary-12);
+  }
+
+  .card-header {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .service-card:hover .card-image img {
+    transform: scale(1.08);
+  }
+
+  .card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      var(--color-primary-60) 100%
+    );
+  }
+
+  .card-icon-header {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--color-accent);
+    transition: all 0.4s ease;
+  }
+
+  .service-card:hover .card-icon {
+    transform: scale(1.1);
+    background: var(--color-accent);
+    color: var(--color-primary);
+  }
+
+  .card-number {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-white);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    padding: 0.3rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .card-content {
+    padding: 2rem;
+  }
+
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .service-card:hover .card-title {
+    color: var(--color-accent);
+  }
+
+  .card-description {
+    color: var(--color-text-light);
+    line-height: 1.75;
+    margin: 0 0 1.5rem;
+  }
+
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    background: var(--color-accent-light);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+  }
+
+  .card-cta:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+    transform: translateX(5px);
+  }
+
+  .card-cta i {
+    transition: transform 0.3s ease;
+  }
+
+  .card-cta:hover i {
+    transform: translateX(4px);
+  }
+
+  .card-accent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent) 0%, transparent 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .service-card:hover .card-accent {
+    transform: scaleX(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .service-card:hover {
+      transform: none;
+    }
+
+    .card-image img {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .services-grid {
+      gap: 2rem;
+    }
+
+    .card-header {
+      height: 160px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+  }
+</style>

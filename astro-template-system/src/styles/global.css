@@ -17,6 +17,35 @@
   --color-success: #10b981;
   --color-error: #ef4444;
 
+  /* Derived CI colors (use brand colors with opacity mixes) */
+  --color-primary-92: color-mix(in srgb, var(--color-primary) 92%, transparent);
+  --color-primary-88: color-mix(in srgb, var(--color-primary) 88%, transparent);
+  --color-primary-85: color-mix(in srgb, var(--color-primary) 85%, transparent);
+  --color-primary-70: color-mix(in srgb, var(--color-primary) 70%, transparent);
+  --color-primary-60: color-mix(in srgb, var(--color-primary) 60%, transparent);
+  --color-primary-50: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  --color-primary-40: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  --color-primary-20: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  --color-primary-12: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  --color-primary-10: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  --color-primary-02: color-mix(in srgb, var(--color-primary) 2%, transparent);
+
+  --color-secondary-88: color-mix(in srgb, var(--color-secondary) 88%, transparent);
+  --color-secondary-75: color-mix(in srgb, var(--color-secondary) 75%, transparent);
+  --color-secondary-70: color-mix(in srgb, var(--color-secondary) 70%, transparent);
+
+  --color-accent-40: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  --color-accent-30: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  --color-accent-25: color-mix(in srgb, var(--color-accent) 25%, transparent);
+  --color-accent-20: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  --color-accent-15: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  --color-accent-10: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  --color-accent-08: color-mix(in srgb, var(--color-accent) 8%, transparent);
+
+  --color-accent-strong: color-mix(in srgb, var(--color-accent) 85%, var(--color-primary) 15%);
+  --color-primary-deep: color-mix(in srgb, var(--color-primary) 70%, var(--color-secondary) 30%);
+  --color-cream-strong: color-mix(in srgb, var(--color-cream) 70%, var(--color-border) 30%);
+
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;

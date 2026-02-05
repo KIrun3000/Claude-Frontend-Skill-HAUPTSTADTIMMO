@@ -127,9 +127,9 @@ const {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg,
-      rgba(26, 26, 46, 0.85) 0%,
-      rgba(22, 33, 62, 0.7) 50%,
-      rgba(26, 26, 46, 0.6) 100%);
+      var(--color-primary-85) 0%,
+      var(--color-secondary-70) 50%,
+      var(--color-primary-60) 100%);
   }
 
   .hero-content {
@@ -152,7 +152,7 @@ const {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(201, 162, 39, 0.2);
+    background: var(--color-accent-20);
     border: 1px solid var(--color-accent);
     padding: 0.5rem 1rem;
     font-size: 0.85rem;

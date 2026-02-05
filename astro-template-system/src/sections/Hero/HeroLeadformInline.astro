@@ -1,0 +1,388 @@
+---
+import type { HeroProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<HeroProps> {}
+
+const {
+  badge,
+  title = "Kostenlose Immobilienbewertung",
+  subtitle,
+  description,
+  backgroundImage,
+  leadForm = {
+    fields: [
+      { name: 'address', type: 'text', placeholder: 'Straße, Hausnummer, PLZ, Ort', required: true },
+      { name: 'phone', type: 'tel', placeholder: 'Ihre Telefonnummer', required: false },
+    ],
+    submitText: 'Jetzt bewerten lassen',
+    privacyText: 'Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.'
+  },
+  stats
+} = Astro.props;
+
+const defaultFields = leadForm?.fields || [];
+---
+
+<section class="hero-leadform">
+  <div class="hero-bg">
+    {backgroundImage ? (
+      <img src={backgroundImage} alt="" loading="eager" />
+    ) : (
+      <div class="hero-bg-gradient"></div>
+    )}
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content container">
+    <div class="hero-text">
+      {badge && (
+        <div class="hero-badge">
+          {badge.icon && <i class={`fas ${badge.icon}`}></i>}
+          <span>{badge.text}</span>
+        </div>
+      )}
+
+      <h1 class="hero-title">
+        {title}
+        {subtitle && <span class="hero-subtitle">{subtitle}</span>}
+      </h1>
+
+      {description && (
+        <p class="hero-description">{description}</p>
+      )}
+    </div>
+
+    <form class="leadform" id="leadForm">
+      <div class="leadform-fields">
+        {defaultFields.map((field) => (
+          <div class="leadform-field">
+            {field.type === 'select' ? (
+              <select
+                name={field.name}
+                required={field.required}
+                aria-label={field.placeholder}
+              >
+                <option value="">{field.placeholder}</option>
+                {field.options?.map((option) => (
+                  <option value={option}>{option}</option>
+                ))}
+              </select>
+            ) : field.type === 'textarea' ? (
+              <textarea
+                name={field.name}
+                placeholder={field.placeholder}
+                required={field.required}
+                rows="3"
+              ></textarea>
+            ) : (
+              <input
+                type={field.type}
+                name={field.name}
+                placeholder={field.placeholder}
+                required={field.required}
+              />
+            )}
+          </div>
+        ))}
+        <button type="submit" class="leadform-submit">
+          <span>{leadForm?.submitText || 'Absenden'}</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      {leadForm?.privacyText && (
+        <p class="leadform-privacy">
+          <i class="fas fa-shield-alt"></i>
+          {leadForm.privacyText}
+        </p>
+      )}
+    </form>
+
+    {stats && stats.length > 0 && (
+      <div class="hero-stats">
+        {stats.map(stat => (
+          <div class="hero-stat">
+            <span class="stat-value">{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero-leadform {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    padding: 5rem 0;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-bg-gradient {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-92) 0%,
+      var(--color-secondary-88) 100%
+    );
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--color-white);
+  }
+
+  .hero-text {
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-accent-15);
+    border: 1px solid var(--color-accent-30);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    display: block;
+    color: var(--color-accent);
+    font-size: 0.9em;
+    margin-top: 0.3rem;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+
+  .leadform {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .leadform-fields {
+    display: flex;
+    gap: 0;
+    background: var(--color-white);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+
+  .leadform-field {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .leadform-field input,
+  .leadform-field select,
+  .leadform-field textarea {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    border: none;
+    border-right: 1px solid var(--color-border);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text);
+    background: transparent;
+    transition: background 0.2s ease;
+  }
+
+  .leadform-field input:focus,
+  .leadform-field select:focus,
+  .leadform-field textarea:focus {
+    outline: none;
+    background: var(--color-accent-light);
+  }
+
+  .leadform-field input::placeholder,
+  .leadform-field textarea::placeholder {
+    color: var(--color-text-light);
+  }
+
+  .leadform-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    padding: 1.2rem 2rem;
+    border: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+  }
+
+  .leadform-submit:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .leadform-submit i {
+    transition: transform 0.3s ease;
+  }
+
+  .leadform-submit:hover i {
+    transform: translateX(3px);
+  }
+
+  .leadform-privacy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .leadform-privacy i {
+    color: var(--color-accent);
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.4rem;
+  }
+
+  @media (max-width: 992px) {
+    .leadform-fields {
+      flex-direction: column;
+    }
+
+    .leadform-field input,
+    .leadform-field select {
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .leadform-submit {
+      width: 100%;
+      justify-content: center;
+      padding: 1.3rem 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-leadform {
+      min-height: auto;
+      padding: 4rem 0;
+    }
+
+    .hero-stats {
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-text {
+      margin-bottom: 2rem;
+    }
+
+    .leadform-field input,
+    .leadform-field select {
+      padding: 1rem 1.2rem;
+    }
+
+    .leadform-submit {
+      padding: 1.1rem 1.5rem;
+    }
+
+    .hero-stats {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+
+    .stat-value {
+      font-size: 1.6rem;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('leadForm') as HTMLFormElement;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    console.log('Lead form submitted:', data);
+    alert('Vielen Dank! Wir melden uns schnellstmöglich bei Ihnen.');
+    form.reset();
+  });
+</script>

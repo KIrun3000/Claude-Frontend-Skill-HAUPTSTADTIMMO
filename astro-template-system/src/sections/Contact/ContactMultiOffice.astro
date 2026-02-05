@@ -1,0 +1,255 @@
+---
+import type { ContactProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<ContactProps> {}
+
+const {
+  title = "Unsere Standorte",
+  subtitle,
+  offices = []
+} = Astro.props;
+---
+
+<section class="contact-multi-office section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{title}</h2>
+      {subtitle && <p class="section-subtitle">{subtitle}</p>}
+    </div>
+
+    <div class="offices-grid">
+      {offices.map((office, index) => (
+        <article class="office-card" style={`--delay: ${index * 0.15}s`}>
+          {office.image && (
+            <div class="office-image">
+              <img src={office.image} alt={office.name} loading="lazy" />
+            </div>
+          )}
+
+          <div class="office-content">
+            <h3 class="office-name">{office.name}</h3>
+
+            <div class="office-details">
+              <div class="detail-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>{office.address}</span>
+              </div>
+
+              <div class="detail-item">
+                <i class="fas fa-phone"></i>
+                <a href={`tel:${office.phone}`}>{office.phone}</a>
+              </div>
+
+              <div class="detail-item">
+                <i class="fas fa-envelope"></i>
+                <a href={`mailto:${office.email}`}>{office.email}</a>
+              </div>
+
+              {office.hours && (
+                <div class="detail-item">
+                  <i class="fas fa-clock"></i>
+                  <span>{office.hours}</span>
+                </div>
+              )}
+            </div>
+
+            <div class="office-actions">
+              {office.mapUrl && (
+                <a href={office.mapUrl} target="_blank" rel="noopener noreferrer" class="btn-directions">
+                  <i class="fas fa-directions"></i>
+                  Route planen
+                </a>
+              )}
+              <a href={`tel:${office.phone}`} class="btn-call">
+                <i class="fas fa-phone"></i>
+                Anrufen
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-multi-office {
+    background: var(--color-cream);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-3xl);
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .offices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+
+  .office-card {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: var(--delay, 0s);
+    transition: all 0.4s ease;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .office-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .office-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .office-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .office-card:hover .office-image img {
+    transform: scale(1.05);
+  }
+
+  .office-content {
+    padding: 1.75rem;
+  }
+
+  .office-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  .office-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--color-text);
+  }
+
+  .detail-item i {
+    width: 18px;
+    margin-top: 0.15rem;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .detail-item a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .detail-item a:hover {
+    color: var(--color-accent);
+  }
+
+  .office-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .btn-directions,
+  .btn-call {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+  }
+
+  .btn-directions {
+    background: var(--color-cream);
+    color: var(--color-primary);
+  }
+
+  .btn-directions:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .btn-call {
+    background: var(--color-accent);
+    color: var(--color-primary);
+  }
+
+  .btn-call:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .office-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .office-card:hover {
+      transform: none;
+    }
+
+    .office-image img {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .offices-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .office-actions {
+      flex-direction: column;
+    }
+  }
+</style>

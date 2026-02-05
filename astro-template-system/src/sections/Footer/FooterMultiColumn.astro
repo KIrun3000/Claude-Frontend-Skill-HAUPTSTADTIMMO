@@ -1,0 +1,282 @@
+---
+// This is an alias to FooterA with the same functionality
+// Re-export FooterA as FooterMultiColumn for descriptive naming
+import type { FooterProps } from '../../../schema/site.schema';
+import type { Brand, Contact } from '../../../schema/site.schema';
+
+interface Props extends Partial<FooterProps> {
+  brand?: Brand;
+  contact?: Contact;
+}
+
+const {
+  about,
+  columns = [],
+  legal = [],
+  copyright,
+  brand,
+  contact
+} = Astro.props;
+---
+
+<footer class="footer-multi-column">
+  <div class="footer-content">
+    <div class="container">
+      <div class="footer-grid">
+        {/* About Column */}
+        {about && (
+          <div class="footer-about">
+            {about.logo ? (
+              <img src={about.logo} alt="Logo" class="footer-logo" />
+            ) : brand && (
+              <div class="footer-brand">
+                <span class="logo-text">
+                  {brand.name.split(' ').map((word, i) =>
+                    i === brand.name.split(' ').length - 1
+                      ? <span class="accent">{word}</span>
+                      : <span>{word} </span>
+                  )}
+                </span>
+              </div>
+            )}
+            <p class="footer-about-text">{about.text}</p>
+            {about.social && about.social.length > 0 && (
+              <div class="footer-social">
+                {about.social.map(social => (
+                  <a href={social.url} aria-label={social.platform} target="_blank" rel="noopener">
+                    <i class={social.icon}></i>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Link Columns */}
+        {columns.map(column => (
+          <div class="footer-column">
+            <h4>{column.title}</h4>
+            <ul class="footer-links">
+              {column.links.map(link => (
+                <li><a href={link.href}>{link.text}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        {/* Contact Column if contact data available */}
+        {contact && (
+          <div class="footer-column footer-contact">
+            <h4>Kontakt</h4>
+            <div class="contact-info">
+              {contact.phone && (
+                <a href={`tel:${contact.phone}`} class="contact-link">
+                  <i class="fas fa-phone"></i>
+                  <span>{contact.phone}</span>
+                </a>
+              )}
+              {contact.email && (
+                <a href={`mailto:${contact.email}`} class="contact-link">
+                  <i class="fas fa-envelope"></i>
+                  <span>{contact.email}</span>
+                </a>
+              )}
+              {contact.address && (
+                <div class="contact-link">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>{contact.address}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <span>{copyright || `© ${new Date().getFullYear()} ${brand?.name}. Alle Rechte vorbehalten.`}</span>
+        {legal && legal.length > 0 && (
+          <div class="footer-legal">
+            {legal.map(item => (
+              <a href={item.href}>{item.text}</a>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-multi-column {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .footer-content {
+    padding: var(--spacing-4xl) 0 var(--spacing-2xl);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-3xl);
+  }
+
+  .footer-about {
+    padding-right: var(--spacing-xl);
+  }
+
+  .footer-logo {
+    height: 40px;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .footer-brand .logo-text {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-white);
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand .accent {
+    color: var(--color-accent);
+  }
+
+  .footer-about-text {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    margin: var(--spacing-lg) 0;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+  }
+
+  .footer-social a:hover {
+    background: var(--color-accent);
+    transform: translateY(-3px);
+  }
+
+  .footer-column h4 {
+    color: var(--color-white);
+    font-size: var(--text-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    font-size: var(--text-sm);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-accent);
+    padding-left: var(--spacing-xs);
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    transition: var(--transition-smooth);
+  }
+
+  .contact-link i {
+    margin-top: 0.15rem;
+    color: var(--color-accent);
+  }
+
+  a.contact-link:hover {
+    color: var(--color-accent);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-xl) 0;
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-sm);
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: var(--spacing-xl);
+  }
+
+  .footer-legal a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+  }
+
+  .footer-legal a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 1200px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-2xl);
+    }
+
+    .footer-about {
+      grid-column: 1 / -1;
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-bottom-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

@@ -1,0 +1,213 @@
+---
+import type { CTAProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<CTAProps> {}
+
+const {
+  title = "Starten Sie jetzt",
+  subtitle,
+  description,
+  cta,
+  backgroundImage
+} = Astro.props;
+---
+
+<section class="cta-image-bg">
+  <div class="cta-bg">
+    {backgroundImage ? (
+      <img src={backgroundImage} alt="" loading="lazy" />
+    ) : (
+      <div class="cta-bg-fallback"></div>
+    )}
+  </div>
+  <div class="cta-overlay"></div>
+
+  <div class="cta-content container">
+    <div class="cta-inner">
+      {subtitle && (
+        <span class="cta-eyebrow">{subtitle}</span>
+      )}
+      <h2 class="cta-title">{title}</h2>
+      {description && (
+        <p class="cta-description">{description}</p>
+      )}
+
+      {cta && (
+        <div class="cta-actions">
+          <a href={cta.primary.href} class="btn-cta-primary">
+            <span>{cta.primary.text}</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          {cta.secondary && (
+            <a href={cta.secondary.href} class="btn-cta-secondary">
+              <i class="fas fa-phone"></i>
+              {cta.secondary.text}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-image-bg {
+    position: relative;
+    padding: 6rem 0;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .cta-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .cta-bg-fallback {
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%),
+      radial-gradient(circle at 25% 25%, var(--color-accent-10) 0%, transparent 60%);
+  }
+
+  .cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-88) 0%,
+      var(--color-secondary-75) 100%
+    );
+    z-index: 1;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--color-white);
+  }
+
+  .cta-eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-accent-15);
+    border: 1px solid var(--color-accent-30);
+  }
+
+  .cta-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    color: var(--color-white);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta-description {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    padding: 1.2rem 2.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-cta-primary:hover {
+    background: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .btn-cta-primary i {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-cta-primary:hover i {
+    transform: translateX(4px);
+  }
+
+  .btn-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.2rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-white);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  @media (max-width: 640px) {
+    .cta-image-bg {
+      padding: 4rem 0;
+      min-height: 400px;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .btn-cta-primary,
+    .btn-cta-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

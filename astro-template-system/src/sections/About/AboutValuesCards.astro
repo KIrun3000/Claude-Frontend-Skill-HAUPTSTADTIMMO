@@ -1,0 +1,200 @@
+---
+import type { AboutProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<AboutProps> {}
+
+const {
+  label,
+  title = "Unsere Werte",
+  subtitle,
+  values = []
+} = Astro.props;
+---
+
+<section class="about-values section">
+  <div class="container">
+    <div class="section-header">
+      {label && (
+        <span class="section-label">
+          <i class="fas fa-heart"></i>
+          {label}
+        </span>
+      )}
+      <h2 class="section-title">{title}</h2>
+      {subtitle && <p class="section-subtitle">{subtitle}</p>}
+    </div>
+
+    <div class="values-grid">
+      {values.map((value, index) => (
+        <article class="value-card" style={`--delay: ${index * 0.1}s`}>
+          <div class="value-icon">
+            <i class={`fas ${value.icon}`}></i>
+          </div>
+          <h3 class="value-title">{value.title}</h3>
+          <p class="value-description">{value.description}</p>
+          <div class="value-number">{String(index + 1).padStart(2, '0')}</div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="bg-decoration"></div>
+</section>
+
+<style>
+  .about-values {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    overflow: hidden;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-3xl);
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+    color: var(--color-white);
+  }
+
+  .section-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .value-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: var(--delay, 0s);
+    transition: all 0.4s ease;
+    overflow: hidden;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .value-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-8px);
+    border-color: var(--color-accent-30);
+  }
+
+  .value-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--color-accent-20) 0%, var(--color-accent-10) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--color-accent);
+    transition: all 0.4s ease;
+  }
+
+  .value-card:hover .value-icon {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px var(--color-accent-30);
+  }
+
+  .value-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: 0.75rem;
+  }
+
+  .value-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .value-number {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    opacity: 0.2;
+    line-height: 1;
+  }
+
+  .bg-decoration {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 10% 90%, var(--color-accent-15) 0%, transparent 40%),
+      radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .value-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .value-card:hover {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .value-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .value-icon {
+      width: 70px;
+      height: 70px;
+      font-size: 1.75rem;
+    }
+  }
+</style>

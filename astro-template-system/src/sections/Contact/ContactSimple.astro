@@ -1,0 +1,301 @@
+---
+import type { ContactProps, Contact } from '../../../schema/site.schema';
+
+interface Props extends Partial<ContactProps> {
+  contact?: Contact;
+}
+
+const {
+  title = "Kontaktieren Sie uns",
+  subtitle,
+  contact
+} = Astro.props;
+---
+
+<section class="contact-simple section">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info">
+        <h2 class="section-title">{title}</h2>
+        {subtitle && <p class="section-subtitle">{subtitle}</p>}
+
+        <div class="info-cards">
+          {contact?.phone && (
+            <a href={`tel:${contact.phone}`} class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="info-content">
+                <span class="info-label">Telefon</span>
+                <span class="info-value">{contact.phone}</span>
+              </div>
+            </a>
+          )}
+
+          {contact?.email && (
+            <a href={`mailto:${contact.email}`} class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-content">
+                <span class="info-label">E-Mail</span>
+                <span class="info-value">{contact.email}</span>
+              </div>
+            </a>
+          )}
+
+          {contact?.address && (
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-content">
+                <span class="info-label">Adresse</span>
+                <span class="info-value">{contact.address}</span>
+              </div>
+            </div>
+          )}
+
+          {contact?.hours && (
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="info-content">
+                <span class="info-label">Öffnungszeiten</span>
+                <span class="info-value">{contact.hours}</span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {contact?.social && (
+          <div class="social-links">
+            {contact.social.facebook && (
+              <a href={contact.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            )}
+            {contact.social.instagram && (
+              <a href={contact.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+            )}
+            {contact.social.linkedin && (
+              <a href={contact.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+
+      <div class="contact-cta-card">
+        <div class="cta-icon">
+          <i class="fas fa-comments"></i>
+        </div>
+        <h3 class="cta-title">Haben Sie Fragen?</h3>
+        <p class="cta-text">
+          Wir stehen Ihnen gerne persönlich zur Verfügung. Rufen Sie uns an oder schreiben Sie uns eine E-Mail.
+        </p>
+        <a href={`tel:${contact?.phone}`} class="cta-button">
+          <i class="fas fa-phone"></i>
+          Jetzt anrufen
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-simple {
+    background: var(--color-cream);
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 0.75rem;
+    text-align: left;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0 0 2.5rem;
+    text-align: left;
+  }
+
+  .info-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+  }
+
+  a.info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .info-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-light);
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    transition: all 0.3s ease;
+  }
+
+  a.info-card:hover .info-icon {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .info-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .info-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .social-links a {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+    border-radius: 50%;
+    color: var(--color-text-light);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .social-links a:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-3px);
+  }
+
+  .contact-cta-card {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    text-align: center;
+    color: var(--color-white);
+  }
+
+  .cta-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--color-accent);
+  }
+
+  .cta-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+  }
+
+  .cta-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 1.1rem 2rem;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: var(--color-white);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 1100px) {
+    .contact-layout {
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .contact-cta-card {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .info-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

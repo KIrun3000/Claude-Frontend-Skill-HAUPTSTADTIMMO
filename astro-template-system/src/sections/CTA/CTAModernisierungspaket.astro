@@ -1,0 +1,383 @@
+---
+import type { CTAProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<CTAProps> {}
+
+const {
+  title = "Das Modernisierungspaket",
+  subtitle = "Unser Premium-Angebot",
+  description,
+  cta,
+  package: pkg = {
+    name: "Rundum-Sorglos",
+    price: "ab 2.500 €",
+    priceNote: "je nach Objektgröße",
+    highlight: "Inkl. Energieausweis & Grundriss",
+    features: [
+      { text: "Professionelle Immobilienfotografie", included: true },
+      { text: "Virtuelle 360°-Tour", included: true },
+      { text: "Premium-Exposé Erstellung", included: true },
+      { text: "Energieausweis Erstellung", included: true },
+      { text: "Maßstabsgetreuer Grundriss", included: true },
+      { text: "Social Media Vermarktung", included: true },
+    ]
+  }
+} = Astro.props;
+---
+
+<section class="cta-modernisierung section">
+  <div class="container">
+    <div class="cta-layout">
+      <div class="cta-info">
+        {subtitle && (
+          <span class="cta-eyebrow">
+            <i class="fas fa-gem"></i>
+            {subtitle}
+          </span>
+        )}
+        <h2 class="cta-title">{title}</h2>
+        {description && (
+          <p class="cta-description">{description}</p>
+        )}
+
+        <div class="cta-guarantees">
+          <div class="guarantee">
+            <i class="fas fa-shield-alt"></i>
+            <span>Festpreis-Garantie</span>
+          </div>
+          <div class="guarantee">
+            <i class="fas fa-clock"></i>
+            <span>Umsetzung in 7 Tagen</span>
+          </div>
+          <div class="guarantee">
+            <i class="fas fa-redo"></i>
+            <span>Zufriedenheitsgarantie</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="package-card">
+        {pkg.highlight && (
+          <div class="package-badge">
+            <i class="fas fa-bolt"></i>
+            {pkg.highlight}
+          </div>
+        )}
+
+        <div class="package-header">
+          <h3 class="package-name">{pkg.name}</h3>
+          {pkg.price && (
+            <div class="package-price">
+              <span class="price-value">{pkg.price}</span>
+              {pkg.priceNote && <span class="price-note">{pkg.priceNote}</span>}
+            </div>
+          )}
+        </div>
+
+        <div class="package-divider"></div>
+
+        <ul class="package-features">
+          {pkg.features?.map((feature) => (
+            <li class={`feature ${feature.included ? 'included' : 'excluded'}`}>
+              <i class={`fas ${feature.included ? 'fa-check' : 'fa-times'}`}></i>
+              <span>{feature.text}</span>
+            </li>
+          ))}
+        </ul>
+
+        {cta && (
+          <div class="package-cta">
+            <a href={cta.primary.href} class="btn-package-primary">
+              <span>{cta.primary.text}</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            {cta.secondary && (
+              <a href={cta.secondary.href} class="btn-package-secondary">
+                {cta.secondary.text}
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-decoration"></div>
+</section>
+
+<style>
+  .cta-modernisierung {
+    position: relative;
+    background: var(--color-cream);
+    overflow: hidden;
+  }
+
+  .cta-layout {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-info {
+    padding-right: 2rem;
+  }
+
+  .cta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-guarantees {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .guarantee {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .guarantee i {
+    color: var(--color-success);
+  }
+
+  .package-card {
+    position: relative;
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.02),
+      0 20px 50px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+  }
+
+  .package-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.02),
+      0 30px 60px rgba(0, 0, 0, 0.12);
+  }
+
+  .package-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-strong) 100%);
+    color: var(--color-primary);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px var(--color-accent-30);
+  }
+
+  .package-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .package-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .package-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .price-value {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  .price-note {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+  }
+
+  .package-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+    margin: 1.5rem 0;
+  }
+
+  .package-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+
+  .feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    font-size: 0.95rem;
+    color: var(--color-text);
+  }
+
+  .feature i {
+    margin-top: 0.15rem;
+    font-size: 0.85rem;
+  }
+
+  .feature.included i {
+    color: var(--color-success);
+  }
+
+  .feature.excluded {
+    color: var(--color-text-light);
+    text-decoration: line-through;
+  }
+
+  .feature.excluded i {
+    color: var(--color-text-light);
+  }
+
+  .package-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn-package-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    padding: 1.1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+  }
+
+  .btn-package-primary:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+  }
+
+  .btn-package-primary i {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-package-primary:hover i {
+    transform: translateX(4px);
+  }
+
+  .btn-package-secondary {
+    display: block;
+    text-align: center;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .btn-package-secondary:hover {
+    color: var(--color-accent);
+  }
+
+  .bg-decoration {
+    position: absolute;
+    top: 50%;
+    right: -200px;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--color-accent-08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  @media (max-width: 1100px) {
+    .cta-layout {
+      grid-template-columns: 1fr 380px;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .cta-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .cta-info {
+      padding-right: 0;
+      text-align: center;
+    }
+
+    .cta-guarantees {
+      justify-content: center;
+    }
+
+    .package-card {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .package-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .cta-guarantees {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+</style>

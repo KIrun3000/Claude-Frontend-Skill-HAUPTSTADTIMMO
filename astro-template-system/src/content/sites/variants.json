@@ -1,0 +1,1048 @@
+{
+  "meta": {
+    "domain": "hauptstadt-immobilien-variants.test",
+    "template": "template-a",
+    "sectionStylePreset": "modern",
+    "detailPageVariant": "vo",
+    "brand": {
+      "name": "HAUPTSTADT IMMOBILIEN",
+      "tagline": "Ihr Partner für exklusive Immobilien in Berlin",
+      "colors": {
+        "primary": "#1a1a2e",
+        "secondary": "#16213e",
+        "accent": "#c9a227",
+        "accentLight": "#faf5e8"
+      },
+      "fonts": {
+        "display": "Playfair Display",
+        "body": "DM Sans"
+      }
+    },
+    "contact": {
+      "phone": "+49 30 123 456 78",
+      "email": "info@hauptstadt-immobilien.de",
+      "address": "Kurfürstendamm 195, 10707 Berlin-Charlottenburg",
+      "hours": "Mo-Fr: 9:00-18:00 | Sa: 10:00-14:00",
+      "social": {
+        "facebook": "https://facebook.com/hauptstadt-immobilien",
+        "instagram": "https://instagram.com/hauptstadt-immobilien",
+        "linkedin": "https://linkedin.com/company/hauptstadt-immobilien"
+      }
+    }
+  },
+  "pages": [
+    {
+      "slug": "/v1",
+      "title": "Variante 1 | Premium Fullscreen",
+      "description": "Premium-Fullscreen-Variante mit klarer Struktur und starken Trust-Signalen.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "fullscreen-image",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "badge": { "icon": "fa-award", "text": "Premium Makler seit 1998" },
+            "title": "Exklusive Immobilien in Berlin verkaufen & finden",
+            "subtitle": "Premium-Service für Eigentümer & Suchende",
+            "description": "Lokale Expertise, diskrete Vermarktung und persönliche Beratung für anspruchsvolle Immobilien.",
+            "backgroundImage": "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1920&q=80",
+            "cta": {
+              "primary": { "text": "Immobilie bewerten", "href": "#bewertung" },
+              "secondary": { "text": "Angebote ansehen", "href": "#angebote" }
+            },
+            "stats": [
+              { "value": "2.500+", "label": "Vermittelte Objekte" },
+              { "value": "98%", "label": "Empfehlungsrate" },
+              { "value": "25+", "label": "Jahre Erfahrung" }
+            ]
+          }
+        },
+        {
+          "type": "services",
+          "variant": "icon-grid-3col",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "label": "Leistungen",
+            "title": "Unsere Leistungen für Eigentümer & Käufer",
+            "subtitle": "Von der Bewertung bis zur Schlüsselübergabe.",
+            "items": [
+              {
+                "icon": "fa-chart-line",
+                "title": "Marktwertermittlung",
+                "description": "Fundierte Bewertung auf Basis aktueller Marktdaten."
+              },
+              {
+                "icon": "fa-camera",
+                "title": "Premium-Exposé",
+                "description": "Professionelle Fotos, Grundrisse und Storytelling."
+              },
+              {
+                "icon": "fa-bullhorn",
+                "title": "Gezielte Vermarktung",
+                "description": "Relevante Kanäle und geprüfte Interessenten."
+              },
+              {
+                "icon": "fa-user-check",
+                "title": "Bonitätsprüfung",
+                "description": "Sichere Vorauswahl potenzieller Käufer."
+              },
+              {
+                "icon": "fa-handshake",
+                "title": "Verhandlungsführung",
+                "description": "Preisstrategien und transparente Kommunikation."
+              },
+              {
+                "icon": "fa-file-signature",
+                "title": "Vertragsabwicklung",
+                "description": "Begleitung bis Notartermin und Übergabe."
+              }
+            ]
+          }
+        },
+        {
+          "type": "trust",
+          "variant": "statistics",
+          "order": 3,
+          "visible": true,
+          "props": {
+            "title": "Zahlen, die Vertrauen schaffen",
+            "subtitle": "Langjährige Erfahrung und messbare Ergebnisse.",
+            "stats": [
+              { "value": "25+", "label": "Jahre Erfahrung", "icon": "fa-calendar" },
+              { "value": "2.500+", "label": "Vermittelte Objekte", "icon": "fa-building" },
+              { "value": "98%", "label": "Empfehlungsrate", "icon": "fa-thumbs-up" },
+              { "value": "120+", "label": "Off‑Market Deals", "icon": "fa-star" }
+            ]
+          }
+        },
+        {
+          "type": "process",
+          "variant": "step-icons",
+          "order": 4,
+          "visible": true,
+          "props": {
+            "label": "Ablauf",
+            "title": "In 4 Schritten zum Verkaufserfolg",
+            "subtitle": "Strukturiert, transparent und persönlich begleitet.",
+            "steps": [
+              {
+                "icon": "fa-phone",
+                "title": "Erstberatung",
+                "description": "Kostenlose Analyse Ihrer Ziele und Rahmenbedingungen."
+              },
+              {
+                "icon": "fa-chart-line",
+                "title": "Bewertung",
+                "description": "Marktgerechte Wertermittlung und Preisstrategie."
+              },
+              {
+                "icon": "fa-camera",
+                "title": "Vermarktung",
+                "description": "Premium-Exposé, Reichweite und Interessentenmanagement."
+              },
+              {
+                "icon": "fa-file-signature",
+                "title": "Abschluss",
+                "description": "Sichere Vertragsabwicklung bis zur Übergabe."
+              }
+            ]
+          }
+        },
+        {
+          "type": "about",
+          "variant": "text-with-image",
+          "order": 5,
+          "visible": true,
+          "props": {
+            "label": "Über uns",
+            "title": "Berliner Expertise mit Boutique‑Service",
+            "subtitle": "Seit 1998 begleiten wir Eigentümer und Käufer mit Fokus auf Qualität und Diskretion.",
+            "content": "<p>Als inhabergeführtes Unternehmen kennen wir die Mikromärkte Berlins bis ins Detail.</p><p>Wir kombinieren traditionelle Werte mit modernen Vermarktungsstrategien für optimale Ergebnisse.</p>",
+            "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
+            "imageOverlay": { "number": "25+", "label": "Jahre Erfahrung" },
+            "features": [
+              { "icon": "fa-check-circle", "text": "IVD-Mitglied & geprüfte Prozesse" },
+              { "icon": "fa-check-circle", "text": "Transparente Kommunikation" },
+              { "icon": "fa-check-circle", "text": "Lokale Marktkenntnis" }
+            ]
+          }
+        },
+        {
+          "type": "cta",
+          "variant": "solid-background",
+          "order": 6,
+          "visible": true,
+          "props": {
+            "title": "Bereit für den nächsten Schritt?",
+            "subtitle": "Kostenloses Erstgespräch",
+            "description": "Wir bewerten Ihre Immobilie marktgerecht und entwickeln die passende Strategie.",
+            "cta": {
+              "primary": { "text": "Termin vereinbaren", "href": "#kontakt" },
+              "secondary": { "text": "Bewertung starten", "href": "#bewertung" }
+            }
+          }
+        },
+        {
+          "type": "contact",
+          "variant": "simple",
+          "order": 7,
+          "visible": true,
+          "props": {
+            "title": "Direkter Kontakt",
+            "subtitle": "Sprechen Sie mit unseren Beratern.",
+            "formFields": ["name", "email", "phone", "message"]
+          }
+        },
+        {
+          "type": "footer",
+          "variant": "multi-column",
+          "order": 8,
+          "visible": true,
+          "props": {
+            "about": {
+              "text": "Seit 1998 Ihr zuverlässiger Partner für Wohn- und Gewerbeimmobilien in Berlin.",
+              "social": [
+                { "platform": "Facebook", "icon": "fab fa-facebook-f", "url": "https://facebook.com/hauptstadt-immobilien" },
+                { "platform": "Instagram", "icon": "fab fa-instagram", "url": "https://instagram.com/hauptstadt-immobilien" },
+                { "platform": "LinkedIn", "icon": "fab fa-linkedin-in", "url": "https://linkedin.com/company/hauptstadt-immobilien" }
+              ]
+            },
+            "columns": [
+              {
+                "title": "Immobilien",
+                "links": [
+                  { "text": "Alle Angebote", "href": "/angebote" },
+                  { "text": "Kaufen", "href": "/kaufen" },
+                  { "text": "Mieten", "href": "/mieten" }
+                ]
+              },
+              {
+                "title": "Service",
+                "links": [
+                  { "text": "Bewertung", "href": "/bewertung" },
+                  { "text": "Beratung", "href": "/beratung" }
+                ]
+              },
+              {
+                "title": "Rechtliches",
+                "links": [
+                  { "text": "Impressum", "href": "/impressum" },
+                  { "text": "Datenschutz", "href": "/datenschutz" }
+                ]
+              }
+            ],
+            "legal": [
+              { "text": "Impressum", "href": "/impressum" },
+              { "text": "Datenschutz", "href": "/datenschutz" }
+            ],
+            "copyright": "© 2026 HAUPTSTADT IMMOBILIEN"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "/v2",
+      "title": "Variante 2 | Split B2B",
+      "description": "B2B-orientierte Split-Variante mit Partner-Logos und strukturiertem Prozess.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "split-text-image",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "badge": { "icon": "fa-briefcase", "text": "B2B Fokus" },
+            "title": "Gewerbeimmobilien professionell vermarkten",
+            "subtitle": "B2B • Regional • Klar",
+            "description": "Strategische Vermarktung, geprüfte Interessenten und belastbare Prozesse für Gewerbeimmobilien.",
+            "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+            "cta": {
+              "primary": { "text": "Beratung anfragen", "href": "#kontakt" },
+              "secondary": { "text": "Referenzen", "href": "#referenzen" }
+            },
+            "stats": [
+              { "value": "120+", "label": "Gewerbeverträge" },
+              { "value": "15+", "label": "Industrie‑Partner" }
+            ]
+          }
+        },
+        {
+          "type": "services",
+          "variant": "card-grid-2col",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "label": "Services",
+            "title": "Strategische Vermarktung für Gewerbe",
+            "subtitle": "Mehr Copy, klare Nutzenargumente.",
+            "items": [
+              {
+                "icon": "fa-chart-line",
+                "title": "Marktanalyse",
+                "description": "Datengetriebene Bewertung von Standort und Zielgruppen.",
+                "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+                "cta": { "text": "Mehr erfahren", "href": "#analyse" }
+              },
+              {
+                "icon": "fa-bullhorn",
+                "title": "Lead-Strategie",
+                "description": "B2B‑Kanäle, Portale und Direktansprache von Entscheidern.",
+                "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80",
+                "cta": { "text": "Kampagne starten", "href": "#strategie" }
+              },
+              {
+                "icon": "fa-file-signature",
+                "title": "Vertragsmanagement",
+                "description": "Strukturierte Dokumentation, Abstimmung und Abschluss.",
+                "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+                "cta": { "text": "Ablauf ansehen", "href": "#prozess" }
+              },
+              {
+                "icon": "fa-handshake",
+                "title": "Verhandlung",
+                "description": "Professionelle Moderation bis zur Vertragsunterzeichnung.",
+                "image": "https://images.unsplash.com/photo-1521791055366-0d553872125f?w=800&q=80",
+                "cta": { "text": "Kontakt", "href": "#kontakt" }
+              }
+            ]
+          }
+        },
+        {
+          "type": "trust",
+          "variant": "logo-grid",
+          "order": 3,
+          "visible": true,
+          "props": {
+            "title": "Partner & Portale",
+            "subtitle": "Starke Sichtbarkeit in relevanten Netzwerken.",
+            "logos": [
+              { "name": "ImmobilienScout24", "image": "https://dummyimage.com/200x80/1a1a2e/ffffff&text=Scout24" },
+              { "name": "Immonet", "image": "https://dummyimage.com/200x80/16213e/ffffff&text=Immonet" },
+              { "name": "IVD", "image": "https://dummyimage.com/200x80/1a1a2e/ffffff&text=IVD" },
+              { "name": "Google", "image": "https://dummyimage.com/200x80/16213e/ffffff&text=Google" },
+              { "name": "BVMW", "image": "https://dummyimage.com/200x80/1a1a2e/ffffff&text=BVMW" },
+              { "name": "Handelsblatt", "image": "https://dummyimage.com/200x80/16213e/ffffff&text=Handelsblatt" }
+            ]
+          }
+        },
+        {
+          "type": "process",
+          "variant": "alternating",
+          "order": 4,
+          "visible": true,
+          "props": {
+            "label": "Prozess",
+            "title": "Strukturierter Vermarktungsprozess",
+            "subtitle": "Klare Schritte, messbare Ergebnisse.",
+            "steps": [
+              {
+                "number": 1,
+                "icon": "fa-search",
+                "title": "Analyse",
+                "description": "Mikrostandort, Zielgruppen und Wettbewerb.",
+                "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80"
+              },
+              {
+                "number": 2,
+                "icon": "fa-bullhorn",
+                "title": "Go‑to‑Market",
+                "description": "Kanalplanung, Kampagnen und Portalstrategie.",
+                "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
+              },
+              {
+                "number": 3,
+                "icon": "fa-user-check",
+                "title": "Qualifizierung",
+                "description": "Prüfung von Interessenten und Finanzierung.",
+                "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80"
+              },
+              {
+                "number": 4,
+                "icon": "fa-file-signature",
+                "title": "Abschluss",
+                "description": "Vertragsverhandlung und notarielle Abwicklung.",
+                "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80"
+              }
+            ]
+          }
+        },
+        {
+          "type": "about",
+          "variant": "founder-story",
+          "order": 5,
+          "visible": true,
+          "props": {
+            "label": "Gründerin",
+            "title": "Persönliche Verantwortung seit Tag 1",
+            "subtitle": "Wir stehen für klare Kommunikation und messbare Ergebnisse.",
+            "content": "<p>Als Gründerin begleite ich jedes Projekt persönlich und sorge für klare Abläufe.</p><p>Unser Fokus: professionelle Vermarktung, belastbare Prozesse und langfristige Partnerschaften.</p>",
+            "founder": {
+              "name": "Katharina Schulz",
+              "role": "Gründerin & Geschäftsführerin",
+              "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+              "quote": "Wir verkaufen nicht nur Flächen – wir schaffen belastbare Entscheidungen für unsere Kunden."
+            }
+          }
+        },
+        {
+          "type": "cta",
+          "variant": "split-benefits",
+          "order": 6,
+          "visible": true,
+          "props": {
+            "title": "Mehr Sichtbarkeit, mehr Abschlüsse",
+            "subtitle": "B2B Performance",
+            "description": "Optimierte Prozesse und gezielte Reichweite für Gewerbeimmobilien.",
+            "benefits": [
+              { "icon": "fa-check", "title": "B2B‑Lead-Strategie", "description": "Qualifizierte Kontakte statt Streuverlust." },
+              { "icon": "fa-check", "title": "Marktgerechte Preise", "description": "Datenbasierte Preisfindung." },
+              { "icon": "fa-check", "title": "Schnelle Abschlüsse", "description": "Klare Prozesse und verlässliche Kommunikation." }
+            ],
+            "cta": {
+              "primary": { "text": "Strategiegespräch buchen", "href": "#kontakt" },
+              "secondary": { "text": "Leistungspaket", "href": "#services" }
+            }
+          }
+        },
+        {
+          "type": "contact",
+          "variant": "form",
+          "order": 7,
+          "visible": true,
+          "props": {
+            "title": "Projekt anfragen",
+            "subtitle": "Wir melden uns innerhalb von 24 Stunden.",
+            "formFields": ["name", "email", "phone", "message"]
+          }
+        },
+        {
+          "type": "footer",
+          "variant": "minimal",
+          "order": 8,
+          "visible": true,
+          "props": {
+            "about": {
+              "text": "B2B‑Immobilienberatung mit Fokus auf Klarheit und Ergebnisse.",
+              "social": [
+                { "platform": "LinkedIn", "icon": "fab fa-linkedin-in", "url": "https://linkedin.com/company/hauptstadt-immobilien" }
+              ]
+            },
+            "legal": [
+              { "text": "Impressum", "href": "/impressum" },
+              { "text": "Datenschutz", "href": "/datenschutz" }
+            ],
+            "copyright": "© 2026 HAUPTSTADT IMMOBILIEN"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "/v3",
+      "title": "Variante 3 | Leadform",
+      "description": "Leadgen‑Variante mit Inline‑Formular, Reviews und Timeline.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "leadform-inline",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "badge": { "icon": "fa-bolt", "text": "Sofortbewertung" },
+            "title": "Immobilie in 2 Minuten bewerten",
+            "subtitle": "Adresse eingeben, Rückruf erhalten",
+            "description": "Schnell, unverbindlich und persönlich – wir melden uns mit einer Ersteinschätzung.",
+            "backgroundImage": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1920&q=80",
+            "leadForm": {
+              "fields": [
+                {
+                  "name": "address",
+                  "type": "text",
+                  "placeholder": "Straße, Hausnr., PLZ, Ort",
+                  "required": true
+                },
+                {
+                  "name": "phone",
+                  "type": "tel",
+                  "placeholder": "Telefon (optional)",
+                  "required": false
+                },
+                {
+                  "name": "callback",
+                  "type": "select",
+                  "placeholder": "Rückrufzeit wählen",
+                  "options": ["Vormittag", "Nachmittag", "Abend"],
+                  "required": false
+                }
+              ],
+              "submitText": "Bewertung anfordern",
+              "privacyText": "Mit dem Absenden akzeptieren Sie die Datenschutzerklärung."
+            },
+            "stats": [
+              { "value": "48h", "label": "Ersteinschätzung" },
+              { "value": "4.9/5", "label": "Bewertungen" }
+            ]
+          }
+        },
+        {
+          "type": "services",
+          "variant": "list-alternating",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "label": "Leistungsübersicht",
+            "title": "Individuelle Vermarktung",
+            "subtitle": "Maßgeschneiderte Pakete für jede Immobilie.",
+            "items": [
+              {
+                "icon": "fa-camera",
+                "title": "Visuelle Inszenierung",
+                "description": "Professionelle Fotos, 360°‑Touren und starke Exposés.",
+                "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+                "cta": { "text": "Beispiele ansehen", "href": "#referenzen" }
+              },
+              {
+                "icon": "fa-map-marked-alt",
+                "title": "Lage‑Storytelling",
+                "description": "Mikrolage, Infrastruktur und Zielgruppen‑Match.",
+                "image": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
+                "cta": { "text": "Mehr erfahren", "href": "#leistungen" }
+              },
+              {
+                "icon": "fa-users",
+                "title": "Interessentenmanagement",
+                "description": "Qualifizierte Anfragen, Besichtigungen und Follow‑ups.",
+                "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80",
+                "cta": { "text": "Ablauf ansehen", "href": "#prozess" }
+              }
+            ]
+          }
+        },
+        {
+          "type": "trust",
+          "variant": "reviews-summary",
+          "order": 3,
+          "visible": true,
+          "props": {
+            "title": "Bewertungen & Erfahrungen",
+            "subtitle": "Was unsere Kunden über uns sagen.",
+            "reviewScore": { "score": 4.9, "count": 186, "source": "Google" },
+            "reviews": [
+              {
+                "text": "Professionelle Beratung, schnelle Rückmeldung und ein starkes Ergebnis.",
+                "author": "Martin K.",
+                "role": "Eigentümer",
+                "rating": 5
+              },
+              {
+                "text": "Sehr transparent, klare Kommunikation und überzeugende Vermarktung.",
+                "author": "Sophie L.",
+                "role": "Verkäuferin",
+                "rating": 5
+              },
+              {
+                "text": "Wir fühlten uns jederzeit bestens betreut und beraten.",
+                "author": "Daniela R.",
+                "role": "Käuferin",
+                "rating": 5
+              }
+            ]
+          }
+        },
+        {
+          "type": "process",
+          "variant": "timeline-compact",
+          "order": 4,
+          "visible": true,
+          "props": {
+            "label": "Historie",
+            "title": "Meilensteine seit 1998",
+            "subtitle": "Stetiges Wachstum und regionale Expertise.",
+            "timeline": [
+              { "year": "1998", "title": "Gründung", "description": "Start als Boutique‑Makler in Berlin." },
+              { "year": "2008", "title": "Expansion", "description": "Aufbau eines spezialisierten Teams." },
+              { "year": "2016", "title": "Digitalisierung", "description": "Vermarktung mit 360°‑Touren & Data‑Insights." },
+              { "year": "2024", "title": "Premium‑Service", "description": "Ausbau des Off‑Market Netzwerks." }
+            ]
+          }
+        },
+        {
+          "type": "about",
+          "variant": "team-grid",
+          "order": 5,
+          "visible": true,
+          "props": {
+            "label": "Team",
+            "title": "Ihre Ansprechpartner",
+            "subtitle": "Erfahrene Experten für Beratung und Vermarktung.",
+            "team": [
+              {
+                "name": "Anna Richter",
+                "role": "Senior Beraterin",
+                "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+                "email": "anna@hauptstadt-immobilien.de",
+                "phone": "+49 30 123 456 78",
+                "linkedin": "https://linkedin.com"
+              },
+              {
+                "name": "Felix Berger",
+                "role": "Vertrieb",
+                "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+                "email": "felix@hauptstadt-immobilien.de",
+                "phone": "+49 30 123 456 78",
+                "linkedin": "https://linkedin.com"
+              },
+              {
+                "name": "Laura Stein",
+                "role": "Marketing",
+                "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
+                "email": "laura@hauptstadt-immobilien.de"
+              },
+              {
+                "name": "Jonas Weber",
+                "role": "Analyst",
+                "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+                "email": "jonas@hauptstadt-immobilien.de"
+              }
+            ]
+          }
+        },
+        {
+          "type": "cta",
+          "variant": "image-background",
+          "order": 6,
+          "visible": true,
+          "props": {
+            "title": "Lassen Sie Ihre Immobilie bewerten",
+            "subtitle": "Schnell & unverbindlich",
+            "description": "Erhalten Sie eine fundierte Ersteinschätzung in 48 Stunden.",
+            "backgroundImage": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=80",
+            "cta": {
+              "primary": { "text": "Bewertung starten", "href": "#bewertung" },
+              "secondary": { "text": "Anrufen", "href": "tel:+493012345678" }
+            }
+          }
+        },
+        {
+          "type": "contact",
+          "variant": "with-map",
+          "order": 7,
+          "visible": true,
+          "props": {
+            "title": "Besuchen Sie uns",
+            "subtitle": "Wir freuen uns auf Sie.",
+            "formFields": ["name", "email", "phone", "message"],
+            "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.684240703!2d13.302815!3d52.500493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8511f0d5c4f71%3A0x9a7f1d0bfc2b8d2b!2sKurfürstendamm%20195%2C%2010707%20Berlin!5e0!3m2!1sde!2sde!4v1700000000000"
+          }
+        },
+        {
+          "type": "footer",
+          "variant": "multi-column",
+          "order": 8,
+          "visible": true,
+          "props": {
+            "about": {
+              "text": "Lokale Marktkenntnis trifft moderne Vermarktung.",
+              "social": [
+                { "platform": "Instagram", "icon": "fab fa-instagram", "url": "https://instagram.com/hauptstadt-immobilien" }
+              ]
+            },
+            "columns": [
+              {
+                "title": "Immobilien",
+                "links": [
+                  { "text": "Alle Angebote", "href": "/angebote" },
+                  { "text": "Kaufen", "href": "/kaufen" },
+                  { "text": "Mieten", "href": "/mieten" }
+                ]
+              },
+              {
+                "title": "Service",
+                "links": [
+                  { "text": "Bewertung", "href": "/bewertung" },
+                  { "text": "Beratung", "href": "/beratung" }
+                ]
+              },
+              {
+                "title": "Rechtliches",
+                "links": [
+                  { "text": "Impressum", "href": "/impressum" },
+                  { "text": "Datenschutz", "href": "/datenschutz" }
+                ]
+              }
+            ],
+            "legal": [
+              { "text": "Impressum", "href": "/impressum" },
+              { "text": "Datenschutz", "href": "/datenschutz" }
+            ],
+            "copyright": "© 2026 HAUPTSTADT IMMOBILIEN"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "/v4",
+      "title": "Variante 4 | Slider & Paket",
+      "description": "Bildstarker Slider mit Service‑Abläufen und Modernisierungspaket.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "slider",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "autoplay": true,
+            "autoplayInterval": 6000,
+            "slides": [
+              {
+                "title": "Exklusive Immobilien in Berlin",
+                "subtitle": "Premium‑Service für Eigentümer",
+                "description": "Diskret, professionell, erfolgreich – wir vermarkten Ihre Immobilie gezielt.",
+                "backgroundImage": "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1920&q=80",
+                "cta": { "text": "Bewertung starten", "href": "#bewertung" }
+              },
+              {
+                "title": "Modernisierung erhöht den Marktwert",
+                "subtitle": "Mehr Nachfrage, bessere Preise",
+                "description": "Mit unserem Modernisierungspaket steigern Sie die Attraktivität Ihrer Immobilie.",
+                "backgroundImage": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1920&q=80",
+                "cta": { "text": "Paket ansehen", "href": "#modernisierung" }
+              },
+              {
+                "title": "Off‑Market Netzwerk",
+                "subtitle": "Zugang zu exklusiven Käufern",
+                "description": "Wir vermitteln diskret an qualifizierte Interessenten.",
+                "backgroundImage": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=80",
+                "cta": { "text": "Kontakt aufnehmen", "href": "#kontakt" }
+              }
+            ]
+          }
+        },
+        {
+          "type": "services",
+          "variant": "process-hybrid",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "label": "Leistungsprozess",
+            "title": "Service + klarer Ablauf",
+            "subtitle": "Jede Leistung ist mit einem kurzen Ablauf verknüpft.",
+            "items": [
+              {
+                "icon": "fa-camera",
+                "title": "Premium‑Vermarktung",
+                "description": "Hochwertige Präsentation und zielgerichtete Reichweite.",
+                "cta": { "text": "Details", "href": "#vermarktung" },
+                "steps": [
+                  { "title": "Fotoshooting", "description": "Professionelle Aufnahmen und Stilberatung." },
+                  { "title": "Exposé", "description": "Storytelling, Grundrisse und Fakten." },
+                  { "title": "Kampagne", "description": "Gezielte Ausspielung in Kanälen." }
+                ]
+              },
+              {
+                "icon": "fa-user-check",
+                "title": "Interessentenmanagement",
+                "description": "Qualifizierung, Besichtigungen und Feedback.",
+                "cta": { "text": "Ablauf", "href": "#interessenten" },
+                "steps": [
+                  { "title": "Vorauswahl", "description": "Bonitätsprüfung & Matching." },
+                  { "title": "Besichtigung", "description": "Begleitung vor Ort." },
+                  { "title": "Nachverfolgung", "description": "Strukturiertes Feedback." }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "trust",
+          "variant": "press-awards",
+          "order": 3,
+          "visible": true,
+          "props": {
+            "title": "Presse & Auszeichnungen",
+            "subtitle": "Anerkannt für Qualität und Service.",
+            "press": [
+              {
+                "title": "Top‑Makler Berlin",
+                "source": "Immo Magazin",
+                "year": "2024",
+                "image": "https://dummyimage.com/120x120/1a1a2e/ffffff&text=Award"
+              },
+              {
+                "title": "Service‑Exzellenz",
+                "source": "Property Awards",
+                "year": "2023",
+                "image": "https://dummyimage.com/120x120/16213e/ffffff&text=Gold"
+              },
+              {
+                "title": "Beste Beratung",
+                "source": "Berlin Real Estate",
+                "year": "2022",
+                "image": "https://dummyimage.com/120x120/1a1a2e/ffffff&text=Best"
+              },
+              {
+                "title": "Premium‑Partner",
+                "source": "IVD",
+                "year": "2021",
+                "image": "https://dummyimage.com/120x120/16213e/ffffff&text=IVD"
+              }
+            ]
+          }
+        },
+        {
+          "type": "about",
+          "variant": "values-cards",
+          "order": 4,
+          "visible": true,
+          "props": {
+            "label": "Werte",
+            "title": "Wofür wir stehen",
+            "subtitle": "Vertrauen, Qualität und Transparenz.",
+            "values": [
+              { "icon": "fa-shield-alt", "title": "Sicherheit", "description": "Geprüfte Prozesse und verlässliche Abläufe." },
+              { "icon": "fa-gem", "title": "Qualität", "description": "Premium‑Präsentation und hohe Standards." },
+              { "icon": "fa-comments", "title": "Transparenz", "description": "Klare Kommunikation auf Augenhöhe." },
+              { "icon": "fa-handshake", "title": "Partnerschaft", "description": "Langfristige Beziehungen und Vertrauen." }
+            ]
+          }
+        },
+        {
+          "type": "cta",
+          "variant": "modernisierungspaket",
+          "order": 5,
+          "visible": true,
+          "props": {
+            "title": "Modernisierungspaket für Ihre Immobilie",
+            "subtitle": "Mehr Wert, bessere Vermarktung",
+            "description": "Gezielte Maßnahmen steigern Attraktivität und Nachfrage.",
+            "cta": {
+              "primary": { "text": "Paket anfragen", "href": "#kontakt" },
+              "secondary": { "text": "Leistungsumfang", "href": "#leistungen" }
+            },
+            "package": {
+              "name": "Rundum‑Sorglos",
+              "price": "ab 2.500 €",
+              "priceNote": "je nach Objektgröße",
+              "highlight": "Inkl. Energieausweis & Grundriss",
+              "features": [
+                { "text": "Professionelle Immobilienfotografie", "included": true },
+                { "text": "Virtuelle 360°‑Tour", "included": true },
+                { "text": "Premium‑Exposé Erstellung", "included": true },
+                { "text": "Energieausweis Erstellung", "included": true },
+                { "text": "Maßstabsgetreuer Grundriss", "included": true },
+                { "text": "Social Media Vermarktung", "included": true }
+              ]
+            }
+          }
+        },
+        {
+          "type": "contact",
+          "variant": "multi-office",
+          "order": 6,
+          "visible": true,
+          "props": {
+            "title": "Unsere Standorte",
+            "subtitle": "Wir sind in ganz Berlin für Sie da.",
+            "offices": [
+              {
+                "name": "Charlottenburg",
+                "address": "Kurfürstendamm 195, 10707 Berlin",
+                "phone": "+49 30 123 456 78",
+                "email": "charlottenburg@hauptstadt-immobilien.de",
+                "hours": "Mo‑Fr 9‑18 Uhr",
+                "mapUrl": "https://maps.google.com/?q=Kurfürstendamm+195+Berlin",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
+              },
+              {
+                "name": "Mitte",
+                "address": "Friedrichstraße 50, 10117 Berlin",
+                "phone": "+49 30 222 333 44",
+                "email": "mitte@hauptstadt-immobilien.de",
+                "hours": "Mo‑Fr 9‑18 Uhr",
+                "mapUrl": "https://maps.google.com/?q=Friedrichstraße+50+Berlin",
+                "image": "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?w=800&q=80"
+              },
+              {
+                "name": "Prenzlauer Berg",
+                "address": "Schönhauser Allee 90, 10439 Berlin",
+                "phone": "+49 30 555 666 77",
+                "email": "pb@hauptstadt-immobilien.de",
+                "hours": "Mo‑Fr 9‑18 Uhr",
+                "mapUrl": "https://maps.google.com/?q=Schönhauser+Allee+90+Berlin",
+                "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80"
+              }
+            ]
+          }
+        },
+        {
+          "type": "footer",
+          "variant": "minimal",
+          "order": 7,
+          "visible": true,
+          "props": {
+            "about": {
+              "text": "Premium‑Makler für anspruchsvolle Immobilien in Berlin.",
+              "social": [
+                { "platform": "LinkedIn", "icon": "fab fa-linkedin-in", "url": "https://linkedin.com/company/hauptstadt-immobilien" }
+              ]
+            },
+            "legal": [
+              { "text": "Impressum", "href": "/impressum" },
+              { "text": "Datenschutz", "href": "/datenschutz" }
+            ],
+            "copyright": "© 2026 HAUPTSTADTIMMO"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "/v5",
+      "title": "Variante 5 | Mixed",
+      "description": "Kombination aus klassischen Sections mit ausgewählten Varianten.",
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "split-text-image",
+          "order": 1,
+          "visible": true,
+          "props": {
+            "badge": { "icon": "fa-map", "text": "Berlin & Umland" },
+            "title": "Ihr Immobilienpartner für Berlin & Umland",
+            "subtitle": "Kompetent. Persönlich. Erfolgreich.",
+            "description": "Wir begleiten Sie bei Kauf, Verkauf und Vermietung – mit lokaler Expertise und maximaler Sichtbarkeit.",
+            "image": "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800&q=80",
+            "cta": {
+              "primary": { "text": "Angebote ansehen", "href": "/angebote" },
+              "secondary": { "text": "Kontakt", "href": "#kontakt" }
+            }
+          }
+        },
+        {
+          "type": "usps",
+          "variant": "A",
+          "order": 2,
+          "visible": true,
+          "props": {
+            "items": [
+              { "icon": "fa-award", "title": "25+ Jahre Erfahrung", "description": "Langjährige Marktexpertise." },
+              { "icon": "fa-handshake", "title": "Persönliche Betreuung", "description": "Ein fester Ansprechpartner." },
+              { "icon": "fa-shield-halved", "title": "Geprüfte Objekte", "description": "Sicher & transparent." },
+              { "icon": "fa-star", "title": "4.9/5 Bewertungen", "description": "Zufriedene Kunden." }
+            ]
+          }
+        },
+        {
+          "type": "featured-listings",
+          "variant": "A",
+          "order": 3,
+          "visible": true,
+          "props": {
+            "title": "Aktuelle Angebote",
+            "subtitle": "Entdecken Sie unsere neuesten Immobilien.",
+            "limit": 6,
+            "layout": "grid",
+            "cta": { "text": "Alle Angebote", "href": "/angebote" }
+          }
+        },
+        {
+          "type": "services",
+          "variant": "icon-grid-3col",
+          "order": 4,
+          "visible": true,
+          "props": {
+            "label": "Leistungen",
+            "title": "Alles aus einer Hand",
+            "subtitle": "Bewertung, Vermarktung und Abschluss.",
+            "items": [
+              { "icon": "fa-chart-line", "title": "Bewertung", "description": "Marktgerechte Wertermittlung." },
+              { "icon": "fa-camera", "title": "Präsentation", "description": "Hochwertige Fotos & Exposé." },
+              { "icon": "fa-users", "title": "Interessenten", "description": "Qualifizierte Anfragen." },
+              { "icon": "fa-file-signature", "title": "Abwicklung", "description": "Notar & Übergabe begleitet." },
+              { "icon": "fa-bullhorn", "title": "Marketing", "description": "Gezielte Kampagnen." },
+              { "icon": "fa-handshake", "title": "Verhandlung", "description": "Beste Ergebnisse für Sie." }
+            ]
+          }
+        },
+        {
+          "type": "testimonials",
+          "variant": "A",
+          "order": 5,
+          "visible": true,
+          "props": {
+            "label": "Kundenstimmen",
+            "title": "Was Kunden sagen",
+            "subtitle": "Echte Erfahrungen aus Berlin.",
+            "items": [
+              { "text": "Exzellente Beratung und schnelle Abwicklung.", "author": "Thomas W.", "rating": 5 },
+              { "text": "Sehr professionell, klare Kommunikation.", "author": "Miriam S.", "rating": 5 },
+              { "text": "Wir fühlten uns jederzeit bestens betreut.", "author": "Patrick N.", "rating": 5 }
+            ]
+          }
+        },
+        {
+          "type": "rating",
+          "variant": "A",
+          "order": 6,
+          "visible": true,
+          "props": {
+            "score": 4.9,
+            "count": 186,
+            "source": "Google",
+            "sourceIcon": "fab fa-google",
+            "badges": [
+              { "icon": "fa-award", "title": "Top Service", "subtitle": "2024" },
+              { "icon": "fa-shield-alt", "title": "Verifiziert", "subtitle": "Kundenstimmen" },
+              { "icon": "fa-handshake", "title": "Empfohlen", "subtitle": "98%" }
+            ]
+          }
+        },
+        {
+          "type": "cta",
+          "variant": "solid-background",
+          "order": 7,
+          "visible": true,
+          "props": {
+            "title": "Lassen Sie sich beraten",
+            "subtitle": "Unverbindlich & kostenlos",
+            "description": "Starten Sie mit einer fundierten Bewertung Ihrer Immobilie.",
+            "cta": {
+              "primary": { "text": "Bewertung starten", "href": "#bewertung" },
+              "secondary": { "text": "Kontakt", "href": "#kontakt" }
+            }
+          }
+        },
+        {
+          "type": "contact",
+          "variant": "form",
+          "order": 8,
+          "visible": true,
+          "props": {
+            "title": "Schreiben Sie uns",
+            "subtitle": "Wir freuen uns auf Ihre Nachricht.",
+            "formFields": ["name", "email", "phone", "message"]
+          }
+        },
+        {
+          "type": "footer",
+          "variant": "minimal",
+          "order": 9,
+          "visible": true,
+          "props": {
+            "about": {
+              "text": "Immobilienberatung mit Fokus auf Vertrauen und Qualität.",
+              "social": [
+                { "platform": "Instagram", "icon": "fab fa-instagram", "url": "https://instagram.com/hauptstadt-immobilien" }
+              ]
+            },
+            "legal": [
+              { "text": "Impressum", "href": "/impressum" },
+              { "text": "Datenschutz", "href": "/datenschutz" }
+            ],
+            "copyright": "© 2026 HAUPTSTADTIMMO"
+          }
+        }
+      ]
+    }
+  ]
+}

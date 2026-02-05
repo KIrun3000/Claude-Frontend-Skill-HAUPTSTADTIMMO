@@ -1,0 +1,321 @@
+---
+import type { ServicesProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<ServicesProps> {}
+
+const {
+  label,
+  title = "Unsere Leistungen",
+  subtitle,
+  items = []
+} = Astro.props;
+---
+
+<section class="services-process-hybrid section">
+  <div class="container">
+    <div class="section-header">
+      {label && (
+        <span class="section-label">
+          <i class="fas fa-cogs"></i>
+          {label}
+        </span>
+      )}
+      <h2 class="section-title">{title}</h2>
+      {subtitle && <p class="section-subtitle">{subtitle}</p>}
+    </div>
+
+    <div class="services-list">
+      {items.map((item, index) => (
+        <article class="service-block" style={`--delay: ${index * 0.2}s`}>
+          <div class="service-main">
+            <div class="service-icon">
+              <i class={`fas ${item.icon}`}></i>
+            </div>
+            <div class="service-info">
+              <h3 class="service-title">{item.title}</h3>
+              <p class="service-description">{item.description}</p>
+            </div>
+            {item.cta && (
+              <a href={item.cta.href} class="service-cta">
+                {item.cta.text}
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            )}
+          </div>
+
+          {item.steps && item.steps.length > 0 && (
+            <div class="service-steps">
+              <div class="steps-header">
+                <span class="steps-label">So funktioniert's</span>
+                <div class="steps-line"></div>
+              </div>
+              <div class="steps-grid">
+                {item.steps.map((step, stepIndex) => (
+                  <div class="step" style={`--step-delay: ${stepIndex * 0.1}s`}>
+                    <div class="step-number">
+                      {step.number || stepIndex + 1}
+                    </div>
+                    <div class="step-content">
+                      <h4 class="step-title">{step.title}</h4>
+                      <p class="step-description">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-process-hybrid {
+    background: var(--color-cream);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-3xl);
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .service-block {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .service-main {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .service-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-white) 100%);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: var(--color-accent);
+    transition: all 0.3s ease;
+  }
+
+  .service-block:hover .service-icon {
+    background: var(--color-accent);
+    color: var(--color-white);
+    transform: scale(1.05);
+  }
+
+  .service-info {
+    min-width: 0;
+  }
+
+  .service-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-description {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .service-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.9rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .service-cta:hover {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .service-cta i {
+    font-size: 0.75rem;
+    transition: transform 0.3s ease;
+  }
+
+  .service-cta:hover i {
+    transform: translateX(3px);
+  }
+
+  .service-steps {
+    padding: 2rem 2.5rem;
+    background: var(--color-cream);
+  }
+
+  .steps-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .steps-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .steps-line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .step-content {
+    min-width: 0;
+  }
+
+  .step-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .step-description {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-block {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .service-main {
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+    }
+
+    .service-cta {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .service-main {
+      grid-template-columns: 1fr;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .service-icon {
+      margin: 0 auto;
+    }
+
+    .service-cta {
+      justify-self: center;
+    }
+
+    .service-steps {
+      padding: 1.5rem;
+    }
+
+    .steps-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,187 @@
+---
+import type { TrustProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<TrustProps> {}
+
+const {
+  title = "Unsere Partner",
+  subtitle,
+  logos = []
+} = Astro.props;
+---
+
+<section class="trust-logos section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{title}</h2>
+      {subtitle && <p class="section-subtitle">{subtitle}</p>}
+    </div>
+
+    <div class="logos-wrapper">
+      <div class="logos-grid">
+        {logos.map((logo, index) => (
+          <div class="logo-item" style={`--delay: ${index * 0.05}s`}>
+            {logo.url ? (
+              <a href={logo.url} target="_blank" rel="noopener noreferrer" class="logo-link" title={logo.name}>
+                <img src={logo.image} alt={logo.name} loading="lazy" />
+              </a>
+            ) : (
+              <div class="logo-static" title={logo.name}>
+                <img src={logo.image} alt={logo.name} loading="lazy" />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div class="logos-fade logos-fade-left"></div>
+      <div class="logos-fade logos-fade-right"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-logos {
+    background: var(--color-white);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-3xl);
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .logos-wrapper {
+    position: relative;
+  }
+
+  .logos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .logo-item {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .logo-link,
+  .logo-static {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: var(--color-cream);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    min-height: 100px;
+  }
+
+  .logo-link:hover {
+    background: var(--color-white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+  }
+
+  .logo-link img,
+  .logo-static img {
+    max-width: 120px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+
+  .logo-link:hover img,
+  .logo-item:hover .logo-static img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  .logos-fade {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .logos-fade-left {
+    left: 0;
+    background: linear-gradient(90deg, var(--color-white), transparent);
+  }
+
+  .logos-fade-right {
+    right: 0;
+    background: linear-gradient(270deg, var(--color-white), transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-item {
+      animation: none;
+      opacity: 1;
+    }
+
+    .logo-link:hover {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .logos-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .logos-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .logo-link,
+    .logo-static {
+      padding: 1rem;
+      min-height: 80px;
+    }
+
+    .logo-link img,
+    .logo-static img {
+      max-width: 80px;
+      max-height: 35px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logos-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

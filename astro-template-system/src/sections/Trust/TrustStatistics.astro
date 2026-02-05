@@ -1,0 +1,202 @@
+---
+import type { TrustProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<TrustProps> {}
+
+const {
+  title,
+  subtitle,
+  stats = []
+} = Astro.props;
+---
+
+<section class="trust-statistics section">
+  <div class="container">
+    {(title || subtitle) && (
+      <div class="section-header">
+        {title && <h2 class="section-title">{title}</h2>}
+        {subtitle && <p class="section-subtitle">{subtitle}</p>}
+      </div>
+    )}
+
+    <div class="stats-grid">
+      {stats.map((stat, index) => (
+        <div class="stat-card" style={`--delay: ${index * 0.1}s`}>
+          {stat.icon && (
+            <div class="stat-icon">
+              <i class={`fas ${stat.icon}`}></i>
+            </div>
+          )}
+          <div class="stat-value" data-value={stat.value}>
+            {stat.value}
+          </div>
+          <div class="stat-label">{stat.label}</div>
+          <div class="stat-decoration"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="bg-pattern"></div>
+</section>
+
+<style>
+  .trust-statistics {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    overflow: hidden;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-3xl);
+  }
+
+  .section-title {
+    color: var(--color-white);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-card {
+    position: relative;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: var(--delay, 0s);
+    transition: all 0.4s ease;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stat-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+  }
+
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1.5rem;
+    background: var(--color-accent-20);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--color-accent);
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover .stat-icon {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    transform: scale(1.1);
+  }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  .stat-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .stat-card:hover .stat-decoration {
+    opacity: 1;
+  }
+
+  .bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, var(--color-accent-10) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stat-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .stat-card:hover {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-card {
+      padding: 1.5rem 1rem;
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

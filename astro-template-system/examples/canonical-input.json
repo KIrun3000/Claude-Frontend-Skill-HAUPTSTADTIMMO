@@ -158,15 +158,115 @@
           }
         },
         {
+          "type": "process",
+          "variant": "step-icons",
+          "order": 6,
+          "visible": true,
+          "props": {
+            "label": "So funktioniert's",
+            "title": "In 4 Schritten zu Ihrer Wunschimmobilie",
+            "subtitle": "Wir begleiten Sie professionell durch den gesamten Prozess.",
+            "steps": [
+              {
+                "icon": "fa-phone",
+                "title": "Erstberatung",
+                "description": "Kostenlose Beratung zu Ihren Wünschen und Möglichkeiten"
+              },
+              {
+                "icon": "fa-search",
+                "title": "Objektsuche",
+                "description": "Gezielte Suche nach passenden Immobilien in Berlin"
+              },
+              {
+                "icon": "fa-eye",
+                "title": "Besichtigung",
+                "description": "Persönliche Besichtigungstermine mit Fachberatung"
+              },
+              {
+                "icon": "fa-handshake",
+                "title": "Vertragsabschluss",
+                "description": "Rechtssichere Abwicklung bis zur Schlüsselübergabe"
+              }
+            ]
+          }
+        },
+        {
+          "type": "cta",
+          "variant": "split-benefits",
+          "order": 7,
+          "visible": true,
+          "props": {
+            "title": "Lassen Sie Ihre Immobilie bewerten",
+            "subtitle": "Kostenlos und unverbindlich",
+            "benefits": [
+              {
+                "icon": "fa-check",
+                "title": "Professionelle Wertermittlung nach ImmoWertV"
+              },
+              {
+                "icon": "fa-check",
+                "title": "Kostenlos und unverbindlich"
+              },
+              {
+                "icon": "fa-check",
+                "title": "Ergebnis innerhalb von 48 Stunden"
+              }
+            ],
+            "cta": {
+              "primary": {
+                "text": "Jetzt bewerten lassen",
+                "href": "/bewertung"
+              }
+            }
+          }
+        },
+        {
           "type": "contact",
           "variant": "A",
-          "order": 6,
+          "order": 8,
           "visible": true,
           "props": {
             "title": "Kontaktieren Sie uns",
             "subtitle": "Wir sind für Sie da",
             "showMap": true,
             "formFields": ["name", "email", "phone", "message"]
+          }
+        },
+        {
+          "type": "footer",
+          "variant": "multi-column",
+          "order": 9,
+          "visible": true,
+          "props": {
+            "columns": [
+              {
+                "title": "Immobilien",
+                "links": [
+                  { "text": "Alle Angebote", "href": "/angebote" },
+                  { "text": "Kaufen", "href": "/kaufen" },
+                  { "text": "Mieten", "href": "/mieten" }
+                ]
+              },
+              {
+                "title": "Service",
+                "links": [
+                  { "text": "Bewertung", "href": "/bewertung" },
+                  { "text": "Beratung", "href": "/beratung" }
+                ]
+              },
+              {
+                "title": "Rechtliches",
+                "links": [
+                  { "text": "Impressum", "href": "/impressum" },
+                  { "text": "Datenschutz", "href": "/datenschutz" }
+                ]
+              }
+            ],
+            "legal": [
+              { "text": "Impressum", "href": "/impressum" },
+              { "text": "Datenschutz", "href": "/datenschutz" }
+            ],
+            "copyright": "© 2026 HAUPTSTADT IMMOBILIEN"
           }
         }
       ]

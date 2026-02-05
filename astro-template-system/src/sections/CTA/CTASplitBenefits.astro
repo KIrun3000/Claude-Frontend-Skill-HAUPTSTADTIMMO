@@ -1,0 +1,295 @@
+---
+import type { CTAProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<CTAProps> {}
+
+const {
+  title = "Warum mit uns arbeiten?",
+  subtitle,
+  description,
+  cta,
+  benefits = []
+} = Astro.props;
+---
+
+<section class="cta-split-benefits section">
+  <div class="container">
+    <div class="cta-grid">
+      <div class="cta-main">
+        {subtitle && (
+          <span class="cta-eyebrow">
+            <i class="fas fa-star"></i>
+            {subtitle}
+          </span>
+        )}
+        <h2 class="cta-title">{title}</h2>
+        {description && (
+          <p class="cta-description">{description}</p>
+        )}
+
+        {cta && (
+          <div class="cta-actions">
+            <a href={cta.primary.href} class="btn-cta-primary">
+              <span>{cta.primary.text}</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            {cta.secondary && (
+              <a href={cta.secondary.href} class="btn-cta-secondary">
+                {cta.secondary.text}
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+
+      {benefits && benefits.length > 0 && (
+        <div class="benefits-list">
+          {benefits.map((benefit, index) => (
+            <div class="benefit-item" style={`--delay: ${index * 0.1}s`}>
+              <div class="benefit-icon">
+                <i class={`fas ${benefit.icon}`}></i>
+              </div>
+              <div class="benefit-content">
+                <h3 class="benefit-title">{benefit.title}</h3>
+                {benefit.description && (
+                  <p class="benefit-description">{benefit.description}</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+
+  <div class="bg-accent"></div>
+</section>
+
+<style>
+  .cta-split-benefits {
+    position: relative;
+    background: var(--color-cream);
+    overflow: hidden;
+  }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-main {
+    padding-right: 2rem;
+  }
+
+  .cta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    padding: 1.1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-cta-primary:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px var(--color-primary-20);
+  }
+
+  .btn-cta-primary i {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-cta-primary:hover i {
+    transform: translateX(4px);
+  }
+
+  .btn-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 1.1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    border: 2px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideIn 0.5s ease forwards;
+    animation-delay: var(--delay, 0s);
+    transition: all 0.3s ease;
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .benefit-item:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transform: translateX(5px);
+  }
+
+  .benefit-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-light);
+    border-radius: var(--radius-md);
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    transition: all 0.3s ease;
+  }
+
+  .benefit-item:hover .benefit-icon {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .benefit-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .benefit-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .benefit-description {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .bg-accent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--color-white) 0%, var(--color-cream) 100%);
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .benefit-item {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .benefit-item:hover {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .cta-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .cta-main {
+      padding-right: 0;
+      text-align: center;
+    }
+
+    .cta-actions {
+      justify-content: center;
+    }
+
+    .bg-accent {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cta-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn-cta-primary,
+    .btn-cta-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .benefit-item {
+      padding: 1.25rem;
+    }
+  }
+</style>

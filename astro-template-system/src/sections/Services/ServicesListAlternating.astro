@@ -1,0 +1,279 @@
+---
+import type { ServicesProps } from '../../../schema/site.schema';
+
+interface Props extends Partial<ServicesProps> {}
+
+const {
+  label,
+  title = "Unsere Leistungen",
+  subtitle,
+  items = []
+} = Astro.props;
+---
+
+<section class="services-alternating section">
+  <div class="container">
+    <div class="section-header">
+      {label && (
+        <span class="section-label">
+          <i class="fas fa-star"></i>
+          {label}
+        </span>
+      )}
+      <h2 class="section-title">{title}</h2>
+      {subtitle && <p class="section-subtitle">{subtitle}</p>}
+    </div>
+
+    <div class="services-list">
+      {items.map((item, index) => (
+        <article class={`service-row ${index % 2 === 1 ? 'reversed' : ''}`}>
+          <div class="service-visual">
+            {item.image ? (
+              <div class="service-image">
+                <img src={item.image} alt={item.title} loading="lazy" />
+              </div>
+            ) : (
+              <div class="service-icon-box">
+                <i class={`fas ${item.icon}`}></i>
+                <div class="icon-decoration"></div>
+              </div>
+            )}
+          </div>
+
+          <div class="service-content">
+            <div class="service-number">{String(index + 1).padStart(2, '0')}</div>
+            <h3 class="service-title">{item.title}</h3>
+            <p class="service-description">{item.description}</p>
+
+            {item.cta && (
+              <a href={item.cta.href} class="service-cta">
+                {item.cta.text}
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-alternating {
+    background: var(--color-white);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-4xl);
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .service-row.reversed {
+    direction: rtl;
+  }
+
+  .service-row.reversed > * {
+    direction: ltr;
+  }
+
+  .service-visual {
+    position: relative;
+  }
+
+  .service-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .service-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .service-row:hover .service-image img {
+    transform: scale(1.05);
+  }
+
+  .service-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-accent-20) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+  }
+
+  .service-icon-box {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--color-accent);
+    overflow: hidden;
+  }
+
+  .icon-decoration {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+
+  .icon-decoration::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .service-content {
+    padding: 1rem 0;
+  }
+
+  .service-number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .service-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .service-description {
+    color: var(--color-text-light);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--color-accent);
+    transition: all 0.3s ease;
+  }
+
+  .service-cta:hover {
+    color: var(--color-accent);
+    padding-left: 0.5rem;
+  }
+
+  .service-cta i {
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+  }
+
+  .service-cta:hover i {
+    transform: translateX(4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-image img {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .service-row {
+      gap: 3rem;
+    }
+
+    .service-number {
+      font-size: 2.5rem;
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-list {
+      gap: 3rem;
+    }
+
+    .service-row {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .service-row.reversed {
+      direction: ltr;
+    }
+
+    .service-visual {
+      order: -1;
+    }
+
+    .service-icon-box {
+      aspect-ratio: 16/9;
+      font-size: 3rem;
+    }
+  }
+</style>

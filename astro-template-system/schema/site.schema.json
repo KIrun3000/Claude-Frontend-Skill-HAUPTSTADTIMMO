@@ -5,6 +5,103 @@
   "description": "Schema for canonical site data input from Extract project",
   "type": "object",
   "required": ["meta", "pages"],
+  "definitions": {
+    "ctaButton": {
+      "type": "object",
+      "required": ["text", "href"],
+      "properties": {
+        "text": { "type": "string", "maxLength": 30 },
+        "href": { "type": "string" }
+      }
+    },
+    "processStep": {
+      "type": "object",
+      "required": ["title", "description"],
+      "properties": {
+        "number": { "type": "number" },
+        "icon": { "type": "string" },
+        "title": { "type": "string", "maxLength": 60 },
+        "description": { "type": "string", "maxLength": 300 },
+        "image": { "type": "string", "format": "uri" }
+      }
+    },
+    "benefit": {
+      "type": "object",
+      "required": ["icon", "title"],
+      "properties": {
+        "icon": { "type": "string" },
+        "title": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 150 }
+      }
+    },
+    "review": {
+      "type": "object",
+      "required": ["text", "author", "rating"],
+      "properties": {
+        "text": { "type": "string", "maxLength": 300 },
+        "author": { "type": "string", "maxLength": 100 },
+        "role": { "type": "string", "maxLength": 100 },
+        "rating": { "type": "number", "minimum": 1, "maximum": 5 },
+        "avatar": { "type": "string", "format": "uri" },
+        "source": { "type": "string", "maxLength": 50 }
+      }
+    },
+    "logo": {
+      "type": "object",
+      "required": ["name", "image"],
+      "properties": {
+        "name": { "type": "string", "maxLength": 50 },
+        "image": { "type": "string", "format": "uri" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "office": {
+      "type": "object",
+      "required": ["name", "address", "phone", "email"],
+      "properties": {
+        "name": { "type": "string", "maxLength": 60 },
+        "address": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "hours": { "type": "string" },
+        "mapUrl": { "type": "string", "format": "uri" },
+        "image": { "type": "string", "format": "uri" }
+      }
+    },
+    "teamMember": {
+      "type": "object",
+      "required": ["name", "role", "image"],
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "role": { "type": "string", "maxLength": 100 },
+        "image": { "type": "string", "format": "uri" },
+        "phone": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "linkedin": { "type": "string", "format": "uri" },
+        "bio": { "type": "string", "maxLength": 300 }
+      }
+    },
+    "value": {
+      "type": "object",
+      "required": ["icon", "title", "description"],
+      "properties": {
+        "icon": { "type": "string" },
+        "title": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 200 }
+      }
+    },
+    "slide": {
+      "type": "object",
+      "required": ["title", "backgroundImage"],
+      "properties": {
+        "title": { "type": "string", "maxLength": 80 },
+        "subtitle": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 200 },
+        "backgroundImage": { "type": "string", "format": "uri" },
+        "cta": { "$ref": "#/definitions/ctaButton" }
+      }
+    }
+  },
   "properties": {
     "meta": {
       "type": "object",
@@ -18,6 +115,16 @@
           "type": "string",
           "enum": ["template-a", "template-b", "template-c"],
           "description": "Which template variant to use"
+        },
+        "sectionStylePreset": {
+          "type": "string",
+          "enum": ["modern", "hauptstadt-classic"],
+          "default": "modern"
+        },
+        "detailPageVariant": {
+          "type": "string",
+          "enum": ["default", "vo"],
+          "default": "default"
         },
         "brand": {
           "type": "object",
@@ -92,7 +199,15 @@
                     "trust",
                     "contact",
                     "about",
-                    "footer"
+                    "districts",
+                    "testimonials",
+                    "rating",
+                    "team",
+                    "references",
+                    "blog",
+                    "footer",
+                    "cta",
+                    "process"
                   ]
                 },
                 "variant": { "type": "string" },

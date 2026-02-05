@@ -53,8 +53,8 @@ const sortedSections = [...page.sections]
       );
     }
 
-    // Pass brand and contact to footer section
-    const props = section.type === 'footer' 
+    // Pass brand and contact to footer and contact sections
+    const props = (section.type === 'footer' || section.type === 'contact')
       ? { ...section.props, brand: meta.brand, contact: meta.contact }
       : section.props;
 
