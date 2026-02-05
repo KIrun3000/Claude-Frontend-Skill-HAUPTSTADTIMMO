@@ -1,0 +1,294 @@
+{
+  "template_id": "astro-template-system",
+  "template_name": "Astro Template System",
+  "sections": [
+    {
+      "type": "hero",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        },
+        {
+          "id": "B",
+          "name": "B"
+        },
+        {
+          "id": "fullscreen-image",
+          "name": "Fullscreen Image"
+        },
+        {
+          "id": "split-text-image",
+          "name": "Split Text Image"
+        },
+        {
+          "id": "leadform-inline",
+          "name": "Leadform Inline"
+        },
+        {
+          "id": "slider",
+          "name": "Slider"
+        }
+      ]
+    },
+    {
+      "type": "usps",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "type": "featured-listings",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "type": "services",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        },
+        {
+          "id": "B",
+          "name": "B"
+        },
+        {
+          "id": "icon-grid-3col",
+          "name": "Icon Grid 3col"
+        },
+        {
+          "id": "card-grid-2col",
+          "name": "Card Grid 2col"
+        },
+        {
+          "id": "list-alternating",
+          "name": "List Alternating"
+        },
+        {
+          "id": "process-hybrid",
+          "name": "Process Hybrid"
+        }
+      ]
+    },
+    {
+      "type": "trust",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        },
+        {
+          "id": "statistics",
+          "name": "Statistics"
+        },
+        {
+          "id": "logo-grid",
+          "name": "Logo Grid"
+        },
+        {
+          "id": "reviews-summary",
+          "name": "Reviews Summary"
+        },
+        {
+          "id": "press-awards",
+          "name": "Press Awards"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "solid-background",
+          "name": "Solid Background"
+        },
+        {
+          "id": "split-benefits",
+          "name": "Split Benefits"
+        },
+        {
+          "id": "image-background",
+          "name": "Image Background"
+        },
+        {
+          "id": "modernisierungspaket",
+          "name": "Modernisierungspaket"
+        },
+        {
+          "id": "A",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        },
+        {
+          "id": "simple",
+          "name": "Simple"
+        },
+        {
+          "id": "form",
+          "name": "Form"
+        },
+        {
+          "id": "with-map",
+          "name": "With Map"
+        },
+        {
+          "id": "multi-office",
+          "name": "Multi Office"
+        }
+      ]
+    },
+    {
+      "type": "about",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        },
+        {
+          "id": "B",
+          "name": "B"
+        },
+        {
+          "id": "text-with-image",
+          "name": "Text With Image"
+        },
+        {
+          "id": "founder-story",
+          "name": "Founder Story"
+        },
+        {
+          "id": "team-grid",
+          "name": "Team Grid"
+        },
+        {
+          "id": "values-cards",
+          "name": "Values Cards"
+        }
+      ]
+    },
+    {
+      "type": "process",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "step-icons",
+          "name": "Step Icons"
+        },
+        {
+          "id": "alternating",
+          "name": "Alternating"
+        },
+        {
+          "id": "timeline-compact",
+          "name": "Timeline Compact"
+        },
+        {
+          "id": "A",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "type": "districts",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "type": "testimonials",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "type": "rating",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "type": "team",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "type": "references",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "type": "blog",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        }
+      ]
+    },
+    {
+      "type": "footer",
+      "default_variant": "A",
+      "variants": [
+        {
+          "id": "A",
+          "name": "A"
+        },
+        {
+          "id": "multi-column",
+          "name": "Multi Column"
+        },
+        {
+          "id": "minimal",
+          "name": "Minimal"
+        }
+      ]
+    }
+  ]
+}

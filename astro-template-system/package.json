@@ -10,7 +10,9 @@
     "validate": "astro check",
     "astro": "astro",
     "import-site": "node scripts/import-site.mjs",
-    "sync-contracts": "node scripts/sync-contracts.mjs"
+    "sync-contracts": "node scripts/sync-contracts.mjs",
+    "export-manifest": "tsx scripts/export-manifest.ts",
+    "publish-manifest": "tsx scripts/publish-manifest.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -19,6 +21,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "tsx": "^4.19.2"
   }
 }
