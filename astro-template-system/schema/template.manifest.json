@@ -73,6 +73,10 @@
           "name": "Card Grid 2col"
         },
         {
+          "id": "card-grid-4col",
+          "name": "Card Grid 4col"
+        },
+        {
           "id": "list-alternating",
           "name": "List Alternating"
         },

@@ -25,6 +25,7 @@ import ServicesA from '../sections/Services/ServicesA.astro';
 import ServicesB from '../sections/Services/ServicesB.astro';
 import ServicesIconGrid3Col from '../sections/Services/ServicesIconGrid3Col.astro';
 import ServicesCardGrid2Col from '../sections/Services/ServicesCardGrid2Col.astro';
+import ServicesCardGrid4Col from '../sections/Services/ServicesCardGrid4Col.astro';
 import ServicesListAlternating from '../sections/Services/ServicesListAlternating.astro';
 import ServicesProcessHybrid from '../sections/Services/ServicesProcessHybrid.astro';
 
@@ -135,6 +136,7 @@ export const SectionRegistry = {
     // New descriptive variants
     'icon-grid-3col': ServicesIconGrid3Col,
     'card-grid-2col': ServicesCardGrid2Col,
+    'card-grid-4col': ServicesCardGrid4Col,
     'list-alternating': ServicesListAlternating,
     'process-hybrid': ServicesProcessHybrid,
   },
