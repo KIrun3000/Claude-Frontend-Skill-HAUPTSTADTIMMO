@@ -87,6 +87,16 @@
       ]
     },
     {
+      "type": "content",
+      "default_variant": "text-block",
+      "variants": [
+        {
+          "id": "text-block",
+          "name": "Text Block"
+        }
+      ]
+    },
+    {
       "type": "trust",
       "default_variant": "A",
       "variants": [

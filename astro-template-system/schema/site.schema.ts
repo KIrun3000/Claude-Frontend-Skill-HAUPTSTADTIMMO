@@ -443,6 +443,13 @@ export const ProcessPropsSchema = z.object({
   message: 'Process section requires either steps or timeline entries.',
 });
 
+// Content Section Props (fallback text block)
+export const ContentPropsSchema = z.object({
+  title: z.string().max(80),
+  text: z.string().max(600),
+  cta: CTAButtonSchema.optional(),
+});
+
 // Footer Props
 export const FooterPropsSchema = z.object({
   about: z.object({
@@ -478,6 +485,7 @@ export const SectionSchema = z.object({
     'usps',
     'featured-listings',
     'services',
+    'content',
     'trust',
     'contact',
     'about',
@@ -560,6 +568,7 @@ export type HeroProps = z.infer<typeof HeroPropsSchema>;
 export type USPsProps = z.infer<typeof USPsPropsSchema>;
 export type FeaturedListingsProps = z.infer<typeof FeaturedListingsPropsSchema>;
 export type ServicesProps = z.infer<typeof ServicesPropsSchema>;
+export type ContentProps = z.infer<typeof ContentPropsSchema>;
 export type TrustProps = z.infer<typeof TrustPropsSchema>;
 export type ContactProps = z.infer<typeof ContactPropsSchema>;
 export type AboutProps = z.infer<typeof AboutPropsSchema>;

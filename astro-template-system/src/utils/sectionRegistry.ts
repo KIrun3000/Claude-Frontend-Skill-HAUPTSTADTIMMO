@@ -30,6 +30,11 @@ import ServicesListAlternating from '../sections/Services/ServicesListAlternatin
 import ServicesProcessHybrid from '../sections/Services/ServicesProcessHybrid.astro';
 
 // ============================================
+// Content Sections (Fallback)
+// ============================================
+import ContentTextBlock from '../sections/Content/ContentTextBlock.astro';
+
+// ============================================
 // Trust Sections
 // ============================================
 import TrustA from '../sections/Trust/TrustA.astro';
@@ -139,6 +144,9 @@ export const SectionRegistry = {
     'card-grid-4col': ServicesCardGrid4Col,
     'list-alternating': ServicesListAlternating,
     'process-hybrid': ServicesProcessHybrid,
+  },
+  content: {
+    'text-block': ContentTextBlock,
   },
   trust: {
     // Legacy variant
